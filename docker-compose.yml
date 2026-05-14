@@ -1,0 +1,14 @@
+version : "3.8"
+
+services:
+  database:
+    container_name: himatif-absency-db
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: radjikinseptiawan
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: himatif-absency-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
