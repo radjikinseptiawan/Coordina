@@ -4,7 +4,7 @@ import { Button, Link, TextField } from "@radix-ui/themes";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import Input from "@/app/_shared/components/input";
+import Input from "@/app/_shared/components/Input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
 
 export default function AuthChangePasswordTemplate() {

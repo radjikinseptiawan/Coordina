@@ -1,9 +1,7 @@
 import { Link, TextField } from "@radix-ui/themes";
-import { Eye, MailIcon, User } from "lucide-react";
-import { InputEmailProps, InputPasswordProps, InputUsernameProps } from "./input.interfaces";
+import { Eye, Mail, MailOpen, User } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-
+import { InputEmailProps, InputPasswordProps, InputUsernameProps } from "./input.interfaces";
 
 export function InputEmail({ value, setEmail, placeholder }: InputEmailProps) {
     return (
@@ -20,7 +18,7 @@ export function InputEmail({ value, setEmail, placeholder }: InputEmailProps) {
                 onChange={setEmail}
             >
                 <TextField.Slot>
-                    <MailIcon height={12} width={12} color="ruby" />
+                    <Mail color="crimson" size={12} />
                 </TextField.Slot>
             </TextField.Root>
         </div>
@@ -37,7 +35,7 @@ export function InputPassword({ value, label, setPassword, placeholder }: InputP
                 id={label}
                 value={value}
                 onChange={setPassword}
-                color="ruby" type="password"
+                color="crimson" type="password"
                 placeholder={placeholder}
             >
                 <TextField.Slot >

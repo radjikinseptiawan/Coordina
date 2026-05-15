@@ -1,6 +1,18 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { BsPeople } from "react-icons/bs";
 
 export default function DashboardContent() {
+    const getData = async () => {
+        const response = await axios.get(`/api/dashboard`)
+
+        const data = await response.data
+        console.log(data)
+    }
+    useEffect(() => {
+        getData()
+    }, []);
+
     return (
         <>
             <div className="bg-white 
