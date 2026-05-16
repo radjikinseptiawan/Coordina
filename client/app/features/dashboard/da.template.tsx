@@ -10,15 +10,6 @@ import axios from "axios"
 import { serverUrl } from "@/utils/connection"
 
 export default function DashboardTemplate() {
-    const getData = async () => {
-        const response = await axios.get(`/api/dashboard`)
-
-        const data = await response.data
-        console.log(data)
-    }
-    useEffect(() => {
-        getData()
-    }, []);
     return (
         <DashboardContextProvider>
             <div>
