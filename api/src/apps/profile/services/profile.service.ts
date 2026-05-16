@@ -1,0 +1,68 @@
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { PrismaService } from "src/prisma/prisma.service";
+import { EditProfileDto } from "../dto/profile.dto";
+
+@Injectable()
+export class ProfileService {
+    constructor(
+        private readonly prisma: PrismaService,
+    ) { }
+
+    async getProfile(id: string) {
+        try {
+            const data = await this.prisma.user_Profile.findUnique({
+                where: {
+                    account_id: id,
+                }
+            })
+
+            return new HttpException({
+                message: "Profile found",
+                status: HttpStatus.OK,
+                data
+            }, HttpStatus.OK)
+        } catch (e) {
+            return new HttpException({
+                message: "Internal Server Error",
+                detail: e.message,
+            }, HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    async editProfile(id: string, body: EditProfileDto) {
+        try {
+            console.log("service", body)
+            const data = await this.prisma.user_Profile.update({
+                where: {
+                    account_id: id,
+                },
+                data: {
+                    fullname: body.fullName,
+                    image: body.image,
+                    updated_at: new Date()
+                }
+            })
+
+            console.log("update", data)
+
+
+            if (!data) {
+                return new HttpException({
+                    message: "Profile not found",
+                    status: HttpStatus.NOT_FOUND,
+                }, HttpStatus.NOT_FOUND)
+            }
+
+            return new HttpException({
+                message: "Profile Updated",
+                status: HttpStatus.OK,
+                data
+            }, HttpStatus.OK)
+        } catch (error) {
+            return new HttpException({
+                message: "Internal Server Error",
+                detail: error.message,
+            }, HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+}

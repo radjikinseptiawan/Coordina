@@ -1,0 +1,58 @@
+model Comity {
+  id                         String                     @id @default(uuid())
+  comity_name                String
+  comity_short_name          String
+  comity_area_of_operational String
+  comity_city_of_operational String
+  comity_created_date        String
+  comity_background          String
+  isChecked                  Boolean                    @default(false)
+  created_at                 DateTime                   @default(now())
+  updated_at                 DateTime                   @updatedAt
+  missions                   Comity_Mission[]
+  visions                    Comity_Vision[]
+  memberProfilesComities     Member_Profiles_Comities[]
+
+  @@map("comity")
+}
+
+model Comity_Vision {
+  id         String   @id @default(uuid())
+  comity_id  String
+  vision     String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  comity     Comity   @relation(fields: [comity_id], references: [id])
+
+  @@map("comity_vision")
+}
+
+model Comity_Mission {
+  id         String   @id @default(uuid())
+  comity_id  String
+  mission    String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  comity     Comity   @relation(fields: [comity_id], references: [id])
+
+  @@map("comity_mission")
+}
+
+model Member_Profiles_Comities {
+  id             String       @id @default(uuid())
+  member_id      String
+  comity_id      String
+  comity_mission String
+  comity_vision  String
+  account_id     String
+  role           String?
+  position       String?
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @updatedAt
+  account        Accounts     @relation(fields: [account_id], references: [id])
+  comity         Comity       @relation(fields: [comity_id], references: [id])
+  member         User_Profile @relation(fields: [member_id], references: [id])
+
+  @@unique([member_id, comity_id])
+  @@map("member_profiles_comities")
+}
