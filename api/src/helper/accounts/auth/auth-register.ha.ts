@@ -40,7 +40,7 @@ export async function RegisterAccountsHandler(
             message: "Success Created Accounts",
             code: HttpStatus.OK
         };
-    } catch (e) {
+    } catch (e : any) {
         throw new HttpException({
             message: "Internal Server Error",
             detail: e.message,

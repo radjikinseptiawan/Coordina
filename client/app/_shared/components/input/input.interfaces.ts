@@ -1,23 +1,23 @@
 import { ChangeEvent } from "react";
 
 export interface InputType {
-    variant: "email" | "password" | "username" | "otp"
+    variant: "email" | "password" | "username" | "otp" | "image"
 }
 
 export interface InputEmailProps {
-    value: string;
+    value?: string | undefined;
     setEmail?: (email: ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
 }
 
 export interface InputUsernameProps {
-    value: string;
+    value?: string | undefined;
     setUsername?: (e: ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
 }
 
 export interface InputPasswordProps {
-    value: string;
+    value?: string | undefined;
     setPassword?: (e: ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     label?: string;
@@ -36,8 +36,11 @@ export interface OtpInputItemProps {
     setOtp?: (newValue: OtpCode) => void;
 }
 
+export interface InputImageFile {action:(e: any)=>void,value?:string, preview:string}
+
 
 export interface InputProps extends InputType,
     InputEmailProps,
     InputPasswordProps,
-    InputUsernameProps { }
+    InputUsernameProps, 
+    InputImageFile{ }

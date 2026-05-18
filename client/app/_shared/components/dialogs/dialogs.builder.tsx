@@ -1,5 +1,5 @@
 import { Button, Dialog } from "@radix-ui/themes";
-import { DialogsPropsType } from "./dialogs.interface";
+import { DialogsPropsType } from "./dialogs.interfaces";
 import { AnimatePresence, motion } from "motion/react";
 export default function Dialogs({ children, description, title, open }: DialogsPropsType) {
     return (

@@ -9,6 +9,28 @@ export class DashboardService {
         private readonly prisma: PrismaService,
     ) { }
 
+    async updateComities(body : any){
+        try{
+            console.log(body)
+
+            const data = await this.prisma.comity.update({
+                where:{
+                    id: body.id
+                },
+                data:{
+                    urlLink: body.urlLink
+                }
+            })
+        }catch(e){
+            throw new HttpException({
+                message: "Internal server error!",
+                httpStatus: HttpStatus.INTERNAL_SERVER_ERROR,
+                error: e
+            }, HttpStatus.INTERNAL_SERVER_ERROR)            
+        }
+    }
+
+
     async getComities(id: string) {
         try {
             const data = await this.prisma.accounts.findFirst({

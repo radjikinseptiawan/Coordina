@@ -32,9 +32,10 @@ export type ComityMinAggregateOutputType = {
   comity_city_of_operational: string | null
   comity_created_date: string | null
   comity_background: string | null
-  isChecked: boolean | null
+  urlLink: string | null
   created_at: Date | null
   updated_at: Date | null
+  is_deleted: boolean | null
 }
 
 export type ComityMaxAggregateOutputType = {
@@ -45,9 +46,10 @@ export type ComityMaxAggregateOutputType = {
   comity_city_of_operational: string | null
   comity_created_date: string | null
   comity_background: string | null
-  isChecked: boolean | null
+  urlLink: string | null
   created_at: Date | null
   updated_at: Date | null
+  is_deleted: boolean | null
 }
 
 export type ComityCountAggregateOutputType = {
@@ -58,9 +60,10 @@ export type ComityCountAggregateOutputType = {
   comity_city_of_operational: number
   comity_created_date: number
   comity_background: number
-  isChecked: number
+  urlLink: number
   created_at: number
   updated_at: number
+  is_deleted: number
   _all: number
 }
 
@@ -73,9 +76,10 @@ export type ComityMinAggregateInputType = {
   comity_city_of_operational?: true
   comity_created_date?: true
   comity_background?: true
-  isChecked?: true
+  urlLink?: true
   created_at?: true
   updated_at?: true
+  is_deleted?: true
 }
 
 export type ComityMaxAggregateInputType = {
@@ -86,9 +90,10 @@ export type ComityMaxAggregateInputType = {
   comity_city_of_operational?: true
   comity_created_date?: true
   comity_background?: true
-  isChecked?: true
+  urlLink?: true
   created_at?: true
   updated_at?: true
+  is_deleted?: true
 }
 
 export type ComityCountAggregateInputType = {
@@ -99,9 +104,10 @@ export type ComityCountAggregateInputType = {
   comity_city_of_operational?: true
   comity_created_date?: true
   comity_background?: true
-  isChecked?: true
+  urlLink?: true
   created_at?: true
   updated_at?: true
+  is_deleted?: true
   _all?: true
 }
 
@@ -185,9 +191,10 @@ export type ComityGroupByOutputType = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked: boolean
+  urlLink: string | null
   created_at: Date
   updated_at: Date
+  is_deleted: boolean
   _count: ComityCountAggregateOutputType | null
   _min: ComityMinAggregateOutputType | null
   _max: ComityMaxAggregateOutputType | null
@@ -219,9 +226,10 @@ export type ComityWhereInput = {
   comity_city_of_operational?: Prisma.StringFilter<"Comity"> | string
   comity_created_date?: Prisma.StringFilter<"Comity"> | string
   comity_background?: Prisma.StringFilter<"Comity"> | string
-  isChecked?: Prisma.BoolFilter<"Comity"> | boolean
+  urlLink?: Prisma.StringNullableFilter<"Comity"> | string | null
   created_at?: Prisma.DateTimeFilter<"Comity"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Comity"> | Date | string
+  is_deleted?: Prisma.BoolFilter<"Comity"> | boolean
   missions?: Prisma.Comity_MissionListRelationFilter
   visions?: Prisma.Comity_VisionListRelationFilter
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesListRelationFilter
@@ -235,9 +243,10 @@ export type ComityOrderByWithRelationInput = {
   comity_city_of_operational?: Prisma.SortOrder
   comity_created_date?: Prisma.SortOrder
   comity_background?: Prisma.SortOrder
-  isChecked?: Prisma.SortOrder
+  urlLink?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   missions?: Prisma.Comity_MissionOrderByRelationAggregateInput
   visions?: Prisma.Comity_VisionOrderByRelationAggregateInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
@@ -245,6 +254,7 @@ export type ComityOrderByWithRelationInput = {
 
 export type ComityWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  urlLink?: string
   AND?: Prisma.ComityWhereInput | Prisma.ComityWhereInput[]
   OR?: Prisma.ComityWhereInput[]
   NOT?: Prisma.ComityWhereInput | Prisma.ComityWhereInput[]
@@ -254,13 +264,13 @@ export type ComityWhereUniqueInput = Prisma.AtLeast<{
   comity_city_of_operational?: Prisma.StringFilter<"Comity"> | string
   comity_created_date?: Prisma.StringFilter<"Comity"> | string
   comity_background?: Prisma.StringFilter<"Comity"> | string
-  isChecked?: Prisma.BoolFilter<"Comity"> | boolean
   created_at?: Prisma.DateTimeFilter<"Comity"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Comity"> | Date | string
+  is_deleted?: Prisma.BoolFilter<"Comity"> | boolean
   missions?: Prisma.Comity_MissionListRelationFilter
   visions?: Prisma.Comity_VisionListRelationFilter
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesListRelationFilter
-}, "id">
+}, "id" | "urlLink">
 
 export type ComityOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -270,9 +280,10 @@ export type ComityOrderByWithAggregationInput = {
   comity_city_of_operational?: Prisma.SortOrder
   comity_created_date?: Prisma.SortOrder
   comity_background?: Prisma.SortOrder
-  isChecked?: Prisma.SortOrder
+  urlLink?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   _count?: Prisma.ComityCountOrderByAggregateInput
   _max?: Prisma.ComityMaxOrderByAggregateInput
   _min?: Prisma.ComityMinOrderByAggregateInput
@@ -289,9 +300,10 @@ export type ComityScalarWhereWithAggregatesInput = {
   comity_city_of_operational?: Prisma.StringWithAggregatesFilter<"Comity"> | string
   comity_created_date?: Prisma.StringWithAggregatesFilter<"Comity"> | string
   comity_background?: Prisma.StringWithAggregatesFilter<"Comity"> | string
-  isChecked?: Prisma.BoolWithAggregatesFilter<"Comity"> | boolean
+  urlLink?: Prisma.StringNullableWithAggregatesFilter<"Comity"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Comity"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Comity"> | Date | string
+  is_deleted?: Prisma.BoolWithAggregatesFilter<"Comity"> | boolean
 }
 
 export type ComityCreateInput = {
@@ -302,9 +314,10 @@ export type ComityCreateInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionCreateNestedManyWithoutComityInput
   visions?: Prisma.Comity_VisionCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutComityInput
@@ -318,9 +331,10 @@ export type ComityUncheckedCreateInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionUncheckedCreateNestedManyWithoutComityInput
   visions?: Prisma.Comity_VisionUncheckedCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutComityInput
@@ -334,9 +348,10 @@ export type ComityUpdateInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUpdateManyWithoutComityNestedInput
   visions?: Prisma.Comity_VisionUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutComityNestedInput
@@ -350,9 +365,10 @@ export type ComityUncheckedUpdateInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUncheckedUpdateManyWithoutComityNestedInput
   visions?: Prisma.Comity_VisionUncheckedUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityNestedInput
@@ -366,9 +382,10 @@ export type ComityCreateManyInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
 }
 
 export type ComityUpdateManyMutationInput = {
@@ -379,9 +396,10 @@ export type ComityUpdateManyMutationInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ComityUncheckedUpdateManyInput = {
@@ -392,9 +410,10 @@ export type ComityUncheckedUpdateManyInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ComityCountOrderByAggregateInput = {
@@ -405,9 +424,10 @@ export type ComityCountOrderByAggregateInput = {
   comity_city_of_operational?: Prisma.SortOrder
   comity_created_date?: Prisma.SortOrder
   comity_background?: Prisma.SortOrder
-  isChecked?: Prisma.SortOrder
+  urlLink?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
 }
 
 export type ComityMaxOrderByAggregateInput = {
@@ -418,9 +438,10 @@ export type ComityMaxOrderByAggregateInput = {
   comity_city_of_operational?: Prisma.SortOrder
   comity_created_date?: Prisma.SortOrder
   comity_background?: Prisma.SortOrder
-  isChecked?: Prisma.SortOrder
+  urlLink?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
 }
 
 export type ComityMinOrderByAggregateInput = {
@@ -431,9 +452,10 @@ export type ComityMinOrderByAggregateInput = {
   comity_city_of_operational?: Prisma.SortOrder
   comity_created_date?: Prisma.SortOrder
   comity_background?: Prisma.SortOrder
-  isChecked?: Prisma.SortOrder
+  urlLink?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
 }
 
 export type ComityScalarRelationFilter = {
@@ -491,9 +513,10 @@ export type ComityCreateWithoutVisionsInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutComityInput
 }
@@ -506,9 +529,10 @@ export type ComityUncheckedCreateWithoutVisionsInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionUncheckedCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutComityInput
 }
@@ -537,9 +561,10 @@ export type ComityUpdateWithoutVisionsInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutComityNestedInput
 }
@@ -552,9 +577,10 @@ export type ComityUncheckedUpdateWithoutVisionsInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUncheckedUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityNestedInput
 }
@@ -567,9 +593,10 @@ export type ComityCreateWithoutMissionsInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   visions?: Prisma.Comity_VisionCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutComityInput
 }
@@ -582,9 +609,10 @@ export type ComityUncheckedCreateWithoutMissionsInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   visions?: Prisma.Comity_VisionUncheckedCreateNestedManyWithoutComityInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutComityInput
 }
@@ -613,9 +641,10 @@ export type ComityUpdateWithoutMissionsInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visions?: Prisma.Comity_VisionUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutComityNestedInput
 }
@@ -628,9 +657,10 @@ export type ComityUncheckedUpdateWithoutMissionsInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visions?: Prisma.Comity_VisionUncheckedUpdateManyWithoutComityNestedInput
   memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityNestedInput
 }
@@ -643,9 +673,10 @@ export type ComityCreateWithoutMemberProfilesComitiesInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionCreateNestedManyWithoutComityInput
   visions?: Prisma.Comity_VisionCreateNestedManyWithoutComityInput
 }
@@ -658,9 +689,10 @@ export type ComityUncheckedCreateWithoutMemberProfilesComitiesInput = {
   comity_city_of_operational: string
   comity_created_date: string
   comity_background: string
-  isChecked?: boolean
+  urlLink?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  is_deleted?: boolean
   missions?: Prisma.Comity_MissionUncheckedCreateNestedManyWithoutComityInput
   visions?: Prisma.Comity_VisionUncheckedCreateNestedManyWithoutComityInput
 }
@@ -689,9 +721,10 @@ export type ComityUpdateWithoutMemberProfilesComitiesInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUpdateManyWithoutComityNestedInput
   visions?: Prisma.Comity_VisionUpdateManyWithoutComityNestedInput
 }
@@ -704,9 +737,10 @@ export type ComityUncheckedUpdateWithoutMemberProfilesComitiesInput = {
   comity_city_of_operational?: Prisma.StringFieldUpdateOperationsInput | string
   comity_created_date?: Prisma.StringFieldUpdateOperationsInput | string
   comity_background?: Prisma.StringFieldUpdateOperationsInput | string
-  isChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  urlLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   missions?: Prisma.Comity_MissionUncheckedUpdateManyWithoutComityNestedInput
   visions?: Prisma.Comity_VisionUncheckedUpdateManyWithoutComityNestedInput
 }
@@ -768,9 +802,10 @@ export type ComitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   comity_city_of_operational?: boolean
   comity_created_date?: boolean
   comity_background?: boolean
-  isChecked?: boolean
+  urlLink?: boolean
   created_at?: boolean
   updated_at?: boolean
+  is_deleted?: boolean
   missions?: boolean | Prisma.Comity$missionsArgs<ExtArgs>
   visions?: boolean | Prisma.Comity$visionsArgs<ExtArgs>
   memberProfilesComities?: boolean | Prisma.Comity$memberProfilesComitiesArgs<ExtArgs>
@@ -785,9 +820,10 @@ export type ComitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   comity_city_of_operational?: boolean
   comity_created_date?: boolean
   comity_background?: boolean
-  isChecked?: boolean
+  urlLink?: boolean
   created_at?: boolean
   updated_at?: boolean
+  is_deleted?: boolean
 }, ExtArgs["result"]["comity"]>
 
 export type ComitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -798,9 +834,10 @@ export type ComitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   comity_city_of_operational?: boolean
   comity_created_date?: boolean
   comity_background?: boolean
-  isChecked?: boolean
+  urlLink?: boolean
   created_at?: boolean
   updated_at?: boolean
+  is_deleted?: boolean
 }, ExtArgs["result"]["comity"]>
 
 export type ComitySelectScalar = {
@@ -811,12 +848,13 @@ export type ComitySelectScalar = {
   comity_city_of_operational?: boolean
   comity_created_date?: boolean
   comity_background?: boolean
-  isChecked?: boolean
+  urlLink?: boolean
   created_at?: boolean
   updated_at?: boolean
+  is_deleted?: boolean
 }
 
-export type ComityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_name" | "comity_short_name" | "comity_area_of_operational" | "comity_city_of_operational" | "comity_created_date" | "comity_background" | "isChecked" | "created_at" | "updated_at", ExtArgs["result"]["comity"]>
+export type ComityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_name" | "comity_short_name" | "comity_area_of_operational" | "comity_city_of_operational" | "comity_created_date" | "comity_background" | "urlLink" | "created_at" | "updated_at" | "is_deleted", ExtArgs["result"]["comity"]>
 export type ComityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   missions?: boolean | Prisma.Comity$missionsArgs<ExtArgs>
   visions?: boolean | Prisma.Comity$visionsArgs<ExtArgs>
@@ -841,9 +879,10 @@ export type $ComityPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     comity_city_of_operational: string
     comity_created_date: string
     comity_background: string
-    isChecked: boolean
+    urlLink: string | null
     created_at: Date
     updated_at: Date
+    is_deleted: boolean
   }, ExtArgs["result"]["comity"]>
   composites: {}
 }
@@ -1277,9 +1316,10 @@ export interface ComityFieldRefs {
   readonly comity_city_of_operational: Prisma.FieldRef<"Comity", 'String'>
   readonly comity_created_date: Prisma.FieldRef<"Comity", 'String'>
   readonly comity_background: Prisma.FieldRef<"Comity", 'String'>
-  readonly isChecked: Prisma.FieldRef<"Comity", 'Boolean'>
+  readonly urlLink: Prisma.FieldRef<"Comity", 'String'>
   readonly created_at: Prisma.FieldRef<"Comity", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Comity", 'DateTime'>
+  readonly is_deleted: Prisma.FieldRef<"Comity", 'Boolean'>
 }
     
 

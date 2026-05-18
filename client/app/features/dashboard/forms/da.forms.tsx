@@ -48,20 +48,21 @@ export default function CreateOrganizationForm() {
                         setCity(e)
                         setValue("comity_city_of_operational", e, { shouldValidate: true })
                     }}
+                    disabled={province.length > 1 ? false : true }
                     value={city}
                     text="Pilih Area Operasional" references={province} array={area_operasional} />
                 {errors.comity_city_of_operational && <p className="text-xs text-red-400">{errors.comity_city_of_operational.message as string}</p>}
             </Form.Field>
 
             <Form.Field name="comity_background">
-                <Form.Label htmlFor="comity_background">Background</Form.Label>
+                <Form.Label htmlFor="comity_background">Latar Belakang Organisasi</Form.Label>
                 <Form.Control {...register("comity_background")} className="w-full flex items-center justify-between border rounded-md p-2" name="comity_background"></Form.Control>
                 {errors.comity_background && <p className="text-xs text-red-400">{errors.comity_background.message as string}</p>}
             </Form.Field>
 
 
             <Form.Field name="comity_created_date">
-                <Form.Label htmlFor="comity_created_date">Tanggal</Form.Label>
+                <Form.Label htmlFor="comity_created_date">Tanggal Organisasi di Buat</Form.Label>
                 <Form.Control type="date" {...register("comity_created_date")} className="w-full flex items-center justify-between border rounded-md p-2" name="comity_created_date"></Form.Control>
                 {errors.comity_created_date && <p className="text-xs text-red-400">{errors.comity_created_date.message as string}</p>}
             </Form.Field>

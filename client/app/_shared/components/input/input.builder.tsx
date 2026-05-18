@@ -1,7 +1,9 @@
 import { Link, TextField } from "@radix-ui/themes";
-import { Eye, Mail, MailOpen, User } from "lucide-react";
+import { Camera, Eye, Mail, MailOpen, User } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { InputEmailProps, InputPasswordProps, InputUsernameProps } from "./input.interfaces";
+import { InputEmailProps, InputImageFile, InputPasswordProps, InputUsernameProps } from "./input.interfaces";
+import { useRef } from "react";
+import Image from "next/image";
 
 export function InputEmail({ value, setEmail, placeholder }: InputEmailProps) {
     return (
@@ -57,13 +59,46 @@ export function InputUsername({ value, placeholder, setUsername }: InputUsername
             <label htmlFor="username" className="text-[12px] text-slate-500">Username</label>
             <TextField.Root type="text" placeholder={placeholder} variant="classic" color="ruby" value={value} onChange={setUsername}>
                 <TextField.Slot>
-                    <User color="ruby" size={12} />
+                    <User color="crimson" size={12} />
                 </TextField.Slot>
             </TextField.Root>
         </div>
     )
 }
 
+export function InputImage({ action,preview }: InputImageFile) {
+  const refId = useRef<HTMLInputElement>(null)
+
+  const inputImagesHelper = () => {
+    refId.current?.click()
+  }
+
+  return (
+    <>
+      <div
+        className="bg-gray-500 rounded-full flex items-center justify-center w-32 md:w-72 md:h-72 h-32"
+        onClick={inputImagesHelper}
+      >  {typeof preview === "string" ? (
+          <img
+            src={preview}
+            alt="preview"
+            className="w-full h-full object-cover rounded-full"
+          />
+        ) : (
+          <Camera size={80} />
+        )}
+        </div>
+
+      <input
+        type="file"
+        ref={refId}
+        hidden
+        accept="image/*"
+        onChange={action}
+      />
+    </>
+  )
+}
 
 
 export interface otpCode {

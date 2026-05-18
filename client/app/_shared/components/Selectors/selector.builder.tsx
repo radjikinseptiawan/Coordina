@@ -63,7 +63,7 @@ export function SelectorCity({
             value={value}
         >
             <Select.Trigger
-                disabled={disabled} className="w-full flex items-center justify-between border rounded-md p-2" >
+                disabled={disabled} className={`${disabled ?  "cursor-not-allowed bg-gray-400 text-gray-500" : "cursor-pointer bg-white"} w-full flex items-center justify-between border rounded-md p-2`}>
                 <Select.Value placeholder={text} />
                 <Select.Icon>
                     <ChevronDown className="h-4 w-4" />
@@ -73,7 +73,7 @@ export function SelectorCity({
                 <Select.Content
                     position="popper"
                     sideOffset={5}
-                    className={`${disabled ? "cursor-not-allowed bg-gray-300" : "cursor-pointer bg-white"}  p-2 max-h-72 rounded-md shadow-xl`}
+                    className={`p-2 max-h-72 bg-white rounded-md shadow-xl`}
                 >
                     <Select.ScrollUpButton>
                         <ChevronUp size={14} />

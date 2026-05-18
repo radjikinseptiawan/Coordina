@@ -10,6 +10,7 @@ import axios from "axios"
 import { serverUrl } from "@/utils/connection"
 
 export default function DashboardTemplate() {
+ 
     return (
         <DashboardContextProvider>
             <div>

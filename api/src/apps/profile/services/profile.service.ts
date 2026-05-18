@@ -13,6 +13,9 @@ export class ProfileService {
             const data = await this.prisma.user_Profile.findUnique({
                 where: {
                     account_id: id,
+                },
+                include:{
+                    account: true,
                 }
             })
 
@@ -21,7 +24,7 @@ export class ProfileService {
                 status: HttpStatus.OK,
                 data
             }, HttpStatus.OK)
-        } catch (e) {
+        } catch (e : any) {
             return new HttpException({
                 message: "Internal Server Error",
                 detail: e.message,
@@ -29,22 +32,18 @@ export class ProfileService {
         }
     }
 
-    async editProfile(id: string, body: EditProfileDto) {
+    async editProfile(id: string, body: EditProfileDto, image: Express.Multer.File) {
         try {
-            console.log("service", body)
             const data = await this.prisma.user_Profile.update({
                 where: {
                     account_id: id,
                 },
                 data: {
-                    fullname: body.fullName,
-                    image: body.image,
+                    fullname: body.fullname,
+                    image: image.filename,
                     updated_at: new Date()
                 }
             })
-
-            console.log("update", data)
-
 
             if (!data) {
                 return new HttpException({
@@ -53,12 +52,27 @@ export class ProfileService {
                 }, HttpStatus.NOT_FOUND)
             }
 
+            if(body.email || body.username){
+                const updateAccounts =  await this.prisma.accounts.update({
+                    where: {
+                        id: id
+                    },
+                    data:{
+                        username: body.username,
+                        email: body.email,
+                        profileImage: image.filename,
+                        updated_at: new Date()
+                    }
+                })
+            }
+
+
             return new HttpException({
                 message: "Profile Updated",
                 status: HttpStatus.OK,
                 data
             }, HttpStatus.OK)
-        } catch (error) {
+        } catch (error :any) {
             return new HttpException({
                 message: "Internal Server Error",
                 detail: error.message,

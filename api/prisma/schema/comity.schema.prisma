@@ -6,9 +6,10 @@ model Comity {
   comity_city_of_operational String
   comity_created_date        String
   comity_background          String
-  isChecked                  Boolean                    @default(false)
+  urlLink                    String?                    @unique
   created_at                 DateTime                   @default(now())
   updated_at                 DateTime                   @updatedAt
+  is_deleted                 Boolean                    @default(false)
   missions                   Comity_Mission[]
   visions                    Comity_Vision[]
   memberProfilesComities     Member_Profiles_Comities[]

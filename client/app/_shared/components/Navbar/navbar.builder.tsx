@@ -18,7 +18,7 @@ const navigation = [
     },
     {
         label: "Akun Saya",
-        href: "/account",
+        href: "/profile",
         action: () => console.log("mengalihkan ke dashboard"),
         icon: User,
     },

@@ -4,6 +4,7 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import GeneralProvider from "@/provider/general";
+import { Toaster } from "react-hot-toast";
 
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <GeneralProvider>
+          <Toaster/>
           <Theme>
             {children}
           </Theme>

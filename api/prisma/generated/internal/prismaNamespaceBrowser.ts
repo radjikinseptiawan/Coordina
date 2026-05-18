@@ -123,9 +123,10 @@ export const ComityScalarFieldEnum = {
   comity_city_of_operational: 'comity_city_of_operational',
   comity_created_date: 'comity_created_date',
   comity_background: 'comity_background',
-  isChecked: 'isChecked',
+  urlLink: 'urlLink',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  is_deleted: 'is_deleted'
 } as const
 
 export type ComityScalarFieldEnum = (typeof ComityScalarFieldEnum)[keyof typeof ComityScalarFieldEnum]

@@ -1,4 +1,4 @@
-import { InputEmail, InputPassword, InputUsername } from "./input.builder";
+import { InputEmail, InputImage, InputPassword, InputUsername } from "./input.builder";
 import { InputProps, InputType } from "./input.interfaces";
 
 export default function Input({ variant, ...props }:
@@ -15,4 +15,7 @@ export default function Input({ variant, ...props }:
         return <InputUsername {...props} />
     }
 
+    if(variant === "image"){
+        return <InputImage {...props}/>
+    }
 }

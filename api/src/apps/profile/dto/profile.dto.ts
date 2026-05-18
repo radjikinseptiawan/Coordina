@@ -1,4 +1,6 @@
 export interface EditProfileDto {
-    fullName: string;
+    fullname: string;
     image: string;
+    email: string;
+    username: string;
 }

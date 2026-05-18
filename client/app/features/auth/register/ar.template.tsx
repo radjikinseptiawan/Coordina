@@ -5,8 +5,9 @@ import { FormEvent, useState } from "react";
 import { serverUrl } from "@/utils/connection";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Input from "@/app/_shared/components/Input";
+import Input from "@/app/_shared/components/input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
+import toast from "react-hot-toast";
 
 export default function AuthRegisterTemplate() {
     const [email, setEmail] = useState<string>("")
@@ -29,11 +30,18 @@ export default function AuthRegisterTemplate() {
             const response = await axios.post(`${serverUrl}/v1_beta/accounts/auth/register/`,
                 { email, password, username })
 
+                console.log({email, password, username})
+
             setLoading(false)
             if (response.status === 201) {
-                router.push("/login")
+                toast.success('Akun berhasil didaftarkan!')
+                setTimeout(()=>{router.push("/login")},2000)
+                return
             }
+
+            toast.error(`Akun gagal didaftarkan!`)
         } catch (e) {
+            toast.error(`Akun gagal didaftarkan!`)
             setLoading(false)
             console.error(e)
         }

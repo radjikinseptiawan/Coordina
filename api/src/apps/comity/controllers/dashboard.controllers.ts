@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Req, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Post, Put, Req, UseGuards } from "@nestjs/common";
 import { DashboardService } from "../services/dashboard.service";
 import { ComityInput } from "../dto/dashboard.dto";
 import { JwtAuthGuard } from "src/apps/accounts/auth/guards/auth.guard";
@@ -9,6 +9,12 @@ export class DashboardController {
     constructor(
         private readonly dashboardService: DashboardService,
     ) { }
+
+    @Put()
+    @UseGuards(JwtAuthGuard)
+    async createLink(@Body() body : any, @Req() req){
+        return await this.dashboardService.updateComities(body)
+    }
 
     @Get("comities")
     @UseGuards(JwtAuthGuard)

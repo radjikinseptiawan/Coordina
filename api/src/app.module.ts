@@ -6,11 +6,12 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { ProfileModule } from './apps/profile/profile.module';
 import { ComityModule } from './apps/comity/comity.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [AccountModule, PrismaModule, ConfigModule.forRoot({
     isGlobal: true,
-  }), ProfileModule, ComityModule],
+  }), ProfileModule, ComityModule, MulterModule],
   controllers: [AppController],
   providers: [AppService],
 })

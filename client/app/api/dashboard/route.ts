@@ -1,5 +1,6 @@
 import { serverUrl } from "@/utils/connection";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import RenderResult from "next/dist/server/render-result";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -22,12 +23,35 @@ export async function POST(req: NextRequest) {
         const response = await axios.post(`${serverUrl}/dashboard`, payload, { headers: { "Content-Type": "application/json", Cookie: `access_token=${tokenStored?.value}` } })
 
         const result = response.data
-        console.log(result)
 
         return NextResponse.json({ message: "Data berhasil diterima", data: result }, { status: 200 })
     } catch (e) {
         console.error(e)
         return NextResponse.json({ message: "Data gagal diterima", error: e }, { status: 500 })
+    }
+}
+
+export async function PUT(req: NextRequest){
+    try{
+        const body = await req.json()
+
+        const token = await cookies()
+        const tokenStored : any = await token.get("access_token")?.value
+
+        const response = await axios.put(`${serverUrl}/dashboard`, body, {
+            headers: {
+                "Content-Type" : "application/json",
+                Cookie: `access_token=${tokenStored}`
+            }
+        })
+
+        return NextResponse.json({
+            response
+        })
+    }catch(e){
+        return NextResponse.json({
+            message: "Gagal Memperbarui data!"
+        })
     }
 }
 
