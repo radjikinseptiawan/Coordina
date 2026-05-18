@@ -1,5 +1,5 @@
 "use client"
-import { useProfileForm } from "@/app/_shared/common/hooks/hooks";
+import { useProfileForm } from "@/app/_shared/common/hooks/forms";
 import { BaseForm } from "@/app/_shared/components/Forms/forms.builder";
 import Input from "@/app/_shared/components/input";
 import axios from "axios";
@@ -76,6 +76,8 @@ export default function UserProfileForms(){
     
       setPreview(URL.createObjectURL(file))
     }
+
+    
 
     useEffect(()=>{
         getValue()

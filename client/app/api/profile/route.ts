@@ -6,23 +6,8 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function PUT(req: NextRequest){
     try{
-        const data = await req.formData()
-        console.log("Hasil put dari frontend",data)
-
-
-        const username = data.get("username")
-        const fullname = data.get("fullname")
-        const email = data.get("email")
-        const photo = data.get("image")
-
+        const payload = await req.formData()
         
-        const payload = {
-            username,
-            fullname,
-            email,
-            photo
-        }
-
         const cookie = await cookies()
         const token : any= cookie.get("access_token")?.value
 
@@ -30,6 +15,7 @@ export async function PUT(req: NextRequest){
 
         const res = await axios.put(`${serverUrl}/v1_beta/${user.id}/profile`,payload,{
             headers: {
+                "Contenty-Type": "multipart/form-data",
                 Cookie: `access_token=${token}`
             }
         })

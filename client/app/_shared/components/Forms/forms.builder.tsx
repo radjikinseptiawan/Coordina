@@ -4,7 +4,7 @@ import { Dialog, Form } from "radix-ui";
 import { useDashboardContext } from "@/app/features/dashboard/da.context";
 import { ReactNode } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form"
-import { useOrganizationForm } from "../../common/hooks/hooks";
+import { useOrganizationForm } from "../../common/hooks/forms";
 import { usePathname } from "next/navigation";
 
 export function BaseDialogForm({ submit, children }: { children: ReactNode, submit?: () => void }) {

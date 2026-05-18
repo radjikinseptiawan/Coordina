@@ -1,7 +1,7 @@
 import Dialogs from "@/app/_shared/components/Dialogs/dialogs.builder";
 import { useDashboardContext } from "../da.context";
 import CreateOrganizationForm from "../forms/da.forms";
-import { useOrganizationForm } from "@/app/_shared/common/hooks/hooks";
+import { useOrganizationForm } from "@/app/_shared/common/hooks/forms";
 import { FormProvider } from "react-hook-form";
 import axios, { AxiosError } from "axios";
 import { serverUrl } from "@/utils/connection";

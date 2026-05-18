@@ -71,7 +71,7 @@ export function Dropdown({ setIsOpen }: { setIsOpen: (open: boolean) => void }) 
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
         >
-            <Container className="absolute z-10 top-12 px-2 py-2 shadow-xl w-32 right-0 bg-white rounded-b-md">
+            <Container className="absolute z-10 top-12 px-2 py-2 shadow-xl w-32 md:w-48 right-0 bg-white rounded-b-md">
                 <div className=" flex flex-col w-full items-start gap-2">
                     {
                         navigation.map((nav, i) => {

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { InputEmailProps, InputImageFile, InputPasswordProps, InputUsernameProps } from "./input.interfaces";
 import { useRef } from "react";
 import Image from "next/image";
+import { env } from "process";
 
 export function InputEmail({ value, setEmail, placeholder }: InputEmailProps) {
     return (
@@ -80,7 +81,7 @@ export function InputImage({ action,preview }: InputImageFile) {
         onClick={inputImagesHelper}
       >  {typeof preview === "string" ? (
           <img
-            src={preview}
+            src={`${preview}`}
             alt="preview"
             className="w-full h-full object-cover rounded-full"
           />
