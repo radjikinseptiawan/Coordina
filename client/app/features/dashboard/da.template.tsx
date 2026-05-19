@@ -1,16 +1,11 @@
 "use client"
-
-import { Button } from "@radix-ui/themes"
 import DashboardControllers from "./controllers/controllers"
 import AddDashboardDialogs from "./dialogs/add.dialogs"
 import { DashboardContextProvider } from "./da.context"
 import DashboardContent from "./content/da.content"
-import { useEffect } from "react"
-import axios from "axios"
-import { serverUrl } from "@/utils/connection"
 
 export default function DashboardTemplate() {
- 
+
     return (
         <DashboardContextProvider>
             <div>

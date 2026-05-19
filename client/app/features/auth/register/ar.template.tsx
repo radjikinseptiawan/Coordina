@@ -1,11 +1,10 @@
 "use client"
-import { Button, Link, TextField } from "@radix-ui/themes";
-import { Eye, Mail, User } from "lucide-react";
+import { Button, Link } from "@radix-ui/themes";
 import { FormEvent, useState } from "react";
 import { serverUrl } from "@/utils/connection";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Input from "@/app/_shared/components/input";
+import Input from "@/app/_shared/components/Input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
 import toast from "react-hot-toast";
 
@@ -30,12 +29,12 @@ export default function AuthRegisterTemplate() {
             const response = await axios.post(`${serverUrl}/v1_beta/accounts/auth/register/`,
                 { email, password, username })
 
-                console.log({email, password, username})
+            console.log({ email, password, username })
 
             setLoading(false)
             if (response.status === 201) {
                 toast.success('Akun berhasil didaftarkan!')
-                setTimeout(()=>{router.push("/login")},2000)
+                setTimeout(() => { router.push("/login") }, 2000)
                 return
             }
 
@@ -53,10 +52,10 @@ export default function AuthRegisterTemplate() {
                 <h1 className="text-xl font-bold text-center text-[#DC143C]">Selamat datang di Coordina</h1>
                 <p className="text-center text-gray-500 text-[12px]">Mari kelola organisasi dan komunitas Anda dengan lebih efisien dan terstruktur</p>
                 <form onSubmit={registerWithBasic} className="space-y-4">
-                    <Input variant="email" value={email} setEmail={(e) => setEmail(e.target.value)} placeholder="Email" />
-                    <Input variant="username" value={username} setUsername={(e) => setUsername(e.target.value)} placeholder="Username" />
-                    <Input label="Password" variant="password" value={password} setPassword={(e) => setPassword(e.target.value)} placeholder="Password" />
-                    <Input label="Konfirmasi Password" variant="password" value={confirmPassword} setPassword={(e) => setConfirmPassword(e.target.value)} placeholder="Konfirmasi Password" />
+                    <Input variant="email" value={email} action={(e) => setEmail(e.target.value)} placeholder="Email" />
+                    <Input variant="username" value={username} action={(e) => setUsername(e.target.value)} placeholder="Username" />
+                    <Input label="Password" variant="password" value={password} action={(e) => setPassword(e.target.value)} placeholder="Password" />
+                    <Input label="Konfirmasi Password" variant="password" value={confirmPassword} action={(e) => setConfirmPassword(e.target.value)} placeholder="Konfirmasi Password" />
                     <div className="flex p-1 flex-col gap-2">
                         <Button color="ruby" disabled={isLoading} type="submit" variant="soft">{isLoading ? "loading..." : "Daftar"}</Button>
                     </div>

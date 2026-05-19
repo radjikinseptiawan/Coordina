@@ -4,7 +4,7 @@ import { Button, Link, TextField } from "@radix-ui/themes";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import Input from "@/app/_shared/components/input";
+import Input from "@/app/_shared/components/Input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
 
 export default function AuthChangePasswordTemplate() {
@@ -72,8 +72,8 @@ export default function AuthChangePasswordTemplate() {
                         <TextField.Root minLength={1} maxLength={1} max={1} min={0} className="text-center" value={otp.otp4} onChange={(e) => setOtp({ ...otp, otp4: e.target.value })} type="text"></TextField.Root>
                     </div>
 
-                    <Input variant="password" label="Password Baru" value={password} setPassword={(e) => setPassword(e.target.value)} placeholder="Password Baru" />
-                    <Input variant="password" label="Konfirmasi Password" value={confirmPassword} setPassword={(e) => setConfirmPassword(e.target.value)} placeholder="Konfirmasi Password Baru" />
+                    <Input variant="password" label="Password Baru" value={password} action={(e) => setPassword(e.target.value)} placeholder="Password Baru" />
+                    <Input variant="password" label="Konfirmasi Password" value={confirmPassword} action={(e) => setConfirmPassword(e.target.value)} placeholder="Konfirmasi Password Baru" />
                     <div className="flex p-1 flex-col gap-2">
                         <Button disabled={isLoading} type="submit" variant="soft" color="ruby"> {isLoading ? "loading..." : "Kirim"}</Button>
                     </div>

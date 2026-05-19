@@ -6,29 +6,11 @@ import { Home, LogOut, User, XIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { logoutHelper } from "./navbar,controllers";
+import { ReactNode, useState } from "react";
+import { navigation, route } from "./navbar.controllers";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
-const navigation = [
-    {
-        label: "Dashboard",
-        href: "/dashboard",
-        action: () => console.log("Mengalihkan ke dashboard"),
-        icon: Home
-    },
-    {
-        label: "Akun Saya",
-        href: "/profile",
-        action: () => console.log("mengalihkan ke dashboard"),
-        icon: User,
-    },
-    {
-        label: "Log Out",
-        href: `/login`,
-        action: logoutHelper,
-        icon: LogOut
-    }
-]
+
 
 export function Navbar({ photo, username, email }: { photo?: string, username: string, email: string }) {
     const [open, setIsOpen] = useState<boolean>(false)
@@ -93,5 +75,55 @@ export function Dropdown({ setIsOpen }: { setIsOpen: (open: boolean) => void }) 
 
             </Container>
         </motion.div>
+    )
+}
+
+export function SideBar({ children }: { children: ReactNode }) {
+    const [isOpen, setIsOpen] = useState<{ [key: number]: boolean }>({})
+
+    const pathname = usePathname()
+    const params = useParams()
+    const router = useRouter()
+    const id = params.slug
+
+    const toggleMenu = (index: number) => {
+        setIsOpen(prev => ({ ...prev, [index]: !prev[index] }))
+    }
+
+    return (
+        <div className="flex gap-3 w-full h-full fixed overflow-auto top-12 left-0">
+            <div className="shadow p-2 overflow-y-auto min-h-screen w-1/6">
+                {
+                    route.map((item: any, index: number) => (
+                        <div key={index} className=" border-b-2 rounded-md border-gray-50">
+                            <button onClick={() => toggleMenu(index)} className={` w-full text-sm text-start px-1 py-2 font-medium hover:bg-gray-200 rounded-sm transition cursor-pointer ${pathname === item.path ? "bg-gray-200" : ""}`}>
+                                {item.label}
+                            </button>
+                            {
+                                isOpen[index] && item.children.map((child: any, childIndex: number) => {
+                                    const condition = (child.href === "/profile" || child.href === "/dashboard") ? child.href : `/${id}${child.href}`
+                                    const getUrl = `/${id}${child.href}`
+                                    return (
+                                        <button className={`
+                                        ${pathname === getUrl ? "bg-gray-200" : ""}
+                                        w-full hover:bg-gray-200 my-1 px-1 py-2 text-sm text-start rounded-sm transition cursor-pointer`} key={childIndex}>
+                                            <Link href={condition as string} className="flex items-center">
+                                                <child.icon className="mr-2" size={12} />
+                                                {child.label}
+                                            </Link>
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div>
+                    ))
+                }
+                <div className="mb-10"></div>
+            </div>
+            <div className="mx-2 my-3">
+                {children}
+            </div>
+
+        </div>
     )
 }

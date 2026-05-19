@@ -4,7 +4,7 @@ import { Button, Link } from "@radix-ui/themes";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Input from "@/app/_shared/components/input";
+import Input from "@/app/_shared/components/Input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
 
 export default function AuthForgotPasswordTemplate() {
@@ -39,7 +39,7 @@ export default function AuthForgotPasswordTemplate() {
                 <h1 className="text-xl font-bold text-center text-[#DC143C]">Lupa password akun Coordina?</h1>
                 <p className="text-center text-gray-500 text-[12px]">Silahkan isi email dibawah ini, kami akan membantu memulihkan akun kamu. Pastikan email kamu aktif.</p>
                 <form onSubmit={forgotPassword} className="space-y-4">
-                    <Input variant="email" value={email} setEmail={(e) => setEmail(e.target.value)} placeholder="Email" />
+                    <Input variant="email" value={email} action={(e) => setEmail(e.target.value)} placeholder="Email" />
                     <div className="flex p-1 flex-col gap-2">
                         <Button disabled={isLoading} type="submit" variant="soft" color="ruby"> {isLoading ? "loading..." : "Kirim"}</Button>
                     </div>

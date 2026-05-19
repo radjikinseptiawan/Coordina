@@ -6,7 +6,7 @@ import { FormEvent, useState } from "react";
 import { serverUrl } from "@/utils/connection";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Input from "@/app/_shared/components/input";
+import Input from "@/app/_shared/components/Input";
 import { useLoading } from "@/app/_shared/common/context/loading.context";
 
 export default function AuthLoginTemplate() {
@@ -42,8 +42,8 @@ export default function AuthLoginTemplate() {
                 <h1 className="text-xl font-bold text-center text-[#DC143C]">Selamat datang di Coordina</h1>
                 <p className="text-center text-gray-500 text-[12px]">Mari kelola organisasi dan komunitas Anda dengan lebih efisien dan terstruktur</p>
                 <form onSubmit={loginWithBasic} className="space-y-4">
-                    <Input variant="email" value={email} setEmail={(e) => setEmail(e.target.value)} placeholder="Email" />
-                    <Input variant="password" value={password} setPassword={(e) => setPassword(e.target.value)} placeholder="Password" />
+                    <Input variant="email" value={email} action={(e) => setEmail(e.target.value)} placeholder="Email" />
+                    <Input variant="password" value={password} action={(e) => setPassword(e.target.value)} placeholder="Password" />
                     <div className="flex p-1 flex-col gap-2">
                         <Button disabled={isLoading} type="submit" variant="soft" color="ruby"> {isLoading ? "loading..." : "Masuk"}</Button>
                         <GoogleMethod />

@@ -4,18 +4,18 @@ import axios from "axios"
 import { cookies } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 
-export async function PUT(req: NextRequest){
-    try{
+export async function PATCH(req: NextRequest) {
+    try {
         const payload = await req.formData()
-        
+
         const cookie = await cookies()
-        const token : any= cookie.get("access_token")?.value
+        const token: any = cookie.get("access_token")?.value
 
-        const user : any= jwtDecode(token)
+        const user: any = jwtDecode(token)
 
-        const res = await axios.put(`${serverUrl}/v1_beta/${user.id}/profile`,payload,{
+        const res = await axios.patch(`${serverUrl}/v1_beta/${user.id}/profile`, payload, {
             headers: {
-                "Contenty-Type": "multipart/form-data",
+                "Content-Type": "multipart/form-data",
                 Cookie: `access_token=${token}`
             }
         })
@@ -25,7 +25,7 @@ export async function PUT(req: NextRequest){
             message: "Data yg diterima backend Next",
             result
         })
-    }catch(e){
+    } catch (e) {
         console.error(e)
         return NextResponse.json({
             error: e
@@ -33,21 +33,21 @@ export async function PUT(req: NextRequest){
     }
 }
 
-export async function GET(){
-    try{
+export async function GET() {
+    try {
         const cookie = await cookies()
         const token = cookie.get("access_token")?.value
 
-        if(!token){
+        if (!token) {
             return NextResponse.json({
                 message: "Unauthorized",
                 code: 403
-            },{status:403})
+            }, { status: 403 })
         }
 
-        const user : any = jwtDecode(token)
+        const user: any = jwtDecode(token)
 
-        const data = await axios.get(`${serverUrl}/v1_beta/${user.id}/profile`,{
+        const data = await axios.get(`${serverUrl}/v1_beta/${user.id}/profile`, {
             headers: {
                 Cookie: `access_token=${token}`
             }
@@ -57,7 +57,7 @@ export async function GET(){
         return NextResponse.json({
             response
         })
-    }catch(e){
+    } catch (e) {
         console.error(e)
         return NextResponse.json({
             message: "Internal Server Error",

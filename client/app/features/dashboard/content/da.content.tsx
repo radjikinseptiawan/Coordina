@@ -1,8 +1,7 @@
-import { serverUrl } from "@/utils/connection";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsPeople } from "react-icons/bs";
 
@@ -26,8 +25,8 @@ export default function DashboardContent() {
     }
 
 
-    const usersCheck = async (item: any) =>{
-        try{
+    const usersCheck = async (item: any) => {
+        try {
 
             console.log(item)
 
@@ -35,16 +34,16 @@ export default function DashboardContent() {
 
             const user = response.data
 
-            if(user.response.fullname === null){
-              toast.error(`Profile kamu belum lengkap, lengkapi profile kamu terlebih dahulu!`)
-              setTimeout(()=>{
+            if (user.response.fullname === null) {
+                toast.error(`Profile kamu belum lengkap, lengkapi profile kamu terlebih dahulu!`)
+                setTimeout(() => {
                     router.push("/profile")
-            },2000)
-             return
+                }, 2000)
+                return
             }
-            
+
             router.push(`${item.comity.urlLink}/keorganisasian`)
-        }catch(e){
+        } catch (e) {
             console.error(e)
         }
     }
@@ -72,7 +71,7 @@ export default function DashboardContent() {
                                         data.map((item, idx) => {
                                             console.log(item)
                                             return (
-                                                <div onClick={()=>usersCheck(item)} key={idx} className="flex bg-white w-32 h-32 flex-col cursor-pointer hover:shadow-red-500 transition-all justify-center items-center rounded-full">
+                                                <div onClick={() => usersCheck(item)} key={idx} className="flex bg-white w-32 h-32 flex-col cursor-pointer hover:shadow-red-500 transition-all justify-center items-center rounded-full">
                                                     <div className="text-center flex flex-col items-center justify-items-center">
                                                         <Image src={"https://images.icon-icons.com/2622/PNG/512/gui_user_group_icon_157558.png"} alt="Logo" width={40} height={40} />
                                                         <h1>{item.comity.comity_short_name}</h1>
