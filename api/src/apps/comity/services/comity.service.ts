@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import { ComityVision } from "../dto/dashboard.dto";
+import { ComityMission, ComityVision } from "../dto/dashboard.dto";
 import { addMissionComity } from "src/helper/comity/postMission.comity";
 import { addVisionHelper } from "src/helper/comity/postVision.comity";
 import { GetComityHelper } from "src/helper/comity/getComity.comiy";
@@ -32,9 +32,38 @@ export class ComityService {
     }
 
 
-    async editComityMission(){
+    async editComityMission(body : ComityMission){
         try{
+            const data = await this.prisma.comity_Mission.findFirst({
+                where: {
+                    id: body.id
+                },
+            })
+         
             
+
+            if(!data){
+                return new HttpException({
+                    message: "Error, Bad Request!",
+                    data
+                }, HttpStatus.BAD_REQUEST)
+            }
+
+            const request = await this.prisma.comity_Mission.update({
+                where: {
+                    id: body.id
+                },
+                data: {
+                    mission: body.mission
+                }
+            })
+
+
+            return new HttpException({
+                message: "Success update Mission",
+                newData: request,
+                oldData: data
+            }, HttpStatus.OK)
         }catch(e){
             throw new HttpException({
                 message: "Error",

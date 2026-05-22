@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post, Query, Req, Res, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Query, Req, Res, UseGuards, UseInterceptors } from "@nestjs/common";
 import { AuthService } from "../services/auth.service";
 import { JwtAuthGuard } from "../guards/auth.guard";
 import { configAccessToken } from "src/helper/accounts/auth/resources/auth-cookies";
+import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
-@Controller("v1_beta/accounts/auth")
+@UseInterceptors(LogginInterceptors)
+@Controller("v1_beta/auth")
 export class AuthController {
     constructor(
         private readonly authService: AuthService,
@@ -24,12 +26,6 @@ export class AuthController {
         return setOtp
     }
 
-
-    // TODO: ON DEVELOPMENT
-    @Get("email")
-    async getAll() {
-        return await this.authService.getAccounts()
-    }
 
 
     @Get(":id")

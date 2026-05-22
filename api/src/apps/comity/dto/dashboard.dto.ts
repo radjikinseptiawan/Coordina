@@ -10,3 +10,8 @@ export interface ComityInput {
 export interface ComityVision{
     visi: string;
 }
+
+export interface ComityMission{
+    id: string;
+    mission: string
+}

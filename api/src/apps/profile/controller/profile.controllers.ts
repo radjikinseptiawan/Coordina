@@ -6,11 +6,12 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { extname } from "path";
 import { PROFILE_EDIT_CONFIG } from "src/helper/accounts/profile/profile-edit";
+import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
+@UseInterceptors(LogginInterceptors)
 @Controller("v1_beta/:account_id/profile")
 export class ProfileController {
     constructor(
-        private readonly prisma: PrismaService,
         private readonly profileService: ProfileService
     ) { }
 

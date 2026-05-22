@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put, UseInterceptors } from "@nestjs/common";
 import { ComityService } from "../services/comity.service";
+import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
+@UseInterceptors(LogginInterceptors)
 @Controller("v1_beta/:organisasi/comity")
 export class ComityControllers {
     constructor(
@@ -26,5 +28,10 @@ export class ComityControllers {
     @Put("vision")
     async updateVision(@Param("organisasi") url, @Body() body){
         return this.comityService.editComityVision(url, body)
+    }
+
+    @Put("mission")
+    async updateMission(@Body() body){
+        return this.comityService.editComityMission(body)
     }
 }

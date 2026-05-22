@@ -1,9 +1,11 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Put, Req, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Post, Put, Req, UseGuards, UseInterceptors } from "@nestjs/common";
 import { DashboardService } from "../services/dashboard.service";
 import { ComityInput } from "../dto/dashboard.dto";
 import { JwtAuthGuard } from "src/apps/accounts/auth/guards/auth.guard";
 import { GoogleAuthGuard } from "src/apps/accounts/auth/guards/auth.google.guard";
+import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
+@UseInterceptors(LogginInterceptors)
 @Controller("/dashboard")
 export class DashboardController {
     constructor(
