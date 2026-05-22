@@ -12,7 +12,7 @@ export class DashboardController {
 
     @Put()
     @UseGuards(JwtAuthGuard)
-    async createLink(@Body() body : any, @Req() req){
+    async createLink(@Body() body: any, @Req() req) {
         return await this.dashboardService.updateComities(body)
     }
 
@@ -22,7 +22,6 @@ export class DashboardController {
         @Req() req
     ) {
         const users = await req.user
-        console.log("ini controllers loh rek", users)
         return await this.dashboardService.getComities(users.userId)
     }
 

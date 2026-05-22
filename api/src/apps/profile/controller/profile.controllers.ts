@@ -20,14 +20,14 @@ export class ProfileController {
         return await this.profileService.getProfile(account_id)
     }
 
-    @Put()
-    @UseInterceptors(FileInterceptor("image",{
+    @Patch()
+    @UseInterceptors(FileInterceptor("image", {
         storage: diskStorage(PROFILE_EDIT_CONFIG)
     }))
     @UseGuards(JwtAuthGuard)
     async editProfile(@UploadedFile() image: Express.Multer.File,
-    @Param("account_id") account_id: string, 
-    @Body() body) {
-        return await this.profileService.editProfile(account_id, body,image)
+        @Param("account_id") account_id: string,
+        @Body() body) {
+        return await this.profileService.editProfile(account_id, body, image)
     }
 }

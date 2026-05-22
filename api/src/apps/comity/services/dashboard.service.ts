@@ -1,7 +1,9 @@
 import { HttpException, HttpStatus, Injectable, Req } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ComityInput } from "../dto/dashboard.dto";
-import { createComityHandler } from "src/helper/dashboard/create-comity";
+import { createComityHandler } from "src/helper/dashboard/dashboard-create.comity";
+import { generateLinkHelper } from "src/helper/dashboard/dashboard-generate.link";
+import { getComityHelper } from "src/helper/dashboard/dashboard-get.comity";
 
 @Injectable()
 export class DashboardService {
@@ -9,77 +11,13 @@ export class DashboardService {
         private readonly prisma: PrismaService,
     ) { }
 
-    async updateComities(body : any){
-        try{
-            console.log(body)
-
-            const data = await this.prisma.comity.update({
-                where:{
-                    id: body.id
-                },
-                data:{
-                    urlLink: body.urlLink
-                }
-            })
-        }catch(e){
-            throw new HttpException({
-                message: "Internal server error!",
-                httpStatus: HttpStatus.INTERNAL_SERVER_ERROR,
-                error: e
-            }, HttpStatus.INTERNAL_SERVER_ERROR)            
-        }
+    async updateComities(body: any) {
+        return await generateLinkHelper(this.prisma, body)
     }
 
 
     async getComities(id: string) {
-        try {
-            const data = await this.prisma.accounts.findFirst({
-                where: { id: id }
-            })
-
-            if (!data) {
-                throw new HttpException({
-                    message: "User not found!",
-                    httpStatus: HttpStatus.NOT_FOUND,
-                }, HttpStatus.NOT_FOUND)
-            }
-
-
-            const user = await this.prisma.user_Profile.findFirst({
-                where: { account_id: data.id },
-                include: {
-                    member_profile_comity: true
-                }
-            })
-
-            if (!user?.id) {
-                throw new HttpException({
-                    message: "User profile not found!",
-                    httpStatus: HttpStatus.NOT_FOUND,
-                }, HttpStatus.NOT_FOUND)
-            }
-
-            const comities = await this.prisma.member_Profiles_Comities.findMany({
-                where: {
-                    member_id: user.id
-                },
-                include: {
-                    comity: true
-                }
-            })
-
-            return new HttpException({
-                message: "Success",
-                httpStatus: HttpStatus.OK,
-                comities: comities
-            }, HttpStatus.OK)
-        } catch (e) {
-            throw new HttpException({
-                message: "Internal server error!",
-                httpStatus: HttpStatus.INTERNAL_SERVER_ERROR,
-                error: e
-            }, HttpStatus.INTERNAL_SERVER_ERROR)
-        }
+        return await getComityHelper(this.prisma, id)
     }
 
     async createComity(body: ComityInput, userId: string) {

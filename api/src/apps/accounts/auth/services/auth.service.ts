@@ -57,7 +57,6 @@ export class AuthService {
     }
 
     async signOut(id: string) {
-        console.log(id)
         return await logoutHandler(this.prisma, id)
     }
 }

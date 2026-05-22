@@ -26,7 +26,6 @@ export class AuthGoogleController {
             res.send(html)
         } catch (err) {
             res.setHeader("Content-Type", "text/html")
-            console.log(err)
             const user = req.user;
             const html = googleAuthFailed(user)
             res.send(html)

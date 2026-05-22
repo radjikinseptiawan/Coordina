@@ -47,8 +47,6 @@ export async function createComityHandler(tcx: PrismaService, body, userId: stri
             }
         })
 
-        console.log(data)
-
         return new HttpException({
             message: "Data berhasil ditambahkan",
             httpStatus: HttpStatus.OK,
@@ -56,7 +54,6 @@ export async function createComityHandler(tcx: PrismaService, body, userId: stri
         }, HttpStatus.OK)
 
     } catch (e) {
-        console.error(e)
         return new HttpException({
             message: "Internal server error",
             HttpStatus: HttpStatus.INTERNAL_SERVER_ERROR,

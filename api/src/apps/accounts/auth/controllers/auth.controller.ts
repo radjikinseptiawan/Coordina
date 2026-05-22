@@ -20,7 +20,6 @@ export class AuthController {
     @Post("change-password")
     async changePassword(@Query("email") email: string, @Query("otp") otp: string, @Body() body
     ) {
-        console.log("dari controller: ", { email, otp, body })
         const setOtp = await this.authService.changePassword(email, otp, body)
         return setOtp
     }
@@ -61,9 +60,7 @@ export class AuthController {
     @Delete("logout")
     @UseGuards(JwtAuthGuard)
     async logout(@Req() request) {
-        console.log(request.user)
         const userId = request.user?.id || request.user?.userId;
-        console.log("dari controller: ", { userId })
         return await this.authService.signOut(userId);
     }
 }

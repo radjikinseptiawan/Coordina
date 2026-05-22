@@ -6,3 +6,7 @@ export interface ComityInput {
     comity_background: string;
     comity_created_date: string;
 }
+
+export interface ComityVision{
+    visi: string;
+}

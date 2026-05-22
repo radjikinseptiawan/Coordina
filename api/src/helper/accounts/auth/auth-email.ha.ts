@@ -15,10 +15,6 @@ export async function TransferEmailHandler(tcx: PrismaService, email: string, ty
         }, HttpStatus.BAD_REQUEST)
     }
 
-    console.log({
-        user: process.env.EMAIL_USER,
-        pass: process.env.PASSWORD_EMAIL
-    })
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
