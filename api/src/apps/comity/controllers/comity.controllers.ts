@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, UseInterceptors } from "@nestjs/common";
 import { ComityService } from "../services/comity.service";
 import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
@@ -33,5 +33,10 @@ export class ComityControllers {
     @Put("mission")
     async updateMission(@Body() body){
         return this.comityService.editComityMission(body)
+    }
+
+    @Delete("mission")
+    async deleteMission(@Body() body){
+        return this.comityService.deleteComityMission(body)
     }
 }

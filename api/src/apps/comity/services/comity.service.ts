@@ -71,4 +71,31 @@ export class ComityService {
             }, HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
+
+    async deleteComityMission(body){
+        try{
+            const data = await this.prisma.comity_Mission.delete({
+                where:{
+                    id: body.id
+                }
+            })
+
+            if(!data){
+                return new HttpException({
+                    message: "NOT FOUND!",
+                    data
+                }, HttpStatus.NOT_FOUND)
+            }
+
+            return new HttpException({
+                message: "SUCCESS",
+                data
+            }, HttpStatus.OK)
+        }catch(e){
+            throw new HttpException({
+                message: "Error",
+                error:e
+            }, HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
 }
