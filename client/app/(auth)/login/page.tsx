@@ -1,10 +1,10 @@
-import AuthLoginTemplate from "@/app/features/auth/login/al.template";
+import { AuthLoginTemplate } from "@/features/auth/login/al.template";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Masuk"
-}
+  title: "Login",
+};
 
 export default async function Page() {
-    return <AuthLoginTemplate />
+  return <AuthLoginTemplate />;
 }

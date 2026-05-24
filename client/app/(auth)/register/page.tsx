@@ -1,10 +1,10 @@
-import AuthRegisterTemplate from "@/app/features/auth/register/ar.template";
+import { AuthRegisterTemplate } from "@/features/auth/register/ar.template";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Daftar"
-}
+  title: "Register",
+};
 
 export default async function Page() {
-    return <AuthRegisterTemplate />
+  return <AuthRegisterTemplate />;
 }

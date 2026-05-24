@@ -1,10 +1,10 @@
-import AuthForgotPasswordTemplate from "@/app/features/auth/forgot-password/af.template";
+import AuthForgotPasswordTemplate from "@/features/auth/forgot-password/af.template";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Lupa Password"
-}
+  title: "Forgot Password",
+};
 
 export default async function Page() {
-    return <AuthForgotPasswordTemplate />
+  return <AuthForgotPasswordTemplate />;
 }
