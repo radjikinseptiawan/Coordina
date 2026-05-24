@@ -97,7 +97,7 @@ export function AuthRegisterForms() {
             )}
           </div>
 
-          <Button>Register</Button>
+          <Button className="w-60">Register</Button>
           <Link className="text-sm" href={"/login"}>
             Already have an account? go to Login
           </Link>

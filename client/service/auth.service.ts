@@ -1,5 +1,6 @@
 import axios from "axios"
 import { AuthBasicLoginPayload, AuthBasicRegisterPayload } from "./dto/auth.dto"
+import { redirect } from "next/navigation"
 
 const BASE_API = `${process.env.NEXT_PUBLIC_API_URL}/v1_beta/auth`
 
@@ -14,6 +15,8 @@ export const loginGoogleUser = async() : Promise<void> =>{
 
     window.addEventListener('message',(event)=>{
         if(event.origin !== 'http://localhost:3000') return;
+
+        redirect("/dashboard")
     })
 }
 
