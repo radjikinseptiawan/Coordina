@@ -27,7 +27,7 @@ export async function userSignInHandler(body: SignInDto, tcx: PrismaService, jwt
             }
         }
 
-        const payload = { id: user.id, username: user.username, email: user.email, profileImage: user.profileImage }
+        const payload = { id: user.id, username: user.username, email: user.email, profileImage: user.profile_image }
 
         const accessToken = jwt.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: "24h" })
         const refreshToken = jwt.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: "7d" })

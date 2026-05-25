@@ -103,18 +103,28 @@ export const googleAuth = (user: any) => (
     </div>
 
     <script>
-        if(window.opener){
-        window.opener.postMessage({status:"ok"},"http://localhost:3000")
-        
-            setTimeout(()=>{
-                window.close()
-            },3000)
+        // Memastikan window.opener (halaman utama Next.js) ada dan bisa dikontak
+        if (window.opener) {
+            // Mengirim pesan sukses beserta data user ke Next.js
+            window.opener.postMessage(
+                { status: "ok", user: { email: "${user.email}" } }, 
+                "http://localhost:3000"
+            );
+            
+            // Beri jeda 1.5 - 2 detik agar user sempat melihat UI sukses sebelum menutup otomatis
+            setTimeout(() => {
+                window.close();
+            }, 2000);
+        } else {
+            // Fallback jika dibuka lewat HP (bukan via popup window.open)
+            // Langsung alihkan halaman utama ke dashboard
+            window.location.href = "http://localhost:3000/dashboard";
         }
-
     </script>
 </body>
 </html>
-`)
+`
+)
 
 
 

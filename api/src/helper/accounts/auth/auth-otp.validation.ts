@@ -25,7 +25,7 @@ export async function OtpValidationHandler(tcx: PrismaService, email: string, ot
                 id: verifyOtp.id
             },
             data: {
-                isUsed: true,
+                is_used: true,
                 used_at: new Date()
             }
         })
@@ -39,7 +39,7 @@ export async function OtpValidationHandler(tcx: PrismaService, email: string, ot
             }
         }
 
-    } catch (err) {
+    } catch (err : any) {
         if (err instanceof HttpException) {
             throw err
         }

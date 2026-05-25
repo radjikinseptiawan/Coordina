@@ -28,8 +28,6 @@ export type Member_Profiles_ComitiesMinAggregateOutputType = {
   id: string | null
   member_id: string | null
   comity_id: string | null
-  comity_mission: string | null
-  comity_vision: string | null
   account_id: string | null
   role: string | null
   position: string | null
@@ -41,8 +39,6 @@ export type Member_Profiles_ComitiesMaxAggregateOutputType = {
   id: string | null
   member_id: string | null
   comity_id: string | null
-  comity_mission: string | null
-  comity_vision: string | null
   account_id: string | null
   role: string | null
   position: string | null
@@ -54,8 +50,6 @@ export type Member_Profiles_ComitiesCountAggregateOutputType = {
   id: number
   member_id: number
   comity_id: number
-  comity_mission: number
-  comity_vision: number
   account_id: number
   role: number
   position: number
@@ -69,8 +63,6 @@ export type Member_Profiles_ComitiesMinAggregateInputType = {
   id?: true
   member_id?: true
   comity_id?: true
-  comity_mission?: true
-  comity_vision?: true
   account_id?: true
   role?: true
   position?: true
@@ -82,8 +74,6 @@ export type Member_Profiles_ComitiesMaxAggregateInputType = {
   id?: true
   member_id?: true
   comity_id?: true
-  comity_mission?: true
-  comity_vision?: true
   account_id?: true
   role?: true
   position?: true
@@ -95,8 +85,6 @@ export type Member_Profiles_ComitiesCountAggregateInputType = {
   id?: true
   member_id?: true
   comity_id?: true
-  comity_mission?: true
-  comity_vision?: true
   account_id?: true
   role?: true
   position?: true
@@ -181,8 +169,6 @@ export type Member_Profiles_ComitiesGroupByOutputType = {
   id: string
   member_id: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role: string | null
   position: string | null
@@ -215,8 +201,6 @@ export type Member_Profiles_ComitiesWhereInput = {
   id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_mission?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_vision?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
@@ -231,8 +215,6 @@ export type Member_Profiles_ComitiesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
-  comity_mission?: Prisma.SortOrder
-  comity_vision?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
   role?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -251,8 +233,6 @@ export type Member_Profiles_ComitiesWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.Member_Profiles_ComitiesWhereInput | Prisma.Member_Profiles_ComitiesWhereInput[]
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_mission?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_vision?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
@@ -267,8 +247,6 @@ export type Member_Profiles_ComitiesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
-  comity_mission?: Prisma.SortOrder
-  comity_vision?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
   role?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -286,8 +264,6 @@ export type Member_Profiles_ComitiesScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   member_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
-  comity_mission?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
-  comity_vision?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   role?: Prisma.StringNullableWithAggregatesFilter<"Member_Profiles_Comities"> | string | null
   position?: Prisma.StringNullableWithAggregatesFilter<"Member_Profiles_Comities"> | string | null
@@ -297,13 +273,11 @@ export type Member_Profiles_ComitiesScalarWhereWithAggregatesInput = {
 
 export type Member_Profiles_ComitiesCreateInput = {
   id?: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
-  account: Prisma.AccountsCreateNestedOneWithoutMemberProfilesComitiesInput
+  account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
 }
@@ -312,8 +286,6 @@ export type Member_Profiles_ComitiesUncheckedCreateInput = {
   id?: string
   member_id: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -323,13 +295,11 @@ export type Member_Profiles_ComitiesUncheckedCreateInput = {
 
 export type Member_Profiles_ComitiesUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  account?: Prisma.AccountsUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
+  account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
 }
@@ -338,8 +308,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -351,8 +319,6 @@ export type Member_Profiles_ComitiesCreateManyInput = {
   id?: string
   member_id: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -362,8 +328,6 @@ export type Member_Profiles_ComitiesCreateManyInput = {
 
 export type Member_Profiles_ComitiesUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -374,8 +338,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -402,8 +364,6 @@ export type Member_Profiles_ComitiesCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
-  comity_mission?: Prisma.SortOrder
-  comity_vision?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
   role?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -415,8 +375,6 @@ export type Member_Profiles_ComitiesMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
-  comity_mission?: Prisma.SortOrder
-  comity_vision?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
   role?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -428,8 +386,6 @@ export type Member_Profiles_ComitiesMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
-  comity_mission?: Prisma.SortOrder
-  comity_vision?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
   role?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -565,8 +521,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityNestedInput 
 
 export type Member_Profiles_ComitiesCreateWithoutAccountInput = {
   id?: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
@@ -579,8 +533,6 @@ export type Member_Profiles_ComitiesUncheckedCreateWithoutAccountInput = {
   id?: string
   member_id: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
@@ -620,8 +572,6 @@ export type Member_Profiles_ComitiesScalarWhereInput = {
   id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_mission?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  comity_vision?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
@@ -631,21 +581,17 @@ export type Member_Profiles_ComitiesScalarWhereInput = {
 
 export type Member_Profiles_ComitiesCreateWithoutMemberInput = {
   id?: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
-  account: Prisma.AccountsCreateNestedOneWithoutMemberProfilesComitiesInput
+  account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutMemberInput = {
   id?: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -681,21 +627,17 @@ export type Member_Profiles_ComitiesUpdateManyWithWhereWithoutMemberInput = {
 
 export type Member_Profiles_ComitiesCreateWithoutComityInput = {
   id?: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
-  account: Prisma.AccountsCreateNestedOneWithoutMemberProfilesComitiesInput
+  account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutComityInput = {
   id?: string
   member_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -733,8 +675,6 @@ export type Member_Profiles_ComitiesCreateManyAccountInput = {
   id?: string
   member_id: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   role?: string | null
   position?: string | null
   created_at?: Date | string
@@ -743,8 +683,6 @@ export type Member_Profiles_ComitiesCreateManyAccountInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -757,8 +695,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -769,8 +705,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -780,8 +714,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountInput = {
 export type Member_Profiles_ComitiesCreateManyMemberInput = {
   id?: string
   comity_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -791,21 +723,17 @@ export type Member_Profiles_ComitiesCreateManyMemberInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  account?: Prisma.AccountsUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
+  account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -816,8 +744,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateWithoutMemberInput = {
 export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -828,8 +754,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberInput = {
 export type Member_Profiles_ComitiesCreateManyComityInput = {
   id?: string
   member_id: string
-  comity_mission: string
-  comity_vision: string
   account_id: string
   role?: string | null
   position?: string | null
@@ -839,21 +763,17 @@ export type Member_Profiles_ComitiesCreateManyComityInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  account?: Prisma.AccountsUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
+  account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -864,8 +784,6 @@ export type Member_Profiles_ComitiesUncheckedUpdateWithoutComityInput = {
 export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_mission?: Prisma.StringFieldUpdateOperationsInput | string
-  comity_vision?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -879,8 +797,6 @@ export type Member_Profiles_ComitiesSelect<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   member_id?: boolean
   comity_id?: boolean
-  comity_mission?: boolean
-  comity_vision?: boolean
   account_id?: boolean
   role?: boolean
   position?: boolean
@@ -895,8 +811,6 @@ export type Member_Profiles_ComitiesSelectCreateManyAndReturn<ExtArgs extends ru
   id?: boolean
   member_id?: boolean
   comity_id?: boolean
-  comity_mission?: boolean
-  comity_vision?: boolean
   account_id?: boolean
   role?: boolean
   position?: boolean
@@ -911,8 +825,6 @@ export type Member_Profiles_ComitiesSelectUpdateManyAndReturn<ExtArgs extends ru
   id?: boolean
   member_id?: boolean
   comity_id?: boolean
-  comity_mission?: boolean
-  comity_vision?: boolean
   account_id?: boolean
   role?: boolean
   position?: boolean
@@ -927,8 +839,6 @@ export type Member_Profiles_ComitiesSelectScalar = {
   id?: boolean
   member_id?: boolean
   comity_id?: boolean
-  comity_mission?: boolean
-  comity_vision?: boolean
   account_id?: boolean
   role?: boolean
   position?: boolean
@@ -936,7 +846,7 @@ export type Member_Profiles_ComitiesSelectScalar = {
   updated_at?: boolean
 }
 
-export type Member_Profiles_ComitiesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "member_id" | "comity_id" | "comity_mission" | "comity_vision" | "account_id" | "role" | "position" | "created_at" | "updated_at", ExtArgs["result"]["member_Profiles_Comities"]>
+export type Member_Profiles_ComitiesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "member_id" | "comity_id" | "account_id" | "role" | "position" | "created_at" | "updated_at", ExtArgs["result"]["member_Profiles_Comities"]>
 export type Member_Profiles_ComitiesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
@@ -964,8 +874,6 @@ export type $Member_Profiles_ComitiesPayload<ExtArgs extends runtime.Types.Exten
     id: string
     member_id: string
     comity_id: string
-    comity_mission: string
-    comity_vision: string
     account_id: string
     role: string | null
     position: string | null
@@ -1400,8 +1308,6 @@ export interface Member_Profiles_ComitiesFieldRefs {
   readonly id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly member_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly comity_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
-  readonly comity_mission: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
-  readonly comity_vision: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly account_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly role: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly position: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>

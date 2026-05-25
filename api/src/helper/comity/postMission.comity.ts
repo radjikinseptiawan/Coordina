@@ -3,7 +3,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 
 export async function addMissionComity(tcx: PrismaService, url: string, body : any){
         try{
-
+            console.log(body)
             const comity = await tcx.comity.findFirst({
                 where:{
                     urlLink: url
@@ -20,12 +20,13 @@ export async function addMissionComity(tcx: PrismaService, url: string, body : a
                 },HttpStatus.NOT_FOUND)
             }
 
+            const missions = body.mission.map((item)=>({
+                comity_id : comity.id,
+                mission: item.mission
+            }))
 
-            const request = await tcx.comity_Mission.create({
-                data: {
-                    comity_id: comity.id,
-                    mission: body.mission
-                }
+            const request = await tcx.comity_Mission.createMany({
+                data: missions
             })
 
             

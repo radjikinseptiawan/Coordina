@@ -1,14 +1,14 @@
 model Accounts {
-  id                     String                     @id @default(uuid())
-  email                  String                     @unique
-  password               String
-  username               String
-  profileImage           String?
-  created_at             DateTime                   @default(now())
-  updated_at             DateTime                   @updatedAt
-  refresh_token          String?                    @unique
-  userProfile            User_Profile?
-  memberProfilesComities Member_Profiles_Comities[]
+  id                       String                     @id @default(uuid())
+  email                    String                     @unique
+  password                 String
+  username                 String
+  created_at               DateTime                   @default(now())
+  updated_at               DateTime                   @updatedAt
+  refresh_token            String?                    @unique
+  profile_image            String?
+  user_profile             User_Profile?
+  member_profiles_comities Member_Profiles_Comities[]
 
   @@map("accounts")
 }
@@ -17,10 +17,10 @@ model Accounts_Otp {
   id         String    @id @default(uuid())
   otp_code   Int
   email      String
-  isUsed     Boolean   @default(false)
   used_at    DateTime?
   expires_at DateTime  @updatedAt
   created_at DateTime  @default(now())
+  is_used    Boolean   @default(false)
 
   @@map("accounts_otp")
 }
@@ -32,6 +32,8 @@ model User_Profile {
   created_at            DateTime                   @default(now())
   updated_at            DateTime                   @updatedAt
   fullname              String?
+  agenda                Agenda[]
+  attendances           Attendance[]
   account               Accounts                   @relation(fields: [account_id], references: [id])
   member_profile_comity Member_Profiles_Comities[]
 

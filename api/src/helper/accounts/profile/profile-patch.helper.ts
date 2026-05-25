@@ -36,7 +36,7 @@ export async function editProfileHelper(prisma: PrismaService, id: string, body:
                 data: {
                     username: body.username,
                     email: body.email,
-                    profileImage: image.filename,
+                    profile_image: image.filename,
                     updated_at: new Date()
                 }
             })

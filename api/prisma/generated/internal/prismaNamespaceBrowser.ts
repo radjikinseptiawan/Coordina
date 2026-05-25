@@ -54,6 +54,8 @@ export const ModelName = {
   Accounts: 'Accounts',
   Accounts_Otp: 'Accounts_Otp',
   User_Profile: 'User_Profile',
+  Agenda: 'Agenda',
+  Attendance: 'Attendance',
   Comity: 'Comity',
   Comity_Vision: 'Comity_Vision',
   Comity_Mission: 'Comity_Mission',
@@ -81,10 +83,10 @@ export const AccountsScalarFieldEnum = {
   email: 'email',
   password: 'password',
   username: 'username',
-  profileImage: 'profileImage',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  refresh_token: 'refresh_token'
+  refresh_token: 'refresh_token',
+  profile_image: 'profile_image'
 } as const
 
 export type AccountsScalarFieldEnum = (typeof AccountsScalarFieldEnum)[keyof typeof AccountsScalarFieldEnum]
@@ -94,10 +96,10 @@ export const Accounts_OtpScalarFieldEnum = {
   id: 'id',
   otp_code: 'otp_code',
   email: 'email',
-  isUsed: 'isUsed',
   used_at: 'used_at',
   expires_at: 'expires_at',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  is_used: 'is_used'
 } as const
 
 export type Accounts_OtpScalarFieldEnum = (typeof Accounts_OtpScalarFieldEnum)[keyof typeof Accounts_OtpScalarFieldEnum]
@@ -113,6 +115,40 @@ export const User_ProfileScalarFieldEnum = {
 } as const
 
 export type User_ProfileScalarFieldEnum = (typeof User_ProfileScalarFieldEnum)[keyof typeof User_ProfileScalarFieldEnum]
+
+
+export const AgendaScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  agenda_name: 'agenda_name',
+  tanggal_agenda: 'tanggal_agenda',
+  status_agenda: 'status_agenda',
+  is_online: 'is_online',
+  lokasi: 'lokasi',
+  meetingLink: 'meetingLink',
+  note: 'note',
+  lampiran: 'lampiran',
+  created_by_id: 'created_by_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AgendaScalarFieldEnum = (typeof AgendaScalarFieldEnum)[keyof typeof AgendaScalarFieldEnum]
+
+
+export const AttendanceScalarFieldEnum = {
+  id: 'id',
+  agenda_id: 'agenda_id',
+  user_id: 'user_id',
+  status: 'status',
+  checkin_at: 'checkin_at',
+  note: 'note',
+  opened_at: 'opened_at',
+  closed_at: 'closed_at',
+  created_at: 'created_at'
+} as const
+
+export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
 
 
 export const ComityScalarFieldEnum = {
@@ -158,8 +194,6 @@ export const Member_Profiles_ComitiesScalarFieldEnum = {
   id: 'id',
   member_id: 'member_id',
   comity_id: 'comity_id',
-  comity_mission: 'comity_mission',
-  comity_vision: 'comity_vision',
   account_id: 'account_id',
   role: 'role',
   position: 'position',

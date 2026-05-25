@@ -55,6 +55,16 @@ export type Accounts_Otp = Prisma.Accounts_OtpModel
  */
 export type User_Profile = Prisma.User_ProfileModel
 /**
+ * Model Agenda
+ * 
+ */
+export type Agenda = Prisma.AgendaModel
+/**
+ * Model Attendance
+ * 
+ */
+export type Attendance = Prisma.AttendanceModel
+/**
  * Model Comity
  * 
  */

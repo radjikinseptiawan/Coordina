@@ -11,6 +11,8 @@
 export type * from './models/Accounts.js'
 export type * from './models/Accounts_Otp.js'
 export type * from './models/User_Profile.js'
+export type * from './models/Agenda.js'
+export type * from './models/Attendance.js'
 export type * from './models/Comity.js'
 export type * from './models/Comity_Vision.js'
 export type * from './models/Comity_Mission.js'

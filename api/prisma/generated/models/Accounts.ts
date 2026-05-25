@@ -29,10 +29,10 @@ export type AccountsMinAggregateOutputType = {
   email: string | null
   password: string | null
   username: string | null
-  profileImage: string | null
   created_at: Date | null
   updated_at: Date | null
   refresh_token: string | null
+  profile_image: string | null
 }
 
 export type AccountsMaxAggregateOutputType = {
@@ -40,10 +40,10 @@ export type AccountsMaxAggregateOutputType = {
   email: string | null
   password: string | null
   username: string | null
-  profileImage: string | null
   created_at: Date | null
   updated_at: Date | null
   refresh_token: string | null
+  profile_image: string | null
 }
 
 export type AccountsCountAggregateOutputType = {
@@ -51,10 +51,10 @@ export type AccountsCountAggregateOutputType = {
   email: number
   password: number
   username: number
-  profileImage: number
   created_at: number
   updated_at: number
   refresh_token: number
+  profile_image: number
   _all: number
 }
 
@@ -64,10 +64,10 @@ export type AccountsMinAggregateInputType = {
   email?: true
   password?: true
   username?: true
-  profileImage?: true
   created_at?: true
   updated_at?: true
   refresh_token?: true
+  profile_image?: true
 }
 
 export type AccountsMaxAggregateInputType = {
@@ -75,10 +75,10 @@ export type AccountsMaxAggregateInputType = {
   email?: true
   password?: true
   username?: true
-  profileImage?: true
   created_at?: true
   updated_at?: true
   refresh_token?: true
+  profile_image?: true
 }
 
 export type AccountsCountAggregateInputType = {
@@ -86,10 +86,10 @@ export type AccountsCountAggregateInputType = {
   email?: true
   password?: true
   username?: true
-  profileImage?: true
   created_at?: true
   updated_at?: true
   refresh_token?: true
+  profile_image?: true
   _all?: true
 }
 
@@ -170,10 +170,10 @@ export type AccountsGroupByOutputType = {
   email: string
   password: string
   username: string
-  profileImage: string | null
   created_at: Date
   updated_at: Date
   refresh_token: string | null
+  profile_image: string | null
   _count: AccountsCountAggregateOutputType | null
   _min: AccountsMinAggregateOutputType | null
   _max: AccountsMaxAggregateOutputType | null
@@ -202,12 +202,12 @@ export type AccountsWhereInput = {
   email?: Prisma.StringFilter<"Accounts"> | string
   password?: Prisma.StringFilter<"Accounts"> | string
   username?: Prisma.StringFilter<"Accounts"> | string
-  profileImage?: Prisma.StringNullableFilter<"Accounts"> | string | null
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   refresh_token?: Prisma.StringNullableFilter<"Accounts"> | string | null
-  userProfile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesListRelationFilter
+  profile_image?: Prisma.StringNullableFilter<"Accounts"> | string | null
+  user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }
 
 export type AccountsOrderByWithRelationInput = {
@@ -215,12 +215,12 @@ export type AccountsOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   username?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
-  userProfile?: Prisma.User_ProfileOrderByWithRelationInput
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
+  profile_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  user_profile?: Prisma.User_ProfileOrderByWithRelationInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
 }
 
 export type AccountsWhereUniqueInput = Prisma.AtLeast<{
@@ -232,11 +232,11 @@ export type AccountsWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.AccountsWhereInput | Prisma.AccountsWhereInput[]
   password?: Prisma.StringFilter<"Accounts"> | string
   username?: Prisma.StringFilter<"Accounts"> | string
-  profileImage?: Prisma.StringNullableFilter<"Accounts"> | string | null
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
-  userProfile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesListRelationFilter
+  profile_image?: Prisma.StringNullableFilter<"Accounts"> | string | null
+  user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }, "id" | "email" | "refresh_token">
 
 export type AccountsOrderByWithAggregationInput = {
@@ -244,10 +244,10 @@ export type AccountsOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   username?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
+  profile_image?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AccountsCountOrderByAggregateInput
   _max?: Prisma.AccountsMaxOrderByAggregateInput
   _min?: Prisma.AccountsMinOrderByAggregateInput
@@ -261,10 +261,10 @@ export type AccountsScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"Accounts"> | string
   password?: Prisma.StringWithAggregatesFilter<"Accounts"> | string
   username?: Prisma.StringWithAggregatesFilter<"Accounts"> | string
-  profileImage?: Prisma.StringNullableWithAggregatesFilter<"Accounts"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts"> | Date | string
   refresh_token?: Prisma.StringNullableWithAggregatesFilter<"Accounts"> | string | null
+  profile_image?: Prisma.StringNullableWithAggregatesFilter<"Accounts"> | string | null
 }
 
 export type AccountsCreateInput = {
@@ -272,12 +272,12 @@ export type AccountsCreateInput = {
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  userProfile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
+  profile_image?: string | null
+  user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
 
 export type AccountsUncheckedCreateInput = {
@@ -285,12 +285,12 @@ export type AccountsUncheckedCreateInput = {
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  userProfile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
+  profile_image?: string | null
+  user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
 
 export type AccountsUpdateInput = {
@@ -298,12 +298,12 @@ export type AccountsUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
 
 export type AccountsUncheckedUpdateInput = {
@@ -311,12 +311,12 @@ export type AccountsUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
 
 export type AccountsCreateManyInput = {
@@ -324,10 +324,10 @@ export type AccountsCreateManyInput = {
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  profile_image?: string | null
 }
 
 export type AccountsUpdateManyMutationInput = {
@@ -335,10 +335,10 @@ export type AccountsUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AccountsUncheckedUpdateManyInput = {
@@ -346,10 +346,10 @@ export type AccountsUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AccountsCountOrderByAggregateInput = {
@@ -357,10 +357,10 @@ export type AccountsCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   username?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
+  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsMaxOrderByAggregateInput = {
@@ -368,10 +368,10 @@ export type AccountsMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   username?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
+  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsMinOrderByAggregateInput = {
@@ -379,10 +379,10 @@ export type AccountsMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   username?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
+  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsScalarRelationFilter = {
@@ -394,168 +394,168 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type AccountsCreateNestedOneWithoutUserProfileInput = {
-  create?: Prisma.XOR<Prisma.AccountsCreateWithoutUserProfileInput, Prisma.AccountsUncheckedCreateWithoutUserProfileInput>
-  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutUserProfileInput
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type AccountsCreateNestedOneWithoutUser_profileInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutUser_profileInput, Prisma.AccountsUncheckedCreateWithoutUser_profileInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutUser_profileInput
   connect?: Prisma.AccountsWhereUniqueInput
 }
 
-export type AccountsUpdateOneRequiredWithoutUserProfileNestedInput = {
-  create?: Prisma.XOR<Prisma.AccountsCreateWithoutUserProfileInput, Prisma.AccountsUncheckedCreateWithoutUserProfileInput>
-  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutUserProfileInput
-  upsert?: Prisma.AccountsUpsertWithoutUserProfileInput
+export type AccountsUpdateOneRequiredWithoutUser_profileNestedInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutUser_profileInput, Prisma.AccountsUncheckedCreateWithoutUser_profileInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutUser_profileInput
+  upsert?: Prisma.AccountsUpsertWithoutUser_profileInput
   connect?: Prisma.AccountsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutUserProfileInput, Prisma.AccountsUpdateWithoutUserProfileInput>, Prisma.AccountsUncheckedUpdateWithoutUserProfileInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutUser_profileInput, Prisma.AccountsUpdateWithoutUser_profileInput>, Prisma.AccountsUncheckedUpdateWithoutUser_profileInput>
 }
 
-export type AccountsCreateNestedOneWithoutMemberProfilesComitiesInput = {
-  create?: Prisma.XOR<Prisma.AccountsCreateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedCreateWithoutMemberProfilesComitiesInput>
-  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutMemberProfilesComitiesInput
+export type AccountsCreateNestedOneWithoutMember_profiles_comitiesInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedCreateWithoutMember_profiles_comitiesInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutMember_profiles_comitiesInput
   connect?: Prisma.AccountsWhereUniqueInput
 }
 
-export type AccountsUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput = {
-  create?: Prisma.XOR<Prisma.AccountsCreateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedCreateWithoutMemberProfilesComitiesInput>
-  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutMemberProfilesComitiesInput
-  upsert?: Prisma.AccountsUpsertWithoutMemberProfilesComitiesInput
+export type AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedCreateWithoutMember_profiles_comitiesInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutMember_profiles_comitiesInput
+  upsert?: Prisma.AccountsUpsertWithoutMember_profiles_comitiesInput
   connect?: Prisma.AccountsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutMemberProfilesComitiesInput, Prisma.AccountsUpdateWithoutMemberProfilesComitiesInput>, Prisma.AccountsUncheckedUpdateWithoutMemberProfilesComitiesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutMember_profiles_comitiesInput, Prisma.AccountsUpdateWithoutMember_profiles_comitiesInput>, Prisma.AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput>
 }
 
-export type AccountsCreateWithoutUserProfileInput = {
+export type AccountsCreateWithoutUser_profileInput = {
   id?: string
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
+  profile_image?: string | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
 
-export type AccountsUncheckedCreateWithoutUserProfileInput = {
+export type AccountsUncheckedCreateWithoutUser_profileInput = {
   id?: string
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
+  profile_image?: string | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
 
-export type AccountsCreateOrConnectWithoutUserProfileInput = {
+export type AccountsCreateOrConnectWithoutUser_profileInput = {
   where: Prisma.AccountsWhereUniqueInput
-  create: Prisma.XOR<Prisma.AccountsCreateWithoutUserProfileInput, Prisma.AccountsUncheckedCreateWithoutUserProfileInput>
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutUser_profileInput, Prisma.AccountsUncheckedCreateWithoutUser_profileInput>
 }
 
-export type AccountsUpsertWithoutUserProfileInput = {
-  update: Prisma.XOR<Prisma.AccountsUpdateWithoutUserProfileInput, Prisma.AccountsUncheckedUpdateWithoutUserProfileInput>
-  create: Prisma.XOR<Prisma.AccountsCreateWithoutUserProfileInput, Prisma.AccountsUncheckedCreateWithoutUserProfileInput>
+export type AccountsUpsertWithoutUser_profileInput = {
+  update: Prisma.XOR<Prisma.AccountsUpdateWithoutUser_profileInput, Prisma.AccountsUncheckedUpdateWithoutUser_profileInput>
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutUser_profileInput, Prisma.AccountsUncheckedCreateWithoutUser_profileInput>
   where?: Prisma.AccountsWhereInput
 }
 
-export type AccountsUpdateToOneWithWhereWithoutUserProfileInput = {
+export type AccountsUpdateToOneWithWhereWithoutUser_profileInput = {
   where?: Prisma.AccountsWhereInput
-  data: Prisma.XOR<Prisma.AccountsUpdateWithoutUserProfileInput, Prisma.AccountsUncheckedUpdateWithoutUserProfileInput>
+  data: Prisma.XOR<Prisma.AccountsUpdateWithoutUser_profileInput, Prisma.AccountsUncheckedUpdateWithoutUser_profileInput>
 }
 
-export type AccountsUpdateWithoutUserProfileInput = {
+export type AccountsUpdateWithoutUser_profileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
 
-export type AccountsUncheckedUpdateWithoutUserProfileInput = {
+export type AccountsUncheckedUpdateWithoutUser_profileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  memberProfilesComities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
 
-export type AccountsCreateWithoutMemberProfilesComitiesInput = {
+export type AccountsCreateWithoutMember_profiles_comitiesInput = {
   id?: string
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  userProfile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
+  profile_image?: string | null
+  user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
 }
 
-export type AccountsUncheckedCreateWithoutMemberProfilesComitiesInput = {
+export type AccountsUncheckedCreateWithoutMember_profiles_comitiesInput = {
   id?: string
   email: string
   password: string
   username: string
-  profileImage?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  userProfile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
+  profile_image?: string | null
+  user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
 }
 
-export type AccountsCreateOrConnectWithoutMemberProfilesComitiesInput = {
+export type AccountsCreateOrConnectWithoutMember_profiles_comitiesInput = {
   where: Prisma.AccountsWhereUniqueInput
-  create: Prisma.XOR<Prisma.AccountsCreateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedCreateWithoutMemberProfilesComitiesInput>
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedCreateWithoutMember_profiles_comitiesInput>
 }
 
-export type AccountsUpsertWithoutMemberProfilesComitiesInput = {
-  update: Prisma.XOR<Prisma.AccountsUpdateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedUpdateWithoutMemberProfilesComitiesInput>
-  create: Prisma.XOR<Prisma.AccountsCreateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedCreateWithoutMemberProfilesComitiesInput>
+export type AccountsUpsertWithoutMember_profiles_comitiesInput = {
+  update: Prisma.XOR<Prisma.AccountsUpdateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput>
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedCreateWithoutMember_profiles_comitiesInput>
   where?: Prisma.AccountsWhereInput
 }
 
-export type AccountsUpdateToOneWithWhereWithoutMemberProfilesComitiesInput = {
+export type AccountsUpdateToOneWithWhereWithoutMember_profiles_comitiesInput = {
   where?: Prisma.AccountsWhereInput
-  data: Prisma.XOR<Prisma.AccountsUpdateWithoutMemberProfilesComitiesInput, Prisma.AccountsUncheckedUpdateWithoutMemberProfilesComitiesInput>
+  data: Prisma.XOR<Prisma.AccountsUpdateWithoutMember_profiles_comitiesInput, Prisma.AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput>
 }
 
-export type AccountsUpdateWithoutMemberProfilesComitiesInput = {
+export type AccountsUpdateWithoutMember_profiles_comitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
 }
 
-export type AccountsUncheckedUpdateWithoutMemberProfilesComitiesInput = {
+export type AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  userProfile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
+  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
 }
 
 
@@ -564,11 +564,11 @@ export type AccountsUncheckedUpdateWithoutMemberProfilesComitiesInput = {
  */
 
 export type AccountsCountOutputType = {
-  memberProfilesComities: number
+  member_profiles_comities: number
 }
 
 export type AccountsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  memberProfilesComities?: boolean | AccountsCountOutputTypeCountMemberProfilesComitiesArgs
+  member_profiles_comities?: boolean | AccountsCountOutputTypeCountMember_profiles_comitiesArgs
 }
 
 /**
@@ -584,7 +584,7 @@ export type AccountsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * AccountsCountOutputType without action
  */
-export type AccountsCountOutputTypeCountMemberProfilesComitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AccountsCountOutputTypeCountMember_profiles_comitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.Member_Profiles_ComitiesWhereInput
 }
 
@@ -594,12 +594,12 @@ export type AccountsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   email?: boolean
   password?: boolean
   username?: boolean
-  profileImage?: boolean
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
-  userProfile?: boolean | Prisma.Accounts$userProfileArgs<ExtArgs>
-  memberProfilesComities?: boolean | Prisma.Accounts$memberProfilesComitiesArgs<ExtArgs>
+  profile_image?: boolean
+  user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
+  member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
   _count?: boolean | Prisma.AccountsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["accounts"]>
 
@@ -608,10 +608,10 @@ export type AccountsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   email?: boolean
   password?: boolean
   username?: boolean
-  profileImage?: boolean
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
+  profile_image?: boolean
 }, ExtArgs["result"]["accounts"]>
 
 export type AccountsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -619,10 +619,10 @@ export type AccountsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   email?: boolean
   password?: boolean
   username?: boolean
-  profileImage?: boolean
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
+  profile_image?: boolean
 }, ExtArgs["result"]["accounts"]>
 
 export type AccountsSelectScalar = {
@@ -630,16 +630,16 @@ export type AccountsSelectScalar = {
   email?: boolean
   password?: boolean
   username?: boolean
-  profileImage?: boolean
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
+  profile_image?: boolean
 }
 
-export type AccountsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "username" | "profileImage" | "created_at" | "updated_at" | "refresh_token", ExtArgs["result"]["accounts"]>
+export type AccountsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "username" | "created_at" | "updated_at" | "refresh_token" | "profile_image", ExtArgs["result"]["accounts"]>
 export type AccountsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  userProfile?: boolean | Prisma.Accounts$userProfileArgs<ExtArgs>
-  memberProfilesComities?: boolean | Prisma.Accounts$memberProfilesComitiesArgs<ExtArgs>
+  user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
+  member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
   _count?: boolean | Prisma.AccountsCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AccountsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -648,18 +648,18 @@ export type AccountsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $AccountsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Accounts"
   objects: {
-    userProfile: Prisma.$User_ProfilePayload<ExtArgs> | null
-    memberProfilesComities: Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>[]
+    user_profile: Prisma.$User_ProfilePayload<ExtArgs> | null
+    member_profiles_comities: Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     email: string
     password: string
     username: string
-    profileImage: string | null
     created_at: Date
     updated_at: Date
     refresh_token: string | null
+    profile_image: string | null
   }, ExtArgs["result"]["accounts"]>
   composites: {}
 }
@@ -1054,8 +1054,8 @@ readonly fields: AccountsFieldRefs;
  */
 export interface Prisma__AccountsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  userProfile<T extends Prisma.Accounts$userProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$userProfileArgs<ExtArgs>>): Prisma.Prisma__User_ProfileClient<runtime.Types.Result.GetResult<Prisma.$User_ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  memberProfilesComities<T extends Prisma.Accounts$memberProfilesComitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$memberProfilesComitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  user_profile<T extends Prisma.Accounts$user_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$user_profileArgs<ExtArgs>>): Prisma.Prisma__User_ProfileClient<runtime.Types.Result.GetResult<Prisma.$User_ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  member_profiles_comities<T extends Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1089,10 +1089,10 @@ export interface AccountsFieldRefs {
   readonly email: Prisma.FieldRef<"Accounts", 'String'>
   readonly password: Prisma.FieldRef<"Accounts", 'String'>
   readonly username: Prisma.FieldRef<"Accounts", 'String'>
-  readonly profileImage: Prisma.FieldRef<"Accounts", 'String'>
   readonly created_at: Prisma.FieldRef<"Accounts", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Accounts", 'DateTime'>
   readonly refresh_token: Prisma.FieldRef<"Accounts", 'String'>
+  readonly profile_image: Prisma.FieldRef<"Accounts", 'String'>
 }
     
 
@@ -1486,9 +1486,9 @@ export type AccountsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Accounts.userProfile
+ * Accounts.user_profile
  */
-export type Accounts$userProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Accounts$user_profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the User_Profile
    */
@@ -1505,9 +1505,9 @@ export type Accounts$userProfileArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * Accounts.memberProfilesComities
+ * Accounts.member_profiles_comities
  */
-export type Accounts$memberProfilesComitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Accounts$member_profiles_comitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Member_Profiles_Comities
    */

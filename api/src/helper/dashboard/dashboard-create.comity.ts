@@ -42,8 +42,6 @@ export async function createComityHandler(tcx: PrismaService, body, userId: stri
                 member_id: profile.id as string,
                 comity_id: data.id as string,
                 account_id: userId as string,
-                comity_mission: "",
-                comity_vision: "",
             }
         })
 

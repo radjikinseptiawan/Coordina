@@ -38,30 +38,30 @@ export type Accounts_OtpMinAggregateOutputType = {
   id: string | null
   otp_code: number | null
   email: string | null
-  isUsed: boolean | null
   used_at: Date | null
   expires_at: Date | null
   created_at: Date | null
+  is_used: boolean | null
 }
 
 export type Accounts_OtpMaxAggregateOutputType = {
   id: string | null
   otp_code: number | null
   email: string | null
-  isUsed: boolean | null
   used_at: Date | null
   expires_at: Date | null
   created_at: Date | null
+  is_used: boolean | null
 }
 
 export type Accounts_OtpCountAggregateOutputType = {
   id: number
   otp_code: number
   email: number
-  isUsed: number
   used_at: number
   expires_at: number
   created_at: number
+  is_used: number
   _all: number
 }
 
@@ -78,30 +78,30 @@ export type Accounts_OtpMinAggregateInputType = {
   id?: true
   otp_code?: true
   email?: true
-  isUsed?: true
   used_at?: true
   expires_at?: true
   created_at?: true
+  is_used?: true
 }
 
 export type Accounts_OtpMaxAggregateInputType = {
   id?: true
   otp_code?: true
   email?: true
-  isUsed?: true
   used_at?: true
   expires_at?: true
   created_at?: true
+  is_used?: true
 }
 
 export type Accounts_OtpCountAggregateInputType = {
   id?: true
   otp_code?: true
   email?: true
-  isUsed?: true
   used_at?: true
   expires_at?: true
   created_at?: true
+  is_used?: true
   _all?: true
 }
 
@@ -195,10 +195,10 @@ export type Accounts_OtpGroupByOutputType = {
   id: string
   otp_code: number
   email: string
-  isUsed: boolean
   used_at: Date | null
   expires_at: Date
   created_at: Date
+  is_used: boolean
   _count: Accounts_OtpCountAggregateOutputType | null
   _avg: Accounts_OtpAvgAggregateOutputType | null
   _sum: Accounts_OtpSumAggregateOutputType | null
@@ -228,20 +228,20 @@ export type Accounts_OtpWhereInput = {
   id?: Prisma.StringFilter<"Accounts_Otp"> | string
   otp_code?: Prisma.IntFilter<"Accounts_Otp"> | number
   email?: Prisma.StringFilter<"Accounts_Otp"> | string
-  isUsed?: Prisma.BoolFilter<"Accounts_Otp"> | boolean
   used_at?: Prisma.DateTimeNullableFilter<"Accounts_Otp"> | Date | string | null
   expires_at?: Prisma.DateTimeFilter<"Accounts_Otp"> | Date | string
   created_at?: Prisma.DateTimeFilter<"Accounts_Otp"> | Date | string
+  is_used?: Prisma.BoolFilter<"Accounts_Otp"> | boolean
 }
 
 export type Accounts_OtpOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   otp_code?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  isUsed?: Prisma.SortOrder
   used_at?: Prisma.SortOrderInput | Prisma.SortOrder
   expires_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  is_used?: Prisma.SortOrder
 }
 
 export type Accounts_OtpWhereUniqueInput = Prisma.AtLeast<{
@@ -251,20 +251,20 @@ export type Accounts_OtpWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.Accounts_OtpWhereInput | Prisma.Accounts_OtpWhereInput[]
   otp_code?: Prisma.IntFilter<"Accounts_Otp"> | number
   email?: Prisma.StringFilter<"Accounts_Otp"> | string
-  isUsed?: Prisma.BoolFilter<"Accounts_Otp"> | boolean
   used_at?: Prisma.DateTimeNullableFilter<"Accounts_Otp"> | Date | string | null
   expires_at?: Prisma.DateTimeFilter<"Accounts_Otp"> | Date | string
   created_at?: Prisma.DateTimeFilter<"Accounts_Otp"> | Date | string
+  is_used?: Prisma.BoolFilter<"Accounts_Otp"> | boolean
 }, "id">
 
 export type Accounts_OtpOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   otp_code?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  isUsed?: Prisma.SortOrder
   used_at?: Prisma.SortOrderInput | Prisma.SortOrder
   expires_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  is_used?: Prisma.SortOrder
   _count?: Prisma.Accounts_OtpCountOrderByAggregateInput
   _avg?: Prisma.Accounts_OtpAvgOrderByAggregateInput
   _max?: Prisma.Accounts_OtpMaxOrderByAggregateInput
@@ -279,90 +279,90 @@ export type Accounts_OtpScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Accounts_Otp"> | string
   otp_code?: Prisma.IntWithAggregatesFilter<"Accounts_Otp"> | number
   email?: Prisma.StringWithAggregatesFilter<"Accounts_Otp"> | string
-  isUsed?: Prisma.BoolWithAggregatesFilter<"Accounts_Otp"> | boolean
   used_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Accounts_Otp"> | Date | string | null
   expires_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts_Otp"> | Date | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts_Otp"> | Date | string
+  is_used?: Prisma.BoolWithAggregatesFilter<"Accounts_Otp"> | boolean
 }
 
 export type Accounts_OtpCreateInput = {
   id?: string
   otp_code: number
   email: string
-  isUsed?: boolean
   used_at?: Date | string | null
   expires_at?: Date | string
   created_at?: Date | string
+  is_used?: boolean
 }
 
 export type Accounts_OtpUncheckedCreateInput = {
   id?: string
   otp_code: number
   email: string
-  isUsed?: boolean
   used_at?: Date | string | null
   expires_at?: Date | string
   created_at?: Date | string
+  is_used?: boolean
 }
 
 export type Accounts_OtpUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   otp_code?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  isUsed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   used_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expires_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_used?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type Accounts_OtpUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   otp_code?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  isUsed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   used_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expires_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_used?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type Accounts_OtpCreateManyInput = {
   id?: string
   otp_code: number
   email: string
-  isUsed?: boolean
   used_at?: Date | string | null
   expires_at?: Date | string
   created_at?: Date | string
+  is_used?: boolean
 }
 
 export type Accounts_OtpUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   otp_code?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  isUsed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   used_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expires_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_used?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type Accounts_OtpUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   otp_code?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  isUsed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   used_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expires_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  is_used?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type Accounts_OtpCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   otp_code?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  isUsed?: Prisma.SortOrder
   used_at?: Prisma.SortOrder
   expires_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  is_used?: Prisma.SortOrder
 }
 
 export type Accounts_OtpAvgOrderByAggregateInput = {
@@ -373,20 +373,20 @@ export type Accounts_OtpMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   otp_code?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  isUsed?: Prisma.SortOrder
   used_at?: Prisma.SortOrder
   expires_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  is_used?: Prisma.SortOrder
 }
 
 export type Accounts_OtpMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   otp_code?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  isUsed?: Prisma.SortOrder
   used_at?: Prisma.SortOrder
   expires_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  is_used?: Prisma.SortOrder
 }
 
 export type Accounts_OtpSumOrderByAggregateInput = {
@@ -401,12 +401,12 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 
@@ -415,43 +415,43 @@ export type Accounts_OtpSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   otp_code?: boolean
   email?: boolean
-  isUsed?: boolean
   used_at?: boolean
   expires_at?: boolean
   created_at?: boolean
+  is_used?: boolean
 }, ExtArgs["result"]["accounts_Otp"]>
 
 export type Accounts_OtpSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   otp_code?: boolean
   email?: boolean
-  isUsed?: boolean
   used_at?: boolean
   expires_at?: boolean
   created_at?: boolean
+  is_used?: boolean
 }, ExtArgs["result"]["accounts_Otp"]>
 
 export type Accounts_OtpSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   otp_code?: boolean
   email?: boolean
-  isUsed?: boolean
   used_at?: boolean
   expires_at?: boolean
   created_at?: boolean
+  is_used?: boolean
 }, ExtArgs["result"]["accounts_Otp"]>
 
 export type Accounts_OtpSelectScalar = {
   id?: boolean
   otp_code?: boolean
   email?: boolean
-  isUsed?: boolean
   used_at?: boolean
   expires_at?: boolean
   created_at?: boolean
+  is_used?: boolean
 }
 
-export type Accounts_OtpOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "otp_code" | "email" | "isUsed" | "used_at" | "expires_at" | "created_at", ExtArgs["result"]["accounts_Otp"]>
+export type Accounts_OtpOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "otp_code" | "email" | "used_at" | "expires_at" | "created_at" | "is_used", ExtArgs["result"]["accounts_Otp"]>
 
 export type $Accounts_OtpPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Accounts_Otp"
@@ -460,10 +460,10 @@ export type $Accounts_OtpPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     otp_code: number
     email: string
-    isUsed: boolean
     used_at: Date | null
     expires_at: Date
     created_at: Date
+    is_used: boolean
   }, ExtArgs["result"]["accounts_Otp"]>
   composites: {}
 }
@@ -890,10 +890,10 @@ export interface Accounts_OtpFieldRefs {
   readonly id: Prisma.FieldRef<"Accounts_Otp", 'String'>
   readonly otp_code: Prisma.FieldRef<"Accounts_Otp", 'Int'>
   readonly email: Prisma.FieldRef<"Accounts_Otp", 'String'>
-  readonly isUsed: Prisma.FieldRef<"Accounts_Otp", 'Boolean'>
   readonly used_at: Prisma.FieldRef<"Accounts_Otp", 'DateTime'>
   readonly expires_at: Prisma.FieldRef<"Accounts_Otp", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"Accounts_Otp", 'DateTime'>
+  readonly is_used: Prisma.FieldRef<"Accounts_Otp", 'Boolean'>
 }
     
 

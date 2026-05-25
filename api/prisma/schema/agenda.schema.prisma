@@ -1,0 +1,48 @@
+model Agenda {
+  id                  String       @id @default(uuid())
+  comity_id           String
+  agenda_name         String
+  tanggal_agenda      DateTime
+  status_agenda       AgendaStatus @default(COMING_SOON)
+  is_online           Boolean      @default(true)
+  lokasi              String?
+  meetingLink         String?
+  note                String?
+  lampiran            String?
+  created_by_id       String
+  created_at          DateTime     @default(now())
+  updated_at          DateTime     @updatedAt
+  comity              Comity       @relation(fields: [comity_id], references: [id])
+  user_member_profile User_Profile @relation(fields: [created_by_id], references: [id])
+  attendances         Attendance[]
+}
+
+model Attendance {
+  id         String           @id @default(uuid())
+  agenda_id  String
+  user_id    String
+  status     AttendanceStatus @default(ABSENT)
+  checkin_at DateTime?
+  note       String?
+  opened_at  DateTime?
+  closed_at  DateTime?
+  created_at DateTime         @default(now())
+  agenda     Agenda           @relation(fields: [agenda_id], references: [id])
+  user       User_Profile     @relation(fields: [user_id], references: [id])
+
+  @@unique([agenda_id, user_id])
+}
+
+enum AgendaStatus {
+  COMING_SOON
+  ON_GOING
+  SUCCESS
+  FAILED
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  PERMISSION
+  SICK
+}

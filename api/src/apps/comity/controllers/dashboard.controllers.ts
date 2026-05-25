@@ -6,7 +6,7 @@ import { GoogleAuthGuard } from "src/apps/accounts/auth/guards/auth.google.guard
 import { LogginInterceptors } from "src/interceptors/logging.interceptors";
 
 @UseInterceptors(LogginInterceptors)
-@Controller("/dashboard")
+@Controller("v1_beta/dashboard")
 export class DashboardController {
     constructor(
         private readonly dashboardService: DashboardService,

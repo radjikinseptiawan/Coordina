@@ -24,13 +24,13 @@ export class AuthGoogleService {
             }, HttpStatus.BAD_REQUEST)
         }
 
-        if (!accounts?.username || !accounts?.profileImage) {
+        if (!accounts?.username || !accounts?.profile_image) {
             accounts = await this.prisma.accounts.update({
                 where: {
                     email: body.email
                 },
                 data: {
-                    profileImage: body.profileImage,
+                    profile_image: body.profileImage,
                     username: body.username,
                     updated_at: new Date()
                 }
@@ -41,7 +41,7 @@ export class AuthGoogleService {
             id: accounts.id,
             email: accounts?.email as string,
             username: accounts?.username as string,
-            profileImage: accounts?.profileImage as string
+            profileImage: accounts?.profile_image as string
         }
 
 

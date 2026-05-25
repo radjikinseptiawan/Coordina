@@ -387,6 +387,8 @@ export const ModelName = {
   Accounts: 'Accounts',
   Accounts_Otp: 'Accounts_Otp',
   User_Profile: 'User_Profile',
+  Agenda: 'Agenda',
+  Attendance: 'Attendance',
   Comity: 'Comity',
   Comity_Vision: 'Comity_Vision',
   Comity_Mission: 'Comity_Mission',
@@ -406,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "accounts" | "accounts_Otp" | "user_Profile" | "comity" | "comity_Vision" | "comity_Mission" | "member_Profiles_Comities"
+    modelProps: "accounts" | "accounts_Otp" | "user_Profile" | "agenda" | "attendance" | "comity" | "comity_Vision" | "comity_Mission" | "member_Profiles_Comities"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -629,6 +631,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.User_ProfileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.User_ProfileCountAggregateOutputType> | number
+        }
+      }
+    }
+    Agenda: {
+      payload: Prisma.$AgendaPayload<ExtArgs>
+      fields: Prisma.AgendaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AgendaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AgendaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        findFirst: {
+          args: Prisma.AgendaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AgendaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        findMany: {
+          args: Prisma.AgendaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>[]
+        }
+        create: {
+          args: Prisma.AgendaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        createMany: {
+          args: Prisma.AgendaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AgendaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>[]
+        }
+        delete: {
+          args: Prisma.AgendaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        update: {
+          args: Prisma.AgendaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        deleteMany: {
+          args: Prisma.AgendaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AgendaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AgendaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>[]
+        }
+        upsert: {
+          args: Prisma.AgendaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgendaPayload>
+        }
+        aggregate: {
+          args: Prisma.AgendaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAgenda>
+        }
+        groupBy: {
+          args: Prisma.AgendaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgendaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AgendaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgendaCountAggregateOutputType> | number
+        }
+      }
+    }
+    Attendance: {
+      payload: Prisma.$AttendancePayload<ExtArgs>
+      fields: Prisma.AttendanceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AttendanceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AttendanceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        findFirst: {
+          args: Prisma.AttendanceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AttendanceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        findMany: {
+          args: Prisma.AttendanceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+        }
+        create: {
+          args: Prisma.AttendanceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        createMany: {
+          args: Prisma.AttendanceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AttendanceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+        }
+        delete: {
+          args: Prisma.AttendanceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        update: {
+          args: Prisma.AttendanceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        deleteMany: {
+          args: Prisma.AttendanceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AttendanceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AttendanceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+        }
+        upsert: {
+          args: Prisma.AttendanceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AttendancePayload>
+        }
+        aggregate: {
+          args: Prisma.AttendanceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAttendance>
+        }
+        groupBy: {
+          args: Prisma.AttendanceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AttendanceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AttendanceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AttendanceCountAggregateOutputType> | number
         }
       }
     }
@@ -972,10 +1122,10 @@ export const AccountsScalarFieldEnum = {
   email: 'email',
   password: 'password',
   username: 'username',
-  profileImage: 'profileImage',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  refresh_token: 'refresh_token'
+  refresh_token: 'refresh_token',
+  profile_image: 'profile_image'
 } as const
 
 export type AccountsScalarFieldEnum = (typeof AccountsScalarFieldEnum)[keyof typeof AccountsScalarFieldEnum]
@@ -985,10 +1135,10 @@ export const Accounts_OtpScalarFieldEnum = {
   id: 'id',
   otp_code: 'otp_code',
   email: 'email',
-  isUsed: 'isUsed',
   used_at: 'used_at',
   expires_at: 'expires_at',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  is_used: 'is_used'
 } as const
 
 export type Accounts_OtpScalarFieldEnum = (typeof Accounts_OtpScalarFieldEnum)[keyof typeof Accounts_OtpScalarFieldEnum]
@@ -1004,6 +1154,40 @@ export const User_ProfileScalarFieldEnum = {
 } as const
 
 export type User_ProfileScalarFieldEnum = (typeof User_ProfileScalarFieldEnum)[keyof typeof User_ProfileScalarFieldEnum]
+
+
+export const AgendaScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  agenda_name: 'agenda_name',
+  tanggal_agenda: 'tanggal_agenda',
+  status_agenda: 'status_agenda',
+  is_online: 'is_online',
+  lokasi: 'lokasi',
+  meetingLink: 'meetingLink',
+  note: 'note',
+  lampiran: 'lampiran',
+  created_by_id: 'created_by_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AgendaScalarFieldEnum = (typeof AgendaScalarFieldEnum)[keyof typeof AgendaScalarFieldEnum]
+
+
+export const AttendanceScalarFieldEnum = {
+  id: 'id',
+  agenda_id: 'agenda_id',
+  user_id: 'user_id',
+  status: 'status',
+  checkin_at: 'checkin_at',
+  note: 'note',
+  opened_at: 'opened_at',
+  closed_at: 'closed_at',
+  created_at: 'created_at'
+} as const
+
+export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
 
 
 export const ComityScalarFieldEnum = {
@@ -1049,8 +1233,6 @@ export const Member_Profiles_ComitiesScalarFieldEnum = {
   id: 'id',
   member_id: 'member_id',
   comity_id: 'comity_id',
-  comity_mission: 'comity_mission',
-  comity_vision: 'comity_vision',
   account_id: 'account_id',
   role: 'role',
   position: 'position',
@@ -1137,6 +1319,34 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'AgendaStatus'
+ */
+export type EnumAgendaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgendaStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AgendaStatus[]'
+ */
+export type ListEnumAgendaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgendaStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AttendanceStatus'
+ */
+export type EnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AttendanceStatus[]'
+ */
+export type ListEnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus[]'>
     
 
 
@@ -1266,6 +1476,8 @@ export type GlobalOmitConfig = {
   accounts?: Prisma.AccountsOmit
   accounts_Otp?: Prisma.Accounts_OtpOmit
   user_Profile?: Prisma.User_ProfileOmit
+  agenda?: Prisma.AgendaOmit
+  attendance?: Prisma.AttendanceOmit
   comity?: Prisma.ComityOmit
   comity_Vision?: Prisma.Comity_VisionOmit
   comity_Mission?: Prisma.Comity_MissionOmit

@@ -4,7 +4,7 @@ import { googleAuthFailed, googleAuth as googleAuthHelper } from "src/helper/acc
 import { AuthGoogleService } from "../services/auth.google.service";
 import { configAccessToken } from "src/helper/accounts/auth/resources/auth-cookies";
 
-@Controller('auth')
+@Controller('v1_beta/auth/oAuth')
 export class AuthGoogleController {
     constructor(private readonly googleAuthService: AuthGoogleService) { }
 
