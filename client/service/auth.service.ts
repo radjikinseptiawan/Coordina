@@ -11,12 +11,21 @@ export const loginUser = async (body: AuthBasicLoginPayload)=>{
 }
 
 export const loginGoogleUser = async() : Promise<void> =>{
-    window.open(`${BASE_API}/oAuth/google`,"login","bottom=250, top=250, left=300, right=300")
+    return new Promise((resolve)=>{
+       window.open(`${BASE_API}/oAuth/google`,"login","bottom=250, top=250, left=300, right=300")
 
-    window.addEventListener('message',(event)=>{
-        if(event.origin !== 'http://localhost:3000') return;
+       const eventListener = (event :MessageEvent)=>{
+            if(event.origin !== 'http://localhost:3001') return;
+            const data = event.data
 
-        redirect("/dashboard")
+            if(data && data.status === "ok"){
+                window.removeEventListener('message', eventListener)
+            }
+            resolve(data.user)
+        }
+
+        
+       window.addEventListener('message',eventListener)
     })
 }
 

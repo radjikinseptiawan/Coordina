@@ -48,15 +48,15 @@ export function AuthLoginForms() {
 
   const loginGoogle = async () => {
     if (width > 800) {
-      await loginGoogleUser();
-      toast.success("Successfully to login!, redirect to dashboard");
-      router.push("/dashboard");
-      return;
+      const user: any = await loginGoogleUser();
+      if (user) {
+        toast.success(`Sucessfully to login, redirected to dashboard`);
+        router.push("/dashboard");
+      }
+    } else {
+      toast.success(`Sucessfully to login, redirected to dashboard`);
+      await loginGoogleUserPhone();
     }
-
-    await loginGoogleUserPhone();
-    toast.success("Successfully to login!, redirect to dashboard");
-    router.push("/dashboard");
   };
 
   return (
