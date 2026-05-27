@@ -1,6 +1,5 @@
 import axios from "axios"
 import { AuthBasicLoginPayload, AuthBasicRegisterPayload } from "./dto/auth.dto"
-import { redirect } from "next/navigation"
 
 const BASE_API = `${process.env.NEXT_PUBLIC_API_URL}/v1_beta/auth`
 
@@ -34,7 +33,12 @@ export const loginGoogleUserPhone = async()=>{
 }
 
 export const registerUser = async(body: AuthBasicRegisterPayload)=>{
-    const response = await axios.post(`${BASE_API}/register`,body,{withCredentials:true})
+    const payload = {
+        username: body.username,
+        password: body.password,
+        email : body.email
+    }
+    const response = await axios.post(`${BASE_API}/register`,payload,{withCredentials:true})
     return response.data
 }
 
@@ -47,3 +51,4 @@ export const resetUserPassword = async(body:any)=>{
     const response = await axios.post(`${BASE_API}/change-password?email=${body.email}&otp=${body.otp}`,body)
     return response.data
 }
+

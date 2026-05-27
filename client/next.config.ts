@@ -7,8 +7,17 @@ const nextConfig: NextConfig = {
       {
         protocol:"https",
         hostname: "i.pinimg.com"
+      },{
+        protocol: "https",
+        hostname: "res.cloudinary.com"
       }
     ]
+  },
+
+  experimental:{
+    serverActions: {
+      bodySizeLimit: "10mb"
+    }
   }
 };
 

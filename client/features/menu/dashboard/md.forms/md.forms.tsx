@@ -10,20 +10,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, MenuIcon, Plus, Trash2 } from "lucide-react";
+import { ChevronDown, MenuIcon, Plus, Trash2, UploadIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { DialogClose } from "@/components/ui/dialog";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFieldArray } from "react-hook-form";
 import { createOrganizations } from "@/service/menu.service";
 import { useRouter } from "next/navigation";
 import { useOpenContext } from "../md.context";
+import { uploadFile } from "@/lib/uploads";
 
 export default function MenuDashboardFormAddDialog() {
   const router = useRouter();
   const { setIsOpen } = useOpenContext();
+  const [preview, setPreview] = useState<any>();
   const {
     register,
     handleSubmit,
@@ -38,21 +40,57 @@ export default function MenuDashboardFormAddDialog() {
     name: "organization_mission",
   });
 
+  const iconFile = watch("organization_icon");
+
   const selectedProvince = watch("area_operational");
   const selectedCityRegency = watch("city_operational");
 
   const onSubmit = async (data: any) => {
-    console.log("payload: ", data);
-    const response = await createOrganizations(data);
-    console.log("response", response);
+    let uploadedIconUrl = "";
+    if (data.organization_icon && data.organization_icon.length > 0) {
+      const file = data.organization_icon[0];
+
+      const imageFormData = new FormData();
+      imageFormData.append("image", file);
+
+      const uploadRes = await uploadFile(imageFormData);
+
+      if (uploadRes.error) {
+        alert(`Failed to upload organization icon: ${uploadRes.error}`);
+        return;
+      }
+
+      uploadedIconUrl = uploadRes.url || "";
+    }
+
+    const finalPayload = {
+      ...data,
+      organization_icon: uploadedIconUrl,
+    };
+
+    const response = await createOrganizations(finalPayload);
     if (response) {
       setIsOpen(false);
       window.location.reload();
     }
   };
 
+  useEffect(() => {
+    if (iconFile && iconFile.length > 0) {
+      const file = iconFile[0];
+      const objectFile = URL.createObjectURL(file);
+      setPreview(objectFile);
+
+      return () => URL.revokeObjectURL(objectFile);
+    }
+  }, [iconFile]);
+
   return (
-    <form method="POST" onSubmit={handleSubmit(onSubmit)} className="w-xl h-96">
+    <form
+      method="POST"
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-72 md:w-xl h-96"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="flex flex-col gap-1">
           <Label>Organizational Name</Label>
@@ -222,7 +260,7 @@ export default function MenuDashboardFormAddDialog() {
           <Label>Organization Icon</Label>
           <div className="flex gap-2 items-center">
             <Avatar>
-              <AvatarImage></AvatarImage>
+              <AvatarImage src={preview}></AvatarImage>
             </Avatar>
             <Input {...register("organization_icon")} type="file" />
           </div>

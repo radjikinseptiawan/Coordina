@@ -38,12 +38,16 @@ export function AuthLoginForms() {
   }, [width]);
 
   const submitForm = async (data: any) => {
-    const result = await loginUser(data);
-    if (!result) {
-      return toast.error(`${errors.form}`);
+    try {
+      await loginUser(data);
+      toast.success("Successfully to login!, redirect to dashboard");
+      router.push("/dashboard");
+    } catch (e: any) {
+      console.log(e);
+      toast.error(
+        `${e.response.data?.message || "Something error, try again"}`,
+      );
     }
-    toast.success("Successfully to login!, redirect to dashboard");
-    router.push("/dashboard");
   };
 
   const loginGoogle = async () => {

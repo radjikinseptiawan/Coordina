@@ -1,3 +1,4 @@
+import { ComityData } from "@/_shared/custom/@types/comity.type";
 import {
   createContext,
   Dispatch,
@@ -57,5 +58,26 @@ export const useLoadingContext = () => {
   if (!context) {
     throw new Error(`Failed load the context!`);
   }
+  return context;
+};
+
+export const MemoComityContext = createContext<{
+  comityLoad: ComityData | undefined;
+  setComityLoad: Dispatch<SetStateAction<ComityData | undefined>>;
+} | null>(null);
+
+export const MemoComityProvider = ({ children }: { children: ReactNode }) => {
+  const [comityLoad, setComityLoad] = useState<ComityData | undefined>();
+
+  return (
+    <MemoComityContext value={{ comityLoad, setComityLoad }}>
+      {children}
+    </MemoComityContext>
+  );
+};
+
+export const useMemoComity = () => {
+  const context = useContext(MemoComityContext);
+  if (!context) throw new Error("Comity Failed to memoized!");
   return context;
 };

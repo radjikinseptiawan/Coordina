@@ -20,12 +20,20 @@ export function AuthRegisterForms() {
   } = useAuthRegisterForms();
 
   const submitForm = async (data: any) => {
-    const result = await registerUser(data);
-    if (!result) {
-      toast.error(`${errors.form}`);
+    try {
+      const result = await registerUser(data);
+      if (!result) {
+      }
+      toast.success(
+        "Successfully to registered account!, redirect to login...",
+      );
+      route.push("/login");
+    } catch (e: any) {
+      console.error(e);
+      toast.error(
+        `${JSON.stringify(e.response?.data.detail.meta.driverAdapterError.cause.originalMessage) || "Registration Failed!"}`,
+      );
     }
-    toast.success("Successfully to registered account!, redirect to login...");
-    route.push("/login");
   };
 
   return (

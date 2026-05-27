@@ -10,8 +10,10 @@ export const createOrganizations = async (body: any)=>{
         comity_area_of_operational: body.area_operational,
         comity_city_of_operational: body.city_operational,
         comity_background: body.organization_background,
+        comity_icon: body.organization_icon,
         comity_created_date: body.created_date
     }
+
     const comityResponse = await axios.post(`${BASE_API}/dashboard`,payloadComity,{withCredentials:true})
 
     const comityResults = comityResponse.data.response.data    
@@ -54,58 +56,11 @@ export const createOrganizations = async (body: any)=>{
 export const getOrganizations = async()=>{
     const response = await axios.get(`${BASE_API}/dashboard/comities`,{withCredentials:true})
     const organizations = response.data.response.comities
+
     return organizations
 }
 
-/**
- * NOTE!:
- * createComityHandler Payload {
- *  comity_name,
- *  comity_short_name,
- *  comity_area_of_operational,
- *  comity_city_of_operational,
- *  comity_background,
- *  comity_created_date
- * }
- * 
- * didalam services createComityHandler sistem juga membuat data baru ntuk tabel 
- * member_Profiles_Comities payload {
- *  member_id: "ambil dari profile",
- *  comity_id: "ambil dari data comity yg dibuat sebelumnya",
- *  comity_mission: "kosong sih, tapi kayaknya nanti ambil deh"
- *  comity_mission: "kosong sih, tpi kayaknya ambil deh nanti"
- * }
- * 
- * generateLink juga dia itu beda controller, kalo sebelumnya controllers dashboard
- * link nya nanti dibuat kya gini https://localhost:3000/namaorganisasi-idgenericorganisasi/comity 
- * payload nya dari generateLink ini itu {
- * id 
- * urlLink
- * }
- * 
- * sekarang kita geser ke ComityControllers, di dialogForm ini ada vision 
- * comity = await tcx.comity.findFirst({
- *  where: {
- *  urlLink: url
- * }
- * })
- * payload nya adalah {
- *  comity_id: comity.id,
- *  vision: body.vision
- * }
- * 
- * ada mission juga payload nya
- * comity = await tcx.comity.findFirst({
- *  where: {
- *  urlLink: url
- * }
- * })
- * 
- * const request = await tcx.comity_Mission.createMany({
- * data:{
- *  comity_id: comity.id,
- *  mission: body.mission
- * }
- * })
- * 
- */
+export const getOrganizationsDetail = async(id: string)=>{
+    const response = await axios.get(`${BASE_API}/${id}/comity`)
+    return response.data.response
+}

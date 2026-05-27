@@ -5,10 +5,14 @@ export const decoderToken = async () => {
   const tokens = await cookies();
   const token = await tokens.get("access_token")?.value;
 
-  if (!token) {
+  if (!token || token === undefined) {
     redirect("/login");
   }
 
-  const decode = jwt.decode(token);
-  return decode;
+  try {
+    const decode = jwt.verify(token, process.env.JWT_SECRET as string);
+    return decode;
+  } catch (e) {
+    redirect("/login");
+  }
 };
