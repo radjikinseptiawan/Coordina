@@ -8,7 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { logoutUsers } from "@/service/logout.service";
+import { logoutUsers } from "@/service/users.service";
 import {
   redirect,
   usePathname,
@@ -20,7 +20,6 @@ import { toast } from "sonner";
 export default function LogoutDialogs() {
   const router = useRouter();
   const pathName = usePathname();
-  console.log("ini dari logoutDialogs.tsx", pathName);
   const logout = useSearchParams().get("logout");
 
   const logoutUser = async () => {

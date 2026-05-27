@@ -4,20 +4,34 @@ import { LogOut, Menu, MenuIcon, User } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { DROPDOWN_VARIANTS, getRoute } from "./navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LogoutDialogs from "./logoutDialogs";
+import { getSpesificUser } from "@/service/users.service";
+import { SpesificUsersType } from "@/_shared/custom/@types/user.type";
 
 export default function TopNavigation({
-  source,
   username,
   email,
 }: {
-  source: string | null;
   username: string | null;
   email: string | null;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [data, setData] = useState<SpesificUsersType>();
+  const profileUsers = async () => {
+    try {
+      const data = await getSpesificUser();
+      console.log("dari topNavigationBar.tsx", data);
+      setData(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    profileUsers();
+  }, []);
   return (
     <>
       <div
@@ -28,14 +42,16 @@ export default function TopNavigation({
           <Avatar>
             <AvatarImage
               src={
-                source ||
-                "https://res.cloudinary.com/coordina/image/upload/v1779866179/b75b29441bbd967deda4365441497221_dpfh1f.png"
+                data?.user_profile.image ||
+                process.env.NEXT_PUBLIC_DEFAULT_PROFILE
               }
             />
           </Avatar>
           <div className="text-end">
-            <h1 className="text-[12px] text-black font-semibold">{username}</h1>
-            <p className="text-[10px] text-gray-600">{email}</p>
+            <h1 className="text-[12px] text-black font-semibold">
+              {data?.username}
+            </h1>
+            <p className="text-[10px] text-gray-600">{data?.email}</p>
           </div>
         </div>
       </div>

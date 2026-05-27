@@ -17,6 +17,7 @@ import {
 } from "../md.context";
 import { useRouter } from "next/navigation";
 import { ComityData } from "@/_shared/custom/@types/comity.type";
+import { convertDate } from "@/lib/utils";
 
 export interface MenuDasboardCardsTypes {
   comity: {
@@ -53,14 +54,6 @@ export function MenuDashboardCards() {
     if (!data) return;
     return data;
   }, [data]);
-
-  const convertDate = (date: Date) => {
-    return Intl.DateTimeFormat("id-ID", {
-      year: "numeric",
-      day: "2-digit",
-      month: "short",
-    }).format(date);
-  };
 
   console.log(data);
   return (
