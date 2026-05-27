@@ -17,7 +17,7 @@ export default function TextareaMenuDashboardComponents({
     <div className="flex gap-1 flex-col">
       <label htmlFor="organization_background">{label}</label>
       <Textarea
-        {...register("organization_background")}
+        {...register(name)}
         className="resize-none h-24 overflow-y-auto"
         name={name}
         id="organization_background"

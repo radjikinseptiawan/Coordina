@@ -8,17 +8,17 @@ import {
 import { ChevronDown } from "lucide-react";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { UseFormSetValue } from "react-hook-form";
-import { MenuDasboardCardsTypes } from "./md.cards";
 import { MenuDashboardAddSchemaType } from "../md.forms/md.schema";
-import { itemDropdown } from "./md.resources";
 
 export default function MenuDashboardDropDownComponent({
   selected,
   valued,
+  hardData,
   placeHolder,
   name,
 }: {
   placeHolder: string;
+  hardData: any;
   selected: string | boolean;
   valued: UseFormSetValue<MenuDashboardAddSchemaType>;
   name: keyof MenuDashboardAddSchemaType;
@@ -28,22 +28,35 @@ export default function MenuDashboardDropDownComponent({
       <DropdownMenuTrigger asChild>
         <Button variant={"outline"}>
           <ChevronDown />
-          {selected ? selected : placeHolder}
+          {typeof selected === "string" && selected ? selected : placeHolder}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="max-h-[300px] overflow-y-auto">
         <DropdownMenuGroup>
-          {itemDropdown.map((item) =>
-            item.wilayah.map((recit) => (
+          {/* CASE 1: JIKA DROPDOWN PROVINSI (Mapping Array 1 Dimensi langsung) */}
+          {placeHolder === "Select Province" &&
+            hardData.map((item: any, index: number) => (
               <DropDownItem
-                label={recit.label}
-                key={recit.value}
+                label={item.label}
+                key={item.value || index}
                 name={name}
-                value={recit.value}
+                value={item.label}
                 setValue={valued}
               />
-            )),
-          )}
+            ))}
+
+          {placeHolder === "Select City/Regency" &&
+            hardData.map((item: any) =>
+              item.wilayah.map((recit: any) => (
+                <DropDownItem
+                  label={recit.label}
+                  key={recit.value}
+                  name={name}
+                  value={recit.label}
+                  setValue={valued}
+                />
+              )),
+            )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

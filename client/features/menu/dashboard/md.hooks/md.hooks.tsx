@@ -27,14 +27,17 @@ export const fieldAddCards: MenuDashboardAddType[] = [
   {
     name: "organization_name",
     label: "Organization Name",
+    type: "text",
   },
   {
     name: "short_name",
     label: "Organization Short Name",
+    type: "text",
   },
   {
     name: "created_date",
     label: "Organization Birth",
+    type: "date",
   },
 ];
 

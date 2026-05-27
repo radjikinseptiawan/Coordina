@@ -39,4 +39,5 @@ export type MenuDashboardAddSchemaType = z.infer<
 export type MenuDashboardAddType = {
   label: string;
   name: keyof MenuDashboardAddSchemaType;
+  type?: string;
 };
