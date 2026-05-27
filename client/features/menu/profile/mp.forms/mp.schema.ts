@@ -35,3 +35,8 @@ export const MenuProfileSchemaType = z.object({
 });
 
 export type MenuProfileSchemaType = z.infer<typeof MenuProfileSchemaType>;
+
+export type InputProfilDataType = {
+  label: string;
+  name: keyof MenuProfileSchemaType;
+};

@@ -15,30 +15,13 @@ import Image from "next/image";
 import { getOrganizationsDetail } from "@/service/menu.service";
 import { Button } from "@/components/ui/button";
 import { getProfile } from "@/service/profile.service";
+import { getUserInformation } from "../md.hooks/md.utils";
 
 export default function MenuDashboardShowDialogs() {
   const router = useRouter();
   const isShow = useSearchParams().get("show");
   const { setIsOpen } = useOpenContext();
   const { comityLoad } = useMemoComity();
-
-  const getUserInformation = async () => {
-    try {
-      const response = await getProfile();
-      console.log(response);
-      if (!response.fullname || !response.number_phone) {
-        toast.info(
-          `Before organizing your comity, you must completly filled this.`,
-        );
-        router.replace("/profile");
-        return;
-      }
-      toast.success(`Success validating resources!, redirecting to system`);
-      router.push("/");
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   return (
     <>
@@ -109,7 +92,9 @@ export default function MenuDashboardShowDialogs() {
             <DialogClose onClick={() => router.replace("/dashboard")}>
               Close
             </DialogClose>
-            <Button onClick={getUserInformation}>Continue</Button>
+            <Button onClick={() => getUserInformation({ toast, router })}>
+              Continue
+            </Button>
           </div>
         </DialogContent>
       </Dialog>

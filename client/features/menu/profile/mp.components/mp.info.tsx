@@ -1,19 +1,7 @@
+import { ProfileDataType } from "@/_shared/custom/@types/profile.type";
 import { convertDate } from "@/lib/utils";
 import { getProfile } from "@/service/profile.service";
 import { useEffect, useState } from "react";
-
-type AccountDataType = {
-  username: string;
-  email: string;
-  created_at: string;
-};
-
-type ProfileDataType = {
-  fullname: string | null;
-  image: string | null;
-  number_phone: string | null;
-  account: AccountDataType;
-};
 
 export default function MenuProfileInfoComponents() {
   const [preview, setPreview] = useState<string>(

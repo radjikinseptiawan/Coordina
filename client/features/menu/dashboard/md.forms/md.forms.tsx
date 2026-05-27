@@ -1,6 +1,10 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { useMenuDashboardAddForms } from "../md.hooks/md.hooks";
+import {
+  fieldAddCards,
+  fieldTextareaAddCards,
+  useMenuDashboardAddForms,
+} from "../md.hooks/md.hooks";
 import { Label } from "@/components/ui/label";
 import {
   DropdownMenu,
@@ -21,6 +25,9 @@ import { createOrganizations } from "@/service/menu.service";
 import { useRouter } from "next/navigation";
 import { useOpenContext } from "../md.context";
 import { uploadFile } from "@/lib/uploads";
+import MenuDashboardDropDownComponent from "../md.components/md.dropdown";
+import { InputAddCards } from "../md.components/md.input";
+import TextareaMenuDashboardComponents from "../md.components/md.textarea";
 
 export default function MenuDashboardFormAddDialog() {
   const router = useRouter();
@@ -92,78 +99,23 @@ export default function MenuDashboardFormAddDialog() {
       className="w-72 md:w-xl h-96"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="flex flex-col gap-1">
-          <Label>Organizational Name</Label>
-          <Input id="organization_name" {...register("organization_name")} />
-          {errors.organization_name && (
-            <p className="text-sm text-red-500">
-              {errors.organization_name.message}
-            </p>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <Label>Short Organization Name</Label>
-          <Input {...register("short_name")} />
-          {errors.short_name && (
-            <p className="text-sm text-red-500">{errors.short_name.message}</p>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="created_date">Organization Birth</label>
-          <Input {...register("created_date")} type="date" />
-          {errors.created_date && (
-            <p className="text-sm text-red-500">
-              {errors.created_date.message}
-            </p>
-          )}
-        </div>
-
+        {fieldAddCards.map((item, index) => (
+          <InputAddCards
+            register={register}
+            label={item.label}
+            key={index}
+            name={item.name}
+            error={errors[item.name]}
+          />
+        ))}
         <div className="flex flex-col gap-1">
           <label htmlFor="area_operational">Province Operational</label>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant={"outline"}>
-                <ChevronDown />
-                {selectedProvince ? selectedProvince : "Province Operational"}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuGroup>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "DKI Jakarta")}
-                >
-                  DKI Jakarta
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "Banten")}
-                >
-                  Banten
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "DI Yogyakarta")}
-                >
-                  DI Yogyakarta
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "Jawa Tengah")}
-                >
-                  Jawa Tengah
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "Jawa Timur")}
-                >
-                  Jawa Timur
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("area_operational", "Jawa Barat")}
-                >
-                  Jawa Barat
-                </DropdownMenuItem>{" "}
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <MenuDashboardDropDownComponent
+            valued={setValue}
+            placeHolder="Select Province"
+            selected={selectedProvince}
+            name="area_operational"
+          />
           {errors.area_operational && (
             <p className="text-sm text-red-500">
               {errors.area_operational.message}
@@ -171,87 +123,27 @@ export default function MenuDashboardFormAddDialog() {
           )}
         </div>
 
+        {fieldTextareaAddCards.map((item, index) => (
+          <TextareaMenuDashboardComponents
+            error={errors[item.name]}
+            label={item.label}
+            name={item.name}
+            register={register}
+            key={index}
+          />
+        ))}
+
         <div className="flex flex-col gap-1">
           <label htmlFor="city_operational">City/Regency Operational</label>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant={"outline"}>
-                <ChevronDown />{" "}
-                {selectedCityRegency
-                  ? selectedCityRegency
-                  : "Select City/Regency"}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuGroup>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Jakarta Pusat")}
-                >
-                  Jakarta Pusat
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Serang")}
-                >
-                  Serang
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Sleman")}
-                >
-                  Sleman
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Semarang")}
-                >
-                  Semarang
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Surabaya")}
-                >
-                  Surabaya
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setValue("city_operational", "Bandung")}
-                >
-                  Bandung
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <MenuDashboardDropDownComponent
+            selected={selectedCityRegency}
+            name="city_operational"
+            placeHolder="Select City/Regency"
+            valued={setValue}
+          />
           {errors.city_operational && (
             <p className="text-sm text-red-500">
               {errors.city_operational.message}
-            </p>
-          )}
-        </div>
-
-        <div className="flex gap-1 flex-col">
-          <label htmlFor="organization_background">
-            Organization Background
-          </label>
-          <Textarea
-            {...register("organization_background")}
-            className="resize-none h-24 overflow-y-auto"
-            name="organization_background"
-            id="organization_background"
-          />
-          {errors.organization_background && (
-            <p className="text-sm text-red-500">
-              {errors.organization_background.message}
-            </p>
-          )}
-        </div>
-
-        <div className="flex gap-1 flex-col">
-          <label htmlFor="organization_vision">Organization Vision</label>
-          <Textarea
-            className="resize-none h-32 overflow-y-auto"
-            {...register("organization_vision")}
-            name="organization_vision"
-            id="organization_vision"
-          />
-          {errors.organization_vision && (
-            <p className="text-sm text-red-500">
-              {errors.organization_vision.message}
             </p>
           )}
         </div>

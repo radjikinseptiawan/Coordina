@@ -1,6 +1,9 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { MenuDashboardAddSchemaType } from "../md.forms/md.schema";
+import {
+  MenuDashboardAddSchemaType,
+  MenuDashboardAddType,
+} from "../md.forms/md.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const useMenuDashboardAddForms = () => {
@@ -19,3 +22,29 @@ export const useMenuDashboardAddForms = () => {
     },
   });
 };
+
+export const fieldAddCards: MenuDashboardAddType[] = [
+  {
+    name: "organization_name",
+    label: "Organization Name",
+  },
+  {
+    name: "short_name",
+    label: "Organization Short Name",
+  },
+  {
+    name: "created_date",
+    label: "Organization Birth",
+  },
+];
+
+export const fieldTextareaAddCards: MenuDashboardAddType[] = [
+  {
+    name: "organization_background",
+    label: "Organization Background",
+  },
+  {
+    name: "organization_vision",
+    label: "Organization Vision",
+  },
+];
