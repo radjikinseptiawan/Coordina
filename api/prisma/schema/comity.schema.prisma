@@ -4,6 +4,7 @@ model Comity {
   comity_short_name          String
   comity_area_of_operational String
   comity_city_of_operational String
+  comity_icon                String
   comity_created_date        String
   comity_background          String
   urlLink                    String?                    @unique

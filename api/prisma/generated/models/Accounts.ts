@@ -32,7 +32,6 @@ export type AccountsMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   refresh_token: string | null
-  profile_image: string | null
 }
 
 export type AccountsMaxAggregateOutputType = {
@@ -43,7 +42,6 @@ export type AccountsMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   refresh_token: string | null
-  profile_image: string | null
 }
 
 export type AccountsCountAggregateOutputType = {
@@ -54,7 +52,6 @@ export type AccountsCountAggregateOutputType = {
   created_at: number
   updated_at: number
   refresh_token: number
-  profile_image: number
   _all: number
 }
 
@@ -67,7 +64,6 @@ export type AccountsMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   refresh_token?: true
-  profile_image?: true
 }
 
 export type AccountsMaxAggregateInputType = {
@@ -78,7 +74,6 @@ export type AccountsMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   refresh_token?: true
-  profile_image?: true
 }
 
 export type AccountsCountAggregateInputType = {
@@ -89,7 +84,6 @@ export type AccountsCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   refresh_token?: true
-  profile_image?: true
   _all?: true
 }
 
@@ -173,7 +167,6 @@ export type AccountsGroupByOutputType = {
   created_at: Date
   updated_at: Date
   refresh_token: string | null
-  profile_image: string | null
   _count: AccountsCountAggregateOutputType | null
   _min: AccountsMinAggregateOutputType | null
   _max: AccountsMaxAggregateOutputType | null
@@ -205,7 +198,6 @@ export type AccountsWhereInput = {
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   refresh_token?: Prisma.StringNullableFilter<"Accounts"> | string | null
-  profile_image?: Prisma.StringNullableFilter<"Accounts"> | string | null
   user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }
@@ -218,7 +210,6 @@ export type AccountsOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
-  profile_image?: Prisma.SortOrderInput | Prisma.SortOrder
   user_profile?: Prisma.User_ProfileOrderByWithRelationInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
 }
@@ -234,7 +225,6 @@ export type AccountsWhereUniqueInput = Prisma.AtLeast<{
   username?: Prisma.StringFilter<"Accounts"> | string
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
-  profile_image?: Prisma.StringNullableFilter<"Accounts"> | string | null
   user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }, "id" | "email" | "refresh_token">
@@ -247,7 +237,6 @@ export type AccountsOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
-  profile_image?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AccountsCountOrderByAggregateInput
   _max?: Prisma.AccountsMaxOrderByAggregateInput
   _min?: Prisma.AccountsMinOrderByAggregateInput
@@ -264,7 +253,6 @@ export type AccountsScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Accounts"> | Date | string
   refresh_token?: Prisma.StringNullableWithAggregatesFilter<"Accounts"> | string | null
-  profile_image?: Prisma.StringNullableWithAggregatesFilter<"Accounts"> | string | null
 }
 
 export type AccountsCreateInput = {
@@ -275,7 +263,6 @@ export type AccountsCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
@@ -288,7 +275,6 @@ export type AccountsUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
@@ -301,7 +287,6 @@ export type AccountsUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
@@ -314,7 +299,6 @@ export type AccountsUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
@@ -327,7 +311,6 @@ export type AccountsCreateManyInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
 }
 
 export type AccountsUpdateManyMutationInput = {
@@ -338,7 +321,6 @@ export type AccountsUpdateManyMutationInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AccountsUncheckedUpdateManyInput = {
@@ -349,7 +331,6 @@ export type AccountsUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AccountsCountOrderByAggregateInput = {
@@ -360,7 +341,6 @@ export type AccountsCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
-  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsMaxOrderByAggregateInput = {
@@ -371,7 +351,6 @@ export type AccountsMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
-  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsMinOrderByAggregateInput = {
@@ -382,7 +361,6 @@ export type AccountsMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrder
-  profile_image?: Prisma.SortOrder
 }
 
 export type AccountsScalarRelationFilter = {
@@ -438,7 +416,6 @@ export type AccountsCreateWithoutUser_profileInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
 
@@ -450,7 +427,6 @@ export type AccountsUncheckedCreateWithoutUser_profileInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
 
@@ -478,7 +454,6 @@ export type AccountsUpdateWithoutUser_profileInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
 
@@ -490,7 +465,6 @@ export type AccountsUncheckedUpdateWithoutUser_profileInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
 
@@ -502,7 +476,6 @@ export type AccountsCreateWithoutMember_profiles_comitiesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
 }
 
@@ -514,7 +487,6 @@ export type AccountsUncheckedCreateWithoutMember_profiles_comitiesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
-  profile_image?: string | null
   user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
 }
 
@@ -542,7 +514,6 @@ export type AccountsUpdateWithoutMember_profiles_comitiesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
 }
 
@@ -554,7 +525,6 @@ export type AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profile_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
 }
 
@@ -597,7 +567,6 @@ export type AccountsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
-  profile_image?: boolean
   user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
   member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
   _count?: boolean | Prisma.AccountsCountOutputTypeDefaultArgs<ExtArgs>
@@ -611,7 +580,6 @@ export type AccountsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
-  profile_image?: boolean
 }, ExtArgs["result"]["accounts"]>
 
 export type AccountsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -622,7 +590,6 @@ export type AccountsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
-  profile_image?: boolean
 }, ExtArgs["result"]["accounts"]>
 
 export type AccountsSelectScalar = {
@@ -633,10 +600,9 @@ export type AccountsSelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
-  profile_image?: boolean
 }
 
-export type AccountsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "username" | "created_at" | "updated_at" | "refresh_token" | "profile_image", ExtArgs["result"]["accounts"]>
+export type AccountsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "username" | "created_at" | "updated_at" | "refresh_token", ExtArgs["result"]["accounts"]>
 export type AccountsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
   member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
@@ -659,7 +625,6 @@ export type $AccountsPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     created_at: Date
     updated_at: Date
     refresh_token: string | null
-    profile_image: string | null
   }, ExtArgs["result"]["accounts"]>
   composites: {}
 }
@@ -1092,7 +1057,6 @@ export interface AccountsFieldRefs {
   readonly created_at: Prisma.FieldRef<"Accounts", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Accounts", 'DateTime'>
   readonly refresh_token: Prisma.FieldRef<"Accounts", 'String'>
-  readonly profile_image: Prisma.FieldRef<"Accounts", 'String'>
 }
     
 

@@ -10,7 +10,7 @@ export async function GetComityHelper(tcx : PrismaService, url){
             })
     
     
-            const vision = await tcx.comity_Vision.findMany({
+            const vision = await tcx.comity_Vision.findFirst({
                 where: {
                     comity_id: getComity?.id
                 }

@@ -20,6 +20,7 @@ export async function createComityHandler(tcx: PrismaService, body, userId: stri
         const data = await tcx.comity.create({
             data: {
                 comity_name: body.comity_name,
+                comity_icon: body.comity_icon,
                 comity_short_name: body.comity_short_name,
                 comity_area_of_operational: body.comity_area_of_operational,
                 comity_city_of_operational: body.comity_city_of_operational,

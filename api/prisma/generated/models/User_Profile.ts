@@ -31,6 +31,7 @@ export type User_ProfileMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   fullname: string | null
+  number_phone: string | null
 }
 
 export type User_ProfileMaxAggregateOutputType = {
@@ -40,6 +41,7 @@ export type User_ProfileMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   fullname: string | null
+  number_phone: string | null
 }
 
 export type User_ProfileCountAggregateOutputType = {
@@ -49,6 +51,7 @@ export type User_ProfileCountAggregateOutputType = {
   created_at: number
   updated_at: number
   fullname: number
+  number_phone: number
   _all: number
 }
 
@@ -60,6 +63,7 @@ export type User_ProfileMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   fullname?: true
+  number_phone?: true
 }
 
 export type User_ProfileMaxAggregateInputType = {
@@ -69,6 +73,7 @@ export type User_ProfileMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   fullname?: true
+  number_phone?: true
 }
 
 export type User_ProfileCountAggregateInputType = {
@@ -78,6 +83,7 @@ export type User_ProfileCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   fullname?: true
+  number_phone?: true
   _all?: true
 }
 
@@ -160,6 +166,7 @@ export type User_ProfileGroupByOutputType = {
   created_at: Date
   updated_at: Date
   fullname: string | null
+  number_phone: string | null
   _count: User_ProfileCountAggregateOutputType | null
   _min: User_ProfileMinAggregateOutputType | null
   _max: User_ProfileMaxAggregateOutputType | null
@@ -190,6 +197,7 @@ export type User_ProfileWhereInput = {
   created_at?: Prisma.DateTimeFilter<"User_Profile"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User_Profile"> | Date | string
   fullname?: Prisma.StringNullableFilter<"User_Profile"> | string | null
+  number_phone?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   agenda?: Prisma.AgendaListRelationFilter
   attendances?: Prisma.AttendanceListRelationFilter
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
@@ -203,6 +211,7 @@ export type User_ProfileOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   fullname?: Prisma.SortOrderInput | Prisma.SortOrder
+  number_phone?: Prisma.SortOrderInput | Prisma.SortOrder
   agenda?: Prisma.AgendaOrderByRelationAggregateInput
   attendances?: Prisma.AttendanceOrderByRelationAggregateInput
   account?: Prisma.AccountsOrderByWithRelationInput
@@ -219,6 +228,7 @@ export type User_ProfileWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"User_Profile"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"User_Profile"> | Date | string
   fullname?: Prisma.StringNullableFilter<"User_Profile"> | string | null
+  number_phone?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   agenda?: Prisma.AgendaListRelationFilter
   attendances?: Prisma.AttendanceListRelationFilter
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
@@ -232,6 +242,7 @@ export type User_ProfileOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   fullname?: Prisma.SortOrderInput | Prisma.SortOrder
+  number_phone?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.User_ProfileCountOrderByAggregateInput
   _max?: Prisma.User_ProfileMaxOrderByAggregateInput
   _min?: Prisma.User_ProfileMinOrderByAggregateInput
@@ -247,6 +258,7 @@ export type User_ProfileScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"User_Profile"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"User_Profile"> | Date | string
   fullname?: Prisma.StringNullableWithAggregatesFilter<"User_Profile"> | string | null
+  number_phone?: Prisma.StringNullableWithAggregatesFilter<"User_Profile"> | string | null
 }
 
 export type User_ProfileCreateInput = {
@@ -255,6 +267,7 @@ export type User_ProfileCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
@@ -268,6 +281,7 @@ export type User_ProfileUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
@@ -279,6 +293,7 @@ export type User_ProfileUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
@@ -292,6 +307,7 @@ export type User_ProfileUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
@@ -304,6 +320,7 @@ export type User_ProfileCreateManyInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
 }
 
 export type User_ProfileUpdateManyMutationInput = {
@@ -312,6 +329,7 @@ export type User_ProfileUpdateManyMutationInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type User_ProfileUncheckedUpdateManyInput = {
@@ -321,6 +339,7 @@ export type User_ProfileUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type User_ProfileNullableScalarRelationFilter = {
@@ -335,6 +354,7 @@ export type User_ProfileCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   fullname?: Prisma.SortOrder
+  number_phone?: Prisma.SortOrder
 }
 
 export type User_ProfileMaxOrderByAggregateInput = {
@@ -344,6 +364,7 @@ export type User_ProfileMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   fullname?: Prisma.SortOrder
+  number_phone?: Prisma.SortOrder
 }
 
 export type User_ProfileMinOrderByAggregateInput = {
@@ -353,6 +374,7 @@ export type User_ProfileMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   fullname?: Prisma.SortOrder
+  number_phone?: Prisma.SortOrder
 }
 
 export type User_ProfileScalarRelationFilter = {
@@ -440,6 +462,7 @@ export type User_ProfileCreateWithoutAccountInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
@@ -451,6 +474,7 @@ export type User_ProfileUncheckedCreateWithoutAccountInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
@@ -478,6 +502,7 @@ export type User_ProfileUpdateWithoutAccountInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
@@ -489,6 +514,7 @@ export type User_ProfileUncheckedUpdateWithoutAccountInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
@@ -500,6 +526,7 @@ export type User_ProfileCreateWithoutAgendaInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
@@ -512,6 +539,7 @@ export type User_ProfileUncheckedCreateWithoutAgendaInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
 }
@@ -538,6 +566,7 @@ export type User_ProfileUpdateWithoutAgendaInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
@@ -550,6 +579,7 @@ export type User_ProfileUncheckedUpdateWithoutAgendaInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
 }
@@ -560,6 +590,7 @@ export type User_ProfileCreateWithoutAttendancesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
@@ -572,6 +603,7 @@ export type User_ProfileUncheckedCreateWithoutAttendancesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
 }
@@ -598,6 +630,7 @@ export type User_ProfileUpdateWithoutAttendancesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
@@ -610,6 +643,7 @@ export type User_ProfileUncheckedUpdateWithoutAttendancesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
 }
@@ -620,6 +654,7 @@ export type User_ProfileCreateWithoutMember_profile_comityInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
@@ -632,6 +667,7 @@ export type User_ProfileUncheckedCreateWithoutMember_profile_comityInput = {
   created_at?: Date | string
   updated_at?: Date | string
   fullname?: string | null
+  number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
 }
@@ -658,6 +694,7 @@ export type User_ProfileUpdateWithoutMember_profile_comityInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
@@ -670,6 +707,7 @@ export type User_ProfileUncheckedUpdateWithoutMember_profile_comityInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -730,6 +768,7 @@ export type User_ProfileSelect<ExtArgs extends runtime.Types.Extensions.Internal
   created_at?: boolean
   updated_at?: boolean
   fullname?: boolean
+  number_phone?: boolean
   agenda?: boolean | Prisma.User_Profile$agendaArgs<ExtArgs>
   attendances?: boolean | Prisma.User_Profile$attendancesArgs<ExtArgs>
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
@@ -744,6 +783,7 @@ export type User_ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   created_at?: boolean
   updated_at?: boolean
   fullname?: boolean
+  number_phone?: boolean
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user_Profile"]>
 
@@ -754,6 +794,7 @@ export type User_ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   created_at?: boolean
   updated_at?: boolean
   fullname?: boolean
+  number_phone?: boolean
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user_Profile"]>
 
@@ -764,9 +805,10 @@ export type User_ProfileSelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   fullname?: boolean
+  number_phone?: boolean
 }
 
-export type User_ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "account_id" | "image" | "created_at" | "updated_at" | "fullname", ExtArgs["result"]["user_Profile"]>
+export type User_ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "account_id" | "image" | "created_at" | "updated_at" | "fullname" | "number_phone", ExtArgs["result"]["user_Profile"]>
 export type User_ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.User_Profile$agendaArgs<ExtArgs>
   attendances?: boolean | Prisma.User_Profile$attendancesArgs<ExtArgs>
@@ -796,6 +838,7 @@ export type $User_ProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
     created_at: Date
     updated_at: Date
     fullname: string | null
+    number_phone: string | null
   }, ExtArgs["result"]["user_Profile"]>
   composites: {}
 }
@@ -1229,6 +1272,7 @@ export interface User_ProfileFieldRefs {
   readonly created_at: Prisma.FieldRef<"User_Profile", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"User_Profile", 'DateTime'>
   readonly fullname: Prisma.FieldRef<"User_Profile", 'String'>
+  readonly number_phone: Prisma.FieldRef<"User_Profile", 'String'>
 }
     
 

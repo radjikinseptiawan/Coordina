@@ -1124,8 +1124,7 @@ export const AccountsScalarFieldEnum = {
   username: 'username',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  refresh_token: 'refresh_token',
-  profile_image: 'profile_image'
+  refresh_token: 'refresh_token'
 } as const
 
 export type AccountsScalarFieldEnum = (typeof AccountsScalarFieldEnum)[keyof typeof AccountsScalarFieldEnum]
@@ -1150,7 +1149,8 @@ export const User_ProfileScalarFieldEnum = {
   image: 'image',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  fullname: 'fullname'
+  fullname: 'fullname',
+  number_phone: 'number_phone'
 } as const
 
 export type User_ProfileScalarFieldEnum = (typeof User_ProfileScalarFieldEnum)[keyof typeof User_ProfileScalarFieldEnum]
@@ -1196,6 +1196,7 @@ export const ComityScalarFieldEnum = {
   comity_short_name: 'comity_short_name',
   comity_area_of_operational: 'comity_area_of_operational',
   comity_city_of_operational: 'comity_city_of_operational',
+  comity_icon: 'comity_icon',
   comity_created_date: 'comity_created_date',
   comity_background: 'comity_background',
   urlLink: 'urlLink',

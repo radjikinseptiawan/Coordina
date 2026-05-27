@@ -8,7 +8,7 @@ export async function RegisterAccountsHandler(
     , body: SignUpDto) {
     try {
         const hashPassword = await bcrypt.hash(body.password, 10)
-
+        console.log(body)
         const data = await tcx.accounts.create({
             data: {
                 email: body.email,
@@ -35,15 +35,15 @@ export async function RegisterAccountsHandler(
 
         await TransferEmailHandler(tcx, body.email, "Welcoming")
 
-        return {
+        return ({
             data,
-            message: "Success Created Accounts",
-            code: HttpStatus.OK
-        };
+            message: "Success Created Accounts", 
+        });
     } catch (e : any) {
+        console.log(e)
         throw new HttpException({
             message: "Internal Server Error",
-            detail: e.message,
+            detail: e,
         }, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }

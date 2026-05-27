@@ -6,7 +6,6 @@ model Accounts {
   created_at               DateTime                   @default(now())
   updated_at               DateTime                   @updatedAt
   refresh_token            String?                    @unique
-  profile_image            String?
   user_profile             User_Profile?
   member_profiles_comities Member_Profiles_Comities[]
 
@@ -32,6 +31,7 @@ model User_Profile {
   created_at            DateTime                   @default(now())
   updated_at            DateTime                   @updatedAt
   fullname              String?
+  number_phone          String?
   agenda                Agenda[]
   attendances           Attendance[]
   account               Accounts                   @relation(fields: [account_id], references: [id])

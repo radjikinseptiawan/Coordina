@@ -12,22 +12,20 @@ export async function userSignInHandler(body: SignInDto, tcx: PrismaService, jwt
         })
 
         if (!user?.email) {
-            return {
+            throw new HttpException({
                 message: "User not found",
-                status: HttpStatus.NOT_FOUND,
-            }
+            }, HttpStatus.BAD_REQUEST )
         }
 
         const verifyPassword = await bcrypt.compare(body.password, user.password)
 
         if (!verifyPassword) {
-            return {
+            throw new HttpException({
                 message: "Wrong password!",
-                status: HttpStatus.BAD_REQUEST,
-            }
+            }, HttpStatus.BAD_REQUEST)
         }
 
-        const payload = { id: user.id, username: user.username, email: user.email, profileImage: user.profile_image }
+        const payload = { id: user.id, username: user.username, email: user.email }
 
         const accessToken = jwt.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: "24h" })
         const refreshToken = jwt.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: "7d" })
