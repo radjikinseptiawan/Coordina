@@ -1,10 +1,13 @@
 import { getProfile } from "@/service/profile.service";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useSearchParams } from "next/navigation";
 import { toast as soonerToast } from "sonner";
 export const getUserInformation = async ({
   toast,
+  slugs,
   router,
 }: {
+  slugs: string | null;
   toast: typeof soonerToast;
   router: AppRouterInstance;
 }) => {
@@ -18,8 +21,9 @@ export const getUserInformation = async ({
       router.replace("/profile");
       return;
     }
+
     toast.success(`Success validating resources!, redirecting to system`);
-    router.push("/");
+    router.push(`${slugs}/organisasi`);
   } catch (e) {
     console.error(e);
   }

@@ -62,8 +62,7 @@ export default function MenuProfileForms() {
           <img
             onClick={() => imageClickAction({ state: imagesReference })}
             src={preview}
-            width={230}
-            className="my-3 mx-4 rounded-full cursor-pointer object-cover aspect-square"
+            className="my-3 w-36 w-0 md:w-54 rounded-full cursor-pointer object-cover aspect-square"
             alt="Avatar Profile"
           />
           <input

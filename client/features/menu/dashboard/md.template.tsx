@@ -17,7 +17,7 @@ export default function MenuDashboardTemplate() {
         <MemoComityProvider>
           <div className="mx-4">
             <MenuDashboardControllers />
-            <div className="grid justify-items-center grid-cols-1 gap-2 md:gap-2 md:grid-cols-3">
+            <div className="grid justify-items-center grid-cols-1 gap-2 md:gap-x-1 md:gap-y-1 md:grid-cols-2 lg:grid-cols-3">
               <MenuDashboardCards />
             </div>
           </div>

@@ -36,9 +36,9 @@ export default function TopNavigation({
     <>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white z-40  fixed top-0 shadow px-12 py-1"
+        className="w-screen md:w-3xl lg:w-full bg-white z-40  fixed top-0 shadow px-12 py-1"
       >
-        <div className="flex cursor-pointer items-center gap-2 justify-items-end w-full flex-row-reverse">
+        <div className="flex cursor-pointer items-center gap-2 justify-items-end w-full lg:w-full flex-row-reverse">
           <Avatar>
             <AvatarImage
               src={
@@ -63,7 +63,7 @@ export default function TopNavigation({
 
 const MenuDropdown = () => {
   const pathname = usePathname();
-  const route = getRoute();
+  const route = getRoute(pathname);
   return (
     <motion.div
       variants={DROPDOWN_VARIANTS}

@@ -22,7 +22,7 @@ export default function MenuDashboardShowDialogs() {
   const isShow = useSearchParams().get("show");
   const { setIsOpen } = useOpenContext();
   const { comityLoad } = useMemoComity();
-
+  const slugs = useSearchParams().get("comity");
   return (
     <>
       <Dialog
@@ -92,7 +92,9 @@ export default function MenuDashboardShowDialogs() {
             <DialogClose onClick={() => router.replace("/dashboard")}>
               Close
             </DialogClose>
-            <Button onClick={() => getUserInformation({ toast, router })}>
+            <Button
+              onClick={() => getUserInformation({ toast, router, slugs })}
+            >
               Continue
             </Button>
           </div>

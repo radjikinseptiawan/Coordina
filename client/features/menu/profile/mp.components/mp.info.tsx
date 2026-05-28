@@ -23,7 +23,7 @@ export default function MenuProfileInfoComponents() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full flex flex-col md:flex-row justify-center items-center">
       {/* Ini photo profile */}
       <div className="my-6 mx-8">
         <img
@@ -34,7 +34,7 @@ export default function MenuProfileInfoComponents() {
         />
       </div>
 
-      <div className="my-6 mx-8 grid grid-cols-2 gap-y-3 gap-x-3">
+      <div className="my-6 mx-8 grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-3">
         <div className="w-[300px]">
           <h4 className="font-semibold"> Username </h4>
           <p className="my-1">{data?.account.username ?? "-"}</p>

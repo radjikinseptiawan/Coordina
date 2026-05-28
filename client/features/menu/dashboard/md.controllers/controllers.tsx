@@ -7,7 +7,7 @@ import { useOpenContext } from "../md.context";
 export function MenuDashboardControllers() {
   const { setIsOpen } = useOpenContext();
   return (
-    <div className="flex px-8 justify-between py-1 border-b-2 flex-col md:flex-row">
+    <div className="flex px-8 justify-between w-full  md:w-full py-1 border-b-2 flex-col md:flex-row">
       <div>
         <h1 className="text-[18px] md:text-3xl font-semibold">Dashboard</h1>
         <p className="text-[14px] md:text-md mb-4 text-muted-foreground">

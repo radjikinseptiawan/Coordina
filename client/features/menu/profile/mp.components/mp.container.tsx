@@ -9,7 +9,9 @@ export default function MenuProfileContainerComponents({
 }) {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-full flex justify-center items-center">{children}</div>
+      <div className="w-full flex flex-col md:flex-row justify-center items-center">
+        {children}
+      </div>
       <Button>
         <Save /> Save
       </Button>

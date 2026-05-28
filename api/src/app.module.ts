@@ -7,12 +7,21 @@ import { ConfigModule } from '@nestjs/config';
 import { ProfileModule } from './apps/profile/profile.module';
 import { ComityModule } from './apps/comity/comity.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { WhatsappModule } from './apps/whatsapp/whatsapp.module';
 
 @Module({
-  imports: [AccountModule, PrismaModule, ConfigModule.forRoot({
-    isGlobal: true,
-  }), ProfileModule, ComityModule, MulterModule],
+  imports: [
+    AccountModule,
+    PrismaModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    ProfileModule,
+    ComityModule,
+    MulterModule,
+    WhatsappModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

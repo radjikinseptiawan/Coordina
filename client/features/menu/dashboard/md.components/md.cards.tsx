@@ -61,7 +61,7 @@ export function MenuDashboardCards() {
       {organizations && isLoading === false ? (
         organizations.length > 0 ? (
           organizations.map((item, index) => (
-            <Card key={index} className="w-80 my-4 md:w-80">
+            <Card key={index} className="w-full my-4 md:w-80">
               {/* Header */}
               <div className="flex">
                 <Avatar className="rounded mx-4">

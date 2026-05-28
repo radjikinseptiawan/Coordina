@@ -14,7 +14,7 @@ export function MenuProfileInputComponents({
         <Label>{label}</Label>
       </td>
       <td>
-        <Input {...register(name)} className="w-[300px] my-1" />
+        <Input {...register(name)} className=" w-54 md:w-[300px] my-1" />
         {error && (
           <p className="text-red-500 text-sm pl-2 mt-0.5">{error.message}</p>
         )}
