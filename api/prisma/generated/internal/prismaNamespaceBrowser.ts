@@ -125,9 +125,13 @@ export const AgendaScalarFieldEnum = {
   status_agenda: 'status_agenda',
   is_online: 'is_online',
   lokasi: 'lokasi',
+  lokasi_link: 'lokasi_link',
   meetingLink: 'meetingLink',
+  room_pass: 'room_pass',
   note: 'note',
   lampiran: 'lampiran',
+  start_at: 'start_at',
+  end_at: 'end_at',
   created_by_id: 'created_by_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -142,9 +146,6 @@ export const AttendanceScalarFieldEnum = {
   user_id: 'user_id',
   status: 'status',
   checkin_at: 'checkin_at',
-  note: 'note',
-  opened_at: 'opened_at',
-  closed_at: 'closed_at',
   created_at: 'created_at'
 } as const
 

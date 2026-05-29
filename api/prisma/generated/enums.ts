@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const isOnline = {
+  offline: 'offline',
+  online: 'online'
+} as const
+
+export type isOnline = (typeof isOnline)[keyof typeof isOnline]
+
+
 export const AgendaStatus = {
   COMING_SOON: 'COMING_SOON',
   ON_GOING: 'ON_GOING',

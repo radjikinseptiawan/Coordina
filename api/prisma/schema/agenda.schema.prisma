@@ -4,11 +4,15 @@ model Agenda {
   agenda_name         String
   tanggal_agenda      DateTime
   status_agenda       AgendaStatus @default(COMING_SOON)
-  is_online           Boolean      @default(true)
+  is_online           isOnline     @default(offline)
   lokasi              String?
+  lokasi_link         String?
   meetingLink         String?
+  room_pass           String?
   note                String?
   lampiran            String?
+  start_at            String
+  end_at              String
   created_by_id       String
   created_at          DateTime     @default(now())
   updated_at          DateTime     @updatedAt
@@ -18,19 +22,21 @@ model Agenda {
 }
 
 model Attendance {
-  id         String           @id @default(uuid())
+  id         String                   @id @default(uuid())
   agenda_id  String
   user_id    String
-  status     AttendanceStatus @default(ABSENT)
+  status     AttendanceStatus         @default(ABSENT)
   checkin_at DateTime?
-  note       String?
-  opened_at  DateTime?
-  closed_at  DateTime?
-  created_at DateTime         @default(now())
-  agenda     Agenda           @relation(fields: [agenda_id], references: [id])
-  user       User_Profile     @relation(fields: [user_id], references: [id])
+  created_at DateTime                 @default(now())
+  agenda     Agenda                   @relation(fields: [agenda_id], references: [id])
+  user       Member_Profiles_Comities @relation(fields: [user_id], references: [id])
 
   @@unique([agenda_id, user_id])
+}
+
+enum isOnline {
+  offline
+  online
 }
 
 enum AgendaStatus {

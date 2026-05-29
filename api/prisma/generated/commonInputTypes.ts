@@ -182,6 +182,13 @@ export type EnumAgendaStatusFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel> | $Enums.AgendaStatus
 }
 
+export type EnumisOnlineFilter<$PrismaModel = never> = {
+  equals?: $Enums.isOnline | Prisma.EnumisOnlineFieldRefInput<$PrismaModel>
+  in?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  notIn?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumisOnlineFilter<$PrismaModel> | $Enums.isOnline
+}
+
 export type EnumAgendaStatusWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AgendaStatus | Prisma.EnumAgendaStatusFieldRefInput<$PrismaModel>
   in?: $Enums.AgendaStatus[] | Prisma.ListEnumAgendaStatusFieldRefInput<$PrismaModel>
@@ -190,6 +197,16 @@ export type EnumAgendaStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel>
+}
+
+export type EnumisOnlineWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.isOnline | Prisma.EnumisOnlineFieldRefInput<$PrismaModel>
+  in?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  notIn?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumisOnlineWithAggregatesFilter<$PrismaModel> | $Enums.isOnline
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumisOnlineFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumisOnlineFilter<$PrismaModel>
 }
 
 export type EnumAttendanceStatusFilter<$PrismaModel = never> = {
@@ -390,6 +407,13 @@ export type NestedEnumAgendaStatusFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel> | $Enums.AgendaStatus
 }
 
+export type NestedEnumisOnlineFilter<$PrismaModel = never> = {
+  equals?: $Enums.isOnline | Prisma.EnumisOnlineFieldRefInput<$PrismaModel>
+  in?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  notIn?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumisOnlineFilter<$PrismaModel> | $Enums.isOnline
+}
+
 export type NestedEnumAgendaStatusWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AgendaStatus | Prisma.EnumAgendaStatusFieldRefInput<$PrismaModel>
   in?: $Enums.AgendaStatus[] | Prisma.ListEnumAgendaStatusFieldRefInput<$PrismaModel>
@@ -398,6 +422,16 @@ export type NestedEnumAgendaStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAgendaStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumisOnlineWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.isOnline | Prisma.EnumisOnlineFieldRefInput<$PrismaModel>
+  in?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  notIn?: $Enums.isOnline[] | Prisma.ListEnumisOnlineFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumisOnlineWithAggregatesFilter<$PrismaModel> | $Enums.isOnline
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumisOnlineFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumisOnlineFilter<$PrismaModel>
 }
 
 export type NestedEnumAttendanceStatusFilter<$PrismaModel = never> = {

@@ -199,7 +199,6 @@ export type User_ProfileWhereInput = {
   fullname?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   number_phone?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   agenda?: Prisma.AgendaListRelationFilter
-  attendances?: Prisma.AttendanceListRelationFilter
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
   member_profile_comity?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }
@@ -213,7 +212,6 @@ export type User_ProfileOrderByWithRelationInput = {
   fullname?: Prisma.SortOrderInput | Prisma.SortOrder
   number_phone?: Prisma.SortOrderInput | Prisma.SortOrder
   agenda?: Prisma.AgendaOrderByRelationAggregateInput
-  attendances?: Prisma.AttendanceOrderByRelationAggregateInput
   account?: Prisma.AccountsOrderByWithRelationInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
 }
@@ -230,7 +228,6 @@ export type User_ProfileWhereUniqueInput = Prisma.AtLeast<{
   fullname?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   number_phone?: Prisma.StringNullableFilter<"User_Profile"> | string | null
   agenda?: Prisma.AgendaListRelationFilter
-  attendances?: Prisma.AttendanceListRelationFilter
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
   member_profile_comity?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }, "id" | "account_id">
@@ -269,7 +266,6 @@ export type User_ProfileCreateInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
 }
@@ -283,7 +279,6 @@ export type User_ProfileUncheckedCreateInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
 }
 
@@ -295,7 +290,6 @@ export type User_ProfileUpdateInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
 }
@@ -309,7 +303,6 @@ export type User_ProfileUncheckedUpdateInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
 }
 
@@ -428,20 +421,6 @@ export type User_ProfileUpdateOneRequiredWithoutAgendaNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.User_ProfileUpdateToOneWithWhereWithoutAgendaInput, Prisma.User_ProfileUpdateWithoutAgendaInput>, Prisma.User_ProfileUncheckedUpdateWithoutAgendaInput>
 }
 
-export type User_ProfileCreateNestedOneWithoutAttendancesInput = {
-  create?: Prisma.XOR<Prisma.User_ProfileCreateWithoutAttendancesInput, Prisma.User_ProfileUncheckedCreateWithoutAttendancesInput>
-  connectOrCreate?: Prisma.User_ProfileCreateOrConnectWithoutAttendancesInput
-  connect?: Prisma.User_ProfileWhereUniqueInput
-}
-
-export type User_ProfileUpdateOneRequiredWithoutAttendancesNestedInput = {
-  create?: Prisma.XOR<Prisma.User_ProfileCreateWithoutAttendancesInput, Prisma.User_ProfileUncheckedCreateWithoutAttendancesInput>
-  connectOrCreate?: Prisma.User_ProfileCreateOrConnectWithoutAttendancesInput
-  upsert?: Prisma.User_ProfileUpsertWithoutAttendancesInput
-  connect?: Prisma.User_ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.User_ProfileUpdateToOneWithWhereWithoutAttendancesInput, Prisma.User_ProfileUpdateWithoutAttendancesInput>, Prisma.User_ProfileUncheckedUpdateWithoutAttendancesInput>
-}
-
 export type User_ProfileCreateNestedOneWithoutMember_profile_comityInput = {
   create?: Prisma.XOR<Prisma.User_ProfileCreateWithoutMember_profile_comityInput, Prisma.User_ProfileUncheckedCreateWithoutMember_profile_comityInput>
   connectOrCreate?: Prisma.User_ProfileCreateOrConnectWithoutMember_profile_comityInput
@@ -464,7 +443,6 @@ export type User_ProfileCreateWithoutAccountInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
 }
 
@@ -476,7 +454,6 @@ export type User_ProfileUncheckedCreateWithoutAccountInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
 }
 
@@ -504,7 +481,6 @@ export type User_ProfileUpdateWithoutAccountInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
 }
 
@@ -516,7 +492,6 @@ export type User_ProfileUncheckedUpdateWithoutAccountInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
 }
 
@@ -527,7 +502,6 @@ export type User_ProfileCreateWithoutAgendaInput = {
   updated_at?: Date | string
   fullname?: string | null
   number_phone?: string | null
-  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
 }
@@ -540,7 +514,6 @@ export type User_ProfileUncheckedCreateWithoutAgendaInput = {
   updated_at?: Date | string
   fullname?: string | null
   number_phone?: string | null
-  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
 }
 
@@ -567,7 +540,6 @@ export type User_ProfileUpdateWithoutAgendaInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
 }
@@ -580,71 +552,6 @@ export type User_ProfileUncheckedUpdateWithoutAgendaInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
-}
-
-export type User_ProfileCreateWithoutAttendancesInput = {
-  id?: string
-  image?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-  fullname?: string | null
-  number_phone?: string | null
-  agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
-  account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
-  member_profile_comity?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutMemberInput
-}
-
-export type User_ProfileUncheckedCreateWithoutAttendancesInput = {
-  id?: string
-  account_id: string
-  image?: string | null
-  created_at?: Date | string
-  updated_at?: Date | string
-  fullname?: string | null
-  number_phone?: string | null
-  agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
-  member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutMemberInput
-}
-
-export type User_ProfileCreateOrConnectWithoutAttendancesInput = {
-  where: Prisma.User_ProfileWhereUniqueInput
-  create: Prisma.XOR<Prisma.User_ProfileCreateWithoutAttendancesInput, Prisma.User_ProfileUncheckedCreateWithoutAttendancesInput>
-}
-
-export type User_ProfileUpsertWithoutAttendancesInput = {
-  update: Prisma.XOR<Prisma.User_ProfileUpdateWithoutAttendancesInput, Prisma.User_ProfileUncheckedUpdateWithoutAttendancesInput>
-  create: Prisma.XOR<Prisma.User_ProfileCreateWithoutAttendancesInput, Prisma.User_ProfileUncheckedCreateWithoutAttendancesInput>
-  where?: Prisma.User_ProfileWhereInput
-}
-
-export type User_ProfileUpdateToOneWithWhereWithoutAttendancesInput = {
-  where?: Prisma.User_ProfileWhereInput
-  data: Prisma.XOR<Prisma.User_ProfileUpdateWithoutAttendancesInput, Prisma.User_ProfileUncheckedUpdateWithoutAttendancesInput>
-}
-
-export type User_ProfileUpdateWithoutAttendancesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
-  account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
-  member_profile_comity?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutMemberNestedInput
-}
-
-export type User_ProfileUncheckedUpdateWithoutAttendancesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
   member_profile_comity?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberNestedInput
 }
 
@@ -656,7 +563,6 @@ export type User_ProfileCreateWithoutMember_profile_comityInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutUser_profileInput
 }
 
@@ -669,7 +575,6 @@ export type User_ProfileUncheckedCreateWithoutMember_profile_comityInput = {
   fullname?: string | null
   number_phone?: string | null
   agenda?: Prisma.AgendaUncheckedCreateNestedManyWithoutUser_member_profileInput
-  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type User_ProfileCreateOrConnectWithoutMember_profile_comityInput = {
@@ -696,7 +601,6 @@ export type User_ProfileUpdateWithoutMember_profile_comityInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutUser_profileNestedInput
 }
 
@@ -709,7 +613,6 @@ export type User_ProfileUncheckedUpdateWithoutMember_profile_comityInput = {
   fullname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda?: Prisma.AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput
-  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -719,13 +622,11 @@ export type User_ProfileUncheckedUpdateWithoutMember_profile_comityInput = {
 
 export type User_ProfileCountOutputType = {
   agenda: number
-  attendances: number
   member_profile_comity: number
 }
 
 export type User_ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | User_ProfileCountOutputTypeCountAgendaArgs
-  attendances?: boolean | User_ProfileCountOutputTypeCountAttendancesArgs
   member_profile_comity?: boolean | User_ProfileCountOutputTypeCountMember_profile_comityArgs
 }
 
@@ -749,13 +650,6 @@ export type User_ProfileCountOutputTypeCountAgendaArgs<ExtArgs extends runtime.T
 /**
  * User_ProfileCountOutputType without action
  */
-export type User_ProfileCountOutputTypeCountAttendancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AttendanceWhereInput
-}
-
-/**
- * User_ProfileCountOutputType without action
- */
 export type User_ProfileCountOutputTypeCountMember_profile_comityArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.Member_Profiles_ComitiesWhereInput
 }
@@ -770,7 +664,6 @@ export type User_ProfileSelect<ExtArgs extends runtime.Types.Extensions.Internal
   fullname?: boolean
   number_phone?: boolean
   agenda?: boolean | Prisma.User_Profile$agendaArgs<ExtArgs>
-  attendances?: boolean | Prisma.User_Profile$attendancesArgs<ExtArgs>
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   member_profile_comity?: boolean | Prisma.User_Profile$member_profile_comityArgs<ExtArgs>
   _count?: boolean | Prisma.User_ProfileCountOutputTypeDefaultArgs<ExtArgs>
@@ -811,7 +704,6 @@ export type User_ProfileSelectScalar = {
 export type User_ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "account_id" | "image" | "created_at" | "updated_at" | "fullname" | "number_phone", ExtArgs["result"]["user_Profile"]>
 export type User_ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.User_Profile$agendaArgs<ExtArgs>
-  attendances?: boolean | Prisma.User_Profile$attendancesArgs<ExtArgs>
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   member_profile_comity?: boolean | Prisma.User_Profile$member_profile_comityArgs<ExtArgs>
   _count?: boolean | Prisma.User_ProfileCountOutputTypeDefaultArgs<ExtArgs>
@@ -827,7 +719,6 @@ export type $User_ProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
   name: "User_Profile"
   objects: {
     agenda: Prisma.$AgendaPayload<ExtArgs>[]
-    attendances: Prisma.$AttendancePayload<ExtArgs>[]
     account: Prisma.$AccountsPayload<ExtArgs>
     member_profile_comity: Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>[]
   }
@@ -1234,7 +1125,6 @@ readonly fields: User_ProfileFieldRefs;
 export interface Prisma__User_ProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   agenda<T extends Prisma.User_Profile$agendaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User_Profile$agendaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AgendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  attendances<T extends Prisma.User_Profile$attendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User_Profile$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   account<T extends Prisma.AccountsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AccountsDefaultArgs<ExtArgs>>): Prisma.Prisma__AccountsClient<runtime.Types.Result.GetResult<Prisma.$AccountsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   member_profile_comity<T extends Prisma.User_Profile$member_profile_comityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User_Profile$member_profile_comityArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1695,30 +1585,6 @@ export type User_Profile$agendaArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.AgendaScalarFieldEnum | Prisma.AgendaScalarFieldEnum[]
-}
-
-/**
- * User_Profile.attendances
- */
-export type User_Profile$attendancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Attendance
-   */
-  select?: Prisma.AttendanceSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Attendance
-   */
-  omit?: Prisma.AttendanceOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AttendanceInclude<ExtArgs> | null
-  where?: Prisma.AttendanceWhereInput
-  orderBy?: Prisma.AttendanceOrderByWithRelationInput | Prisma.AttendanceOrderByWithRelationInput[]
-  cursor?: Prisma.AttendanceWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AttendanceScalarFieldEnum | Prisma.AttendanceScalarFieldEnum[]
 }
 
 /**

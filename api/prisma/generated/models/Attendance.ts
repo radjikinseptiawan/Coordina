@@ -30,9 +30,6 @@ export type AttendanceMinAggregateOutputType = {
   user_id: string | null
   status: $Enums.AttendanceStatus | null
   checkin_at: Date | null
-  note: string | null
-  opened_at: Date | null
-  closed_at: Date | null
   created_at: Date | null
 }
 
@@ -42,9 +39,6 @@ export type AttendanceMaxAggregateOutputType = {
   user_id: string | null
   status: $Enums.AttendanceStatus | null
   checkin_at: Date | null
-  note: string | null
-  opened_at: Date | null
-  closed_at: Date | null
   created_at: Date | null
 }
 
@@ -54,9 +48,6 @@ export type AttendanceCountAggregateOutputType = {
   user_id: number
   status: number
   checkin_at: number
-  note: number
-  opened_at: number
-  closed_at: number
   created_at: number
   _all: number
 }
@@ -68,9 +59,6 @@ export type AttendanceMinAggregateInputType = {
   user_id?: true
   status?: true
   checkin_at?: true
-  note?: true
-  opened_at?: true
-  closed_at?: true
   created_at?: true
 }
 
@@ -80,9 +68,6 @@ export type AttendanceMaxAggregateInputType = {
   user_id?: true
   status?: true
   checkin_at?: true
-  note?: true
-  opened_at?: true
-  closed_at?: true
   created_at?: true
 }
 
@@ -92,9 +77,6 @@ export type AttendanceCountAggregateInputType = {
   user_id?: true
   status?: true
   checkin_at?: true
-  note?: true
-  opened_at?: true
-  closed_at?: true
   created_at?: true
   _all?: true
 }
@@ -177,9 +159,6 @@ export type AttendanceGroupByOutputType = {
   user_id: string
   status: $Enums.AttendanceStatus
   checkin_at: Date | null
-  note: string | null
-  opened_at: Date | null
-  closed_at: Date | null
   created_at: Date
   _count: AttendanceCountAggregateOutputType | null
   _min: AttendanceMinAggregateOutputType | null
@@ -210,12 +189,9 @@ export type AttendanceWhereInput = {
   user_id?: Prisma.StringFilter<"Attendance"> | string
   status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
   checkin_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  note?: Prisma.StringNullableFilter<"Attendance"> | string | null
-  opened_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  closed_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Attendance"> | Date | string
   agenda?: Prisma.XOR<Prisma.AgendaScalarRelationFilter, Prisma.AgendaWhereInput>
-  user?: Prisma.XOR<Prisma.User_ProfileScalarRelationFilter, Prisma.User_ProfileWhereInput>
+  user?: Prisma.XOR<Prisma.Member_Profiles_ComitiesScalarRelationFilter, Prisma.Member_Profiles_ComitiesWhereInput>
 }
 
 export type AttendanceOrderByWithRelationInput = {
@@ -224,12 +200,9 @@ export type AttendanceOrderByWithRelationInput = {
   user_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   checkin_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  note?: Prisma.SortOrderInput | Prisma.SortOrder
-  opened_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  closed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   agenda?: Prisma.AgendaOrderByWithRelationInput
-  user?: Prisma.User_ProfileOrderByWithRelationInput
+  user?: Prisma.Member_Profiles_ComitiesOrderByWithRelationInput
 }
 
 export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
@@ -242,12 +215,9 @@ export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
   user_id?: Prisma.StringFilter<"Attendance"> | string
   status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
   checkin_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  note?: Prisma.StringNullableFilter<"Attendance"> | string | null
-  opened_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  closed_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Attendance"> | Date | string
   agenda?: Prisma.XOR<Prisma.AgendaScalarRelationFilter, Prisma.AgendaWhereInput>
-  user?: Prisma.XOR<Prisma.User_ProfileScalarRelationFilter, Prisma.User_ProfileWhereInput>
+  user?: Prisma.XOR<Prisma.Member_Profiles_ComitiesScalarRelationFilter, Prisma.Member_Profiles_ComitiesWhereInput>
 }, "id" | "agenda_id_user_id">
 
 export type AttendanceOrderByWithAggregationInput = {
@@ -256,9 +226,6 @@ export type AttendanceOrderByWithAggregationInput = {
   user_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   checkin_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  note?: Prisma.SortOrderInput | Prisma.SortOrder
-  opened_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  closed_at?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.AttendanceCountOrderByAggregateInput
   _max?: Prisma.AttendanceMaxOrderByAggregateInput
@@ -274,9 +241,6 @@ export type AttendanceScalarWhereWithAggregatesInput = {
   user_id?: Prisma.StringWithAggregatesFilter<"Attendance"> | string
   status?: Prisma.EnumAttendanceStatusWithAggregatesFilter<"Attendance"> | $Enums.AttendanceStatus
   checkin_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Attendance"> | Date | string | null
-  note?: Prisma.StringNullableWithAggregatesFilter<"Attendance"> | string | null
-  opened_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Attendance"> | Date | string | null
-  closed_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Attendance"> | Date | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Attendance"> | Date | string
 }
 
@@ -284,12 +248,9 @@ export type AttendanceCreateInput = {
   id?: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
   agenda: Prisma.AgendaCreateNestedOneWithoutAttendancesInput
-  user: Prisma.User_ProfileCreateNestedOneWithoutAttendancesInput
+  user: Prisma.Member_Profiles_ComitiesCreateNestedOneWithoutAgendaInput
 }
 
 export type AttendanceUncheckedCreateInput = {
@@ -298,9 +259,6 @@ export type AttendanceUncheckedCreateInput = {
   user_id: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
 }
 
@@ -308,12 +266,9 @@ export type AttendanceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agenda?: Prisma.AgendaUpdateOneRequiredWithoutAttendancesNestedInput
-  user?: Prisma.User_ProfileUpdateOneRequiredWithoutAttendancesNestedInput
+  user?: Prisma.Member_Profiles_ComitiesUpdateOneRequiredWithoutAgendaNestedInput
 }
 
 export type AttendanceUncheckedUpdateInput = {
@@ -322,9 +277,6 @@ export type AttendanceUncheckedUpdateInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -334,9 +286,6 @@ export type AttendanceCreateManyInput = {
   user_id: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
 }
 
@@ -344,9 +293,6 @@ export type AttendanceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -356,9 +302,6 @@ export type AttendanceUncheckedUpdateManyInput = {
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -383,9 +326,6 @@ export type AttendanceCountOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   checkin_at?: Prisma.SortOrder
-  note?: Prisma.SortOrder
-  opened_at?: Prisma.SortOrder
-  closed_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -395,9 +335,6 @@ export type AttendanceMaxOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   checkin_at?: Prisma.SortOrder
-  note?: Prisma.SortOrder
-  opened_at?: Prisma.SortOrder
-  closed_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -407,52 +344,7 @@ export type AttendanceMinOrderByAggregateInput = {
   user_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   checkin_at?: Prisma.SortOrder
-  note?: Prisma.SortOrder
-  opened_at?: Prisma.SortOrder
-  closed_at?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
-}
-
-export type AttendanceCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
-  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-}
-
-export type AttendanceUncheckedCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
-  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-}
-
-export type AttendanceUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
-  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutUserInput | Prisma.AttendanceUpdateManyWithWhereWithoutUserInput[]
-  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
-}
-
-export type AttendanceUncheckedUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
-  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutUserInput | Prisma.AttendanceUpdateManyWithWhereWithoutUserInput[]
-  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
 export type AttendanceCreateNestedManyWithoutAgendaInput = {
@@ -501,78 +393,54 @@ export type EnumAttendanceStatusFieldUpdateOperationsInput = {
   set?: $Enums.AttendanceStatus
 }
 
-export type AttendanceCreateWithoutUserInput = {
-  id?: string
-  status?: $Enums.AttendanceStatus
-  checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
-  created_at?: Date | string
-  agenda: Prisma.AgendaCreateNestedOneWithoutAttendancesInput
+export type AttendanceCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
 }
 
-export type AttendanceUncheckedCreateWithoutUserInput = {
-  id?: string
-  agenda_id: string
-  status?: $Enums.AttendanceStatus
-  checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
-  created_at?: Date | string
+export type AttendanceUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
 }
 
-export type AttendanceCreateOrConnectWithoutUserInput = {
-  where: Prisma.AttendanceWhereUniqueInput
-  create: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput>
+export type AttendanceUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
+  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutUserInput | Prisma.AttendanceUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
-export type AttendanceCreateManyUserInputEnvelope = {
-  data: Prisma.AttendanceCreateManyUserInput | Prisma.AttendanceCreateManyUserInput[]
-  skipDuplicates?: boolean
-}
-
-export type AttendanceUpsertWithWhereUniqueWithoutUserInput = {
-  where: Prisma.AttendanceWhereUniqueInput
-  update: Prisma.XOR<Prisma.AttendanceUpdateWithoutUserInput, Prisma.AttendanceUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput>
-}
-
-export type AttendanceUpdateWithWhereUniqueWithoutUserInput = {
-  where: Prisma.AttendanceWhereUniqueInput
-  data: Prisma.XOR<Prisma.AttendanceUpdateWithoutUserInput, Prisma.AttendanceUncheckedUpdateWithoutUserInput>
-}
-
-export type AttendanceUpdateManyWithWhereWithoutUserInput = {
-  where: Prisma.AttendanceScalarWhereInput
-  data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutUserInput>
-}
-
-export type AttendanceScalarWhereInput = {
-  AND?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
-  OR?: Prisma.AttendanceScalarWhereInput[]
-  NOT?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
-  id?: Prisma.StringFilter<"Attendance"> | string
-  agenda_id?: Prisma.StringFilter<"Attendance"> | string
-  user_id?: Prisma.StringFilter<"Attendance"> | string
-  status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
-  checkin_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  note?: Prisma.StringNullableFilter<"Attendance"> | string | null
-  opened_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  closed_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
-  created_at?: Prisma.DateTimeFilter<"Attendance"> | Date | string
+export type AttendanceUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput> | Prisma.AttendanceCreateWithoutUserInput[] | Prisma.AttendanceUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutUserInput | Prisma.AttendanceCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.AttendanceCreateManyUserInputEnvelope
+  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutUserInput | Prisma.AttendanceUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
 export type AttendanceCreateWithoutAgendaInput = {
   id?: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
-  user: Prisma.User_ProfileCreateNestedOneWithoutAttendancesInput
+  user: Prisma.Member_Profiles_ComitiesCreateNestedOneWithoutAgendaInput
 }
 
 export type AttendanceUncheckedCreateWithoutAgendaInput = {
@@ -580,9 +448,6 @@ export type AttendanceUncheckedCreateWithoutAgendaInput = {
   user_id: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
 }
 
@@ -612,14 +477,97 @@ export type AttendanceUpdateManyWithWhereWithoutAgendaInput = {
   data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutAgendaInput>
 }
 
+export type AttendanceScalarWhereInput = {
+  AND?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
+  OR?: Prisma.AttendanceScalarWhereInput[]
+  NOT?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
+  id?: Prisma.StringFilter<"Attendance"> | string
+  agenda_id?: Prisma.StringFilter<"Attendance"> | string
+  user_id?: Prisma.StringFilter<"Attendance"> | string
+  status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
+  checkin_at?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
+  created_at?: Prisma.DateTimeFilter<"Attendance"> | Date | string
+}
+
+export type AttendanceCreateWithoutUserInput = {
+  id?: string
+  status?: $Enums.AttendanceStatus
+  checkin_at?: Date | string | null
+  created_at?: Date | string
+  agenda: Prisma.AgendaCreateNestedOneWithoutAttendancesInput
+}
+
+export type AttendanceUncheckedCreateWithoutUserInput = {
+  id?: string
+  agenda_id: string
+  status?: $Enums.AttendanceStatus
+  checkin_at?: Date | string | null
+  created_at?: Date | string
+}
+
+export type AttendanceCreateOrConnectWithoutUserInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput>
+}
+
+export type AttendanceCreateManyUserInputEnvelope = {
+  data: Prisma.AttendanceCreateManyUserInput | Prisma.AttendanceCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type AttendanceUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  update: Prisma.XOR<Prisma.AttendanceUpdateWithoutUserInput, Prisma.AttendanceUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutUserInput, Prisma.AttendanceUncheckedCreateWithoutUserInput>
+}
+
+export type AttendanceUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  data: Prisma.XOR<Prisma.AttendanceUpdateWithoutUserInput, Prisma.AttendanceUncheckedUpdateWithoutUserInput>
+}
+
+export type AttendanceUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.AttendanceScalarWhereInput
+  data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutUserInput>
+}
+
+export type AttendanceCreateManyAgendaInput = {
+  id?: string
+  user_id: string
+  status?: $Enums.AttendanceStatus
+  checkin_at?: Date | string | null
+  created_at?: Date | string
+}
+
+export type AttendanceUpdateWithoutAgendaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.Member_Profiles_ComitiesUpdateOneRequiredWithoutAgendaNestedInput
+}
+
+export type AttendanceUncheckedUpdateWithoutAgendaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AttendanceUncheckedUpdateManyWithoutAgendaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type AttendanceCreateManyUserInput = {
   id?: string
   agenda_id: string
   status?: $Enums.AttendanceStatus
   checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
   created_at?: Date | string
 }
 
@@ -627,9 +575,6 @@ export type AttendanceUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agenda?: Prisma.AgendaUpdateOneRequiredWithoutAttendancesNestedInput
 }
@@ -639,9 +584,6 @@ export type AttendanceUncheckedUpdateWithoutUserInput = {
   agenda_id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -650,53 +592,6 @@ export type AttendanceUncheckedUpdateManyWithoutUserInput = {
   agenda_id?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type AttendanceCreateManyAgendaInput = {
-  id?: string
-  user_id: string
-  status?: $Enums.AttendanceStatus
-  checkin_at?: Date | string | null
-  note?: string | null
-  opened_at?: Date | string | null
-  closed_at?: Date | string | null
-  created_at?: Date | string
-}
-
-export type AttendanceUpdateWithoutAgendaInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
-  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.User_ProfileUpdateOneRequiredWithoutAttendancesNestedInput
-}
-
-export type AttendanceUncheckedUpdateWithoutAgendaInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
-  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type AttendanceUncheckedUpdateManyWithoutAgendaInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
-  checkin_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  opened_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  closed_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -708,12 +603,9 @@ export type AttendanceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   user_id?: boolean
   status?: boolean
   checkin_at?: boolean
-  note?: boolean
-  opened_at?: boolean
-  closed_at?: boolean
   created_at?: boolean
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -722,12 +614,9 @@ export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   user_id?: boolean
   status?: boolean
   checkin_at?: boolean
-  note?: boolean
-  opened_at?: boolean
-  closed_at?: boolean
   created_at?: boolean
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -736,12 +625,9 @@ export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   user_id?: boolean
   status?: boolean
   checkin_at?: boolean
-  note?: boolean
-  opened_at?: boolean
-  closed_at?: boolean
   created_at?: boolean
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectScalar = {
@@ -750,31 +636,28 @@ export type AttendanceSelectScalar = {
   user_id?: boolean
   status?: boolean
   checkin_at?: boolean
-  note?: boolean
-  opened_at?: boolean
-  closed_at?: boolean
   created_at?: boolean
 }
 
-export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "agenda_id" | "user_id" | "status" | "checkin_at" | "note" | "opened_at" | "closed_at" | "created_at", ExtArgs["result"]["attendance"]>
+export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "agenda_id" | "user_id" | "status" | "checkin_at" | "created_at", ExtArgs["result"]["attendance"]>
 export type AttendanceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }
 export type AttendanceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }
 export type AttendanceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.AgendaDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>
 }
 
 export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Attendance"
   objects: {
     agenda: Prisma.$AgendaPayload<ExtArgs>
-    user: Prisma.$User_ProfilePayload<ExtArgs>
+    user: Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -782,9 +665,6 @@ export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.Internal
     user_id: string
     status: $Enums.AttendanceStatus
     checkin_at: Date | null
-    note: string | null
-    opened_at: Date | null
-    closed_at: Date | null
     created_at: Date
   }, ExtArgs["result"]["attendance"]>
   composites: {}
@@ -1181,7 +1061,7 @@ readonly fields: AttendanceFieldRefs;
 export interface Prisma__AttendanceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   agenda<T extends Prisma.AgendaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AgendaDefaultArgs<ExtArgs>>): Prisma.Prisma__AgendaClient<runtime.Types.Result.GetResult<Prisma.$AgendaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  user<T extends Prisma.User_ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User_ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__User_ProfileClient<runtime.Types.Result.GetResult<Prisma.$User_ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Member_Profiles_ComitiesDefaultArgs<ExtArgs>>): Prisma.Prisma__Member_Profiles_ComitiesClient<runtime.Types.Result.GetResult<Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1216,9 +1096,6 @@ export interface AttendanceFieldRefs {
   readonly user_id: Prisma.FieldRef<"Attendance", 'String'>
   readonly status: Prisma.FieldRef<"Attendance", 'AttendanceStatus'>
   readonly checkin_at: Prisma.FieldRef<"Attendance", 'DateTime'>
-  readonly note: Prisma.FieldRef<"Attendance", 'String'>
-  readonly opened_at: Prisma.FieldRef<"Attendance", 'DateTime'>
-  readonly closed_at: Prisma.FieldRef<"Attendance", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"Attendance", 'DateTime'>
 }
     

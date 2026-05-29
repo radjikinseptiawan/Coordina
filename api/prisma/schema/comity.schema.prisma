@@ -50,6 +50,7 @@ model Member_Profiles_Comities {
   position   String?
   created_at DateTime     @default(now())
   updated_at DateTime     @updatedAt
+  agenda     Attendance[]
   account    Accounts     @relation(fields: [account_id], references: [id])
   comity     Comity       @relation(fields: [comity_id], references: [id])
   member     User_Profile @relation(fields: [member_id], references: [id])

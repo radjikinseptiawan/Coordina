@@ -33,7 +33,6 @@ model User_Profile {
   fullname              String?
   number_phone          String?
   agenda                Agenda[]
-  attendances           Attendance[]
   account               Accounts                   @relation(fields: [account_id], references: [id])
   member_profile_comity Member_Profiles_Comities[]
 

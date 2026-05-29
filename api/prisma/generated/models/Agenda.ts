@@ -30,11 +30,15 @@ export type AgendaMinAggregateOutputType = {
   agenda_name: string | null
   tanggal_agenda: Date | null
   status_agenda: $Enums.AgendaStatus | null
-  is_online: boolean | null
+  is_online: $Enums.isOnline | null
   lokasi: string | null
+  lokasi_link: string | null
   meetingLink: string | null
+  room_pass: string | null
   note: string | null
   lampiran: string | null
+  start_at: string | null
+  end_at: string | null
   created_by_id: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -46,11 +50,15 @@ export type AgendaMaxAggregateOutputType = {
   agenda_name: string | null
   tanggal_agenda: Date | null
   status_agenda: $Enums.AgendaStatus | null
-  is_online: boolean | null
+  is_online: $Enums.isOnline | null
   lokasi: string | null
+  lokasi_link: string | null
   meetingLink: string | null
+  room_pass: string | null
   note: string | null
   lampiran: string | null
+  start_at: string | null
+  end_at: string | null
   created_by_id: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -64,9 +72,13 @@ export type AgendaCountAggregateOutputType = {
   status_agenda: number
   is_online: number
   lokasi: number
+  lokasi_link: number
   meetingLink: number
+  room_pass: number
   note: number
   lampiran: number
+  start_at: number
+  end_at: number
   created_by_id: number
   created_at: number
   updated_at: number
@@ -82,9 +94,13 @@ export type AgendaMinAggregateInputType = {
   status_agenda?: true
   is_online?: true
   lokasi?: true
+  lokasi_link?: true
   meetingLink?: true
+  room_pass?: true
   note?: true
   lampiran?: true
+  start_at?: true
+  end_at?: true
   created_by_id?: true
   created_at?: true
   updated_at?: true
@@ -98,9 +114,13 @@ export type AgendaMaxAggregateInputType = {
   status_agenda?: true
   is_online?: true
   lokasi?: true
+  lokasi_link?: true
   meetingLink?: true
+  room_pass?: true
   note?: true
   lampiran?: true
+  start_at?: true
+  end_at?: true
   created_by_id?: true
   created_at?: true
   updated_at?: true
@@ -114,9 +134,13 @@ export type AgendaCountAggregateInputType = {
   status_agenda?: true
   is_online?: true
   lokasi?: true
+  lokasi_link?: true
   meetingLink?: true
+  room_pass?: true
   note?: true
   lampiran?: true
+  start_at?: true
+  end_at?: true
   created_by_id?: true
   created_at?: true
   updated_at?: true
@@ -201,11 +225,15 @@ export type AgendaGroupByOutputType = {
   agenda_name: string
   tanggal_agenda: Date
   status_agenda: $Enums.AgendaStatus
-  is_online: boolean
+  is_online: $Enums.isOnline
   lokasi: string | null
+  lokasi_link: string | null
   meetingLink: string | null
+  room_pass: string | null
   note: string | null
   lampiran: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at: Date
   updated_at: Date
@@ -238,11 +266,15 @@ export type AgendaWhereInput = {
   agenda_name?: Prisma.StringFilter<"Agenda"> | string
   tanggal_agenda?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFilter<"Agenda"> | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFilter<"Agenda"> | boolean
+  is_online?: Prisma.EnumisOnlineFilter<"Agenda"> | $Enums.isOnline
   lokasi?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  lokasi_link?: Prisma.StringNullableFilter<"Agenda"> | string | null
   meetingLink?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  start_at?: Prisma.StringFilter<"Agenda"> | string
+  end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
@@ -259,9 +291,13 @@ export type AgendaOrderByWithRelationInput = {
   status_agenda?: Prisma.SortOrder
   is_online?: Prisma.SortOrder
   lokasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  lokasi_link?: Prisma.SortOrderInput | Prisma.SortOrder
   meetingLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  room_pass?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   lampiran?: Prisma.SortOrderInput | Prisma.SortOrder
+  start_at?: Prisma.SortOrder
+  end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -279,11 +315,15 @@ export type AgendaWhereUniqueInput = Prisma.AtLeast<{
   agenda_name?: Prisma.StringFilter<"Agenda"> | string
   tanggal_agenda?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFilter<"Agenda"> | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFilter<"Agenda"> | boolean
+  is_online?: Prisma.EnumisOnlineFilter<"Agenda"> | $Enums.isOnline
   lokasi?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  lokasi_link?: Prisma.StringNullableFilter<"Agenda"> | string | null
   meetingLink?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  start_at?: Prisma.StringFilter<"Agenda"> | string
+  end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
@@ -300,9 +340,13 @@ export type AgendaOrderByWithAggregationInput = {
   status_agenda?: Prisma.SortOrder
   is_online?: Prisma.SortOrder
   lokasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  lokasi_link?: Prisma.SortOrderInput | Prisma.SortOrder
   meetingLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  room_pass?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   lampiran?: Prisma.SortOrderInput | Prisma.SortOrder
+  start_at?: Prisma.SortOrder
+  end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -320,11 +364,15 @@ export type AgendaScalarWhereWithAggregatesInput = {
   agenda_name?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
   tanggal_agenda?: Prisma.DateTimeWithAggregatesFilter<"Agenda"> | Date | string
   status_agenda?: Prisma.EnumAgendaStatusWithAggregatesFilter<"Agenda"> | $Enums.AgendaStatus
-  is_online?: Prisma.BoolWithAggregatesFilter<"Agenda"> | boolean
+  is_online?: Prisma.EnumisOnlineWithAggregatesFilter<"Agenda"> | $Enums.isOnline
   lokasi?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
+  lokasi_link?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
   meetingLink?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
+  room_pass?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
+  start_at?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
+  end_at?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
   created_by_id?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Agenda"> | Date | string
@@ -335,11 +383,15 @@ export type AgendaCreateInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -353,11 +405,15 @@ export type AgendaUncheckedCreateInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at?: Date | string
   updated_at?: Date | string
@@ -369,11 +425,15 @@ export type AgendaUpdateInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -387,11 +447,15 @@ export type AgendaUncheckedUpdateInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -404,11 +468,15 @@ export type AgendaCreateManyInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at?: Date | string
   updated_at?: Date | string
@@ -419,11 +487,15 @@ export type AgendaUpdateManyMutationInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -434,11 +506,15 @@ export type AgendaUncheckedUpdateManyInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -462,9 +538,13 @@ export type AgendaCountOrderByAggregateInput = {
   status_agenda?: Prisma.SortOrder
   is_online?: Prisma.SortOrder
   lokasi?: Prisma.SortOrder
+  lokasi_link?: Prisma.SortOrder
   meetingLink?: Prisma.SortOrder
+  room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
+  start_at?: Prisma.SortOrder
+  end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -478,9 +558,13 @@ export type AgendaMaxOrderByAggregateInput = {
   status_agenda?: Prisma.SortOrder
   is_online?: Prisma.SortOrder
   lokasi?: Prisma.SortOrder
+  lokasi_link?: Prisma.SortOrder
   meetingLink?: Prisma.SortOrder
+  room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
+  start_at?: Prisma.SortOrder
+  end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -494,9 +578,13 @@ export type AgendaMinOrderByAggregateInput = {
   status_agenda?: Prisma.SortOrder
   is_online?: Prisma.SortOrder
   lokasi?: Prisma.SortOrder
+  lokasi_link?: Prisma.SortOrder
   meetingLink?: Prisma.SortOrder
+  room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
+  start_at?: Prisma.SortOrder
+  end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -551,6 +639,10 @@ export type AgendaUncheckedUpdateManyWithoutUser_member_profileNestedInput = {
 
 export type EnumAgendaStatusFieldUpdateOperationsInput = {
   set?: $Enums.AgendaStatus
+}
+
+export type EnumisOnlineFieldUpdateOperationsInput = {
+  set?: $Enums.isOnline
 }
 
 export type AgendaCreateNestedOneWithoutAttendancesInput = {
@@ -614,11 +706,15 @@ export type AgendaCreateWithoutUser_member_profileInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -631,11 +727,15 @@ export type AgendaUncheckedCreateWithoutUser_member_profileInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutAgendaInput
@@ -676,11 +776,15 @@ export type AgendaScalarWhereInput = {
   agenda_name?: Prisma.StringFilter<"Agenda"> | string
   tanggal_agenda?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFilter<"Agenda"> | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFilter<"Agenda"> | boolean
+  is_online?: Prisma.EnumisOnlineFilter<"Agenda"> | $Enums.isOnline
   lokasi?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  lokasi_link?: Prisma.StringNullableFilter<"Agenda"> | string | null
   meetingLink?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
+  start_at?: Prisma.StringFilter<"Agenda"> | string
+  end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
@@ -691,11 +795,15 @@ export type AgendaCreateWithoutAttendancesInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -708,11 +816,15 @@ export type AgendaUncheckedCreateWithoutAttendancesInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at?: Date | string
   updated_at?: Date | string
@@ -739,11 +851,15 @@ export type AgendaUpdateWithoutAttendancesInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -756,11 +872,15 @@ export type AgendaUncheckedUpdateWithoutAttendancesInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -771,11 +891,15 @@ export type AgendaCreateWithoutComityInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
   user_member_profile: Prisma.User_ProfileCreateNestedOneWithoutAgendaInput
@@ -787,11 +911,15 @@ export type AgendaUncheckedCreateWithoutComityInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at?: Date | string
   updated_at?: Date | string
@@ -830,11 +958,15 @@ export type AgendaCreateManyUser_member_profileInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -844,11 +976,15 @@ export type AgendaUpdateWithoutUser_member_profileInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -861,11 +997,15 @@ export type AgendaUncheckedUpdateWithoutUser_member_profileInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutAgendaNestedInput
@@ -877,11 +1017,15 @@ export type AgendaUncheckedUpdateManyWithoutUser_member_profileInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -891,11 +1035,15 @@ export type AgendaCreateManyComityInput = {
   agenda_name: string
   tanggal_agenda: Date | string
   status_agenda?: $Enums.AgendaStatus
-  is_online?: boolean
+  is_online?: $Enums.isOnline
   lokasi?: string | null
+  lokasi_link?: string | null
   meetingLink?: string | null
+  room_pass?: string | null
   note?: string | null
   lampiran?: string | null
+  start_at: string
+  end_at: string
   created_by_id: string
   created_at?: Date | string
   updated_at?: Date | string
@@ -906,11 +1054,15 @@ export type AgendaUpdateWithoutComityInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user_member_profile?: Prisma.User_ProfileUpdateOneRequiredWithoutAgendaNestedInput
@@ -922,11 +1074,15 @@ export type AgendaUncheckedUpdateWithoutComityInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -938,11 +1094,15 @@ export type AgendaUncheckedUpdateManyWithoutComityInput = {
   agenda_name?: Prisma.StringFieldUpdateOperationsInput | string
   tanggal_agenda?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status_agenda?: Prisma.EnumAgendaStatusFieldUpdateOperationsInput | $Enums.AgendaStatus
-  is_online?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_online?: Prisma.EnumisOnlineFieldUpdateOperationsInput | $Enums.isOnline
   lokasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lokasi_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meetingLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_at?: Prisma.StringFieldUpdateOperationsInput | string
+  end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -987,9 +1147,13 @@ export type AgendaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   status_agenda?: boolean
   is_online?: boolean
   lokasi?: boolean
+  lokasi_link?: boolean
   meetingLink?: boolean
+  room_pass?: boolean
   note?: boolean
   lampiran?: boolean
+  start_at?: boolean
+  end_at?: boolean
   created_by_id?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1007,9 +1171,13 @@ export type AgendaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status_agenda?: boolean
   is_online?: boolean
   lokasi?: boolean
+  lokasi_link?: boolean
   meetingLink?: boolean
+  room_pass?: boolean
   note?: boolean
   lampiran?: boolean
+  start_at?: boolean
+  end_at?: boolean
   created_by_id?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1025,9 +1193,13 @@ export type AgendaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   status_agenda?: boolean
   is_online?: boolean
   lokasi?: boolean
+  lokasi_link?: boolean
   meetingLink?: boolean
+  room_pass?: boolean
   note?: boolean
   lampiran?: boolean
+  start_at?: boolean
+  end_at?: boolean
   created_by_id?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1043,15 +1215,19 @@ export type AgendaSelectScalar = {
   status_agenda?: boolean
   is_online?: boolean
   lokasi?: boolean
+  lokasi_link?: boolean
   meetingLink?: boolean
+  room_pass?: boolean
   note?: boolean
   lampiran?: boolean
+  start_at?: boolean
+  end_at?: boolean
   created_by_id?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type AgendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_id" | "agenda_name" | "tanggal_agenda" | "status_agenda" | "is_online" | "lokasi" | "meetingLink" | "note" | "lampiran" | "created_by_id" | "created_at" | "updated_at", ExtArgs["result"]["agenda"]>
+export type AgendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_id" | "agenda_name" | "tanggal_agenda" | "status_agenda" | "is_online" | "lokasi" | "lokasi_link" | "meetingLink" | "room_pass" | "note" | "lampiran" | "start_at" | "end_at" | "created_by_id" | "created_at" | "updated_at", ExtArgs["result"]["agenda"]>
 export type AgendaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   user_member_profile?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
@@ -1080,11 +1256,15 @@ export type $AgendaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     agenda_name: string
     tanggal_agenda: Date
     status_agenda: $Enums.AgendaStatus
-    is_online: boolean
+    is_online: $Enums.isOnline
     lokasi: string | null
+    lokasi_link: string | null
     meetingLink: string | null
+    room_pass: string | null
     note: string | null
     lampiran: string | null
+    start_at: string
+    end_at: string
     created_by_id: string
     created_at: Date
     updated_at: Date
@@ -1519,11 +1699,15 @@ export interface AgendaFieldRefs {
   readonly agenda_name: Prisma.FieldRef<"Agenda", 'String'>
   readonly tanggal_agenda: Prisma.FieldRef<"Agenda", 'DateTime'>
   readonly status_agenda: Prisma.FieldRef<"Agenda", 'AgendaStatus'>
-  readonly is_online: Prisma.FieldRef<"Agenda", 'Boolean'>
+  readonly is_online: Prisma.FieldRef<"Agenda", 'isOnline'>
   readonly lokasi: Prisma.FieldRef<"Agenda", 'String'>
+  readonly lokasi_link: Prisma.FieldRef<"Agenda", 'String'>
   readonly meetingLink: Prisma.FieldRef<"Agenda", 'String'>
+  readonly room_pass: Prisma.FieldRef<"Agenda", 'String'>
   readonly note: Prisma.FieldRef<"Agenda", 'String'>
   readonly lampiran: Prisma.FieldRef<"Agenda", 'String'>
+  readonly start_at: Prisma.FieldRef<"Agenda", 'String'>
+  readonly end_at: Prisma.FieldRef<"Agenda", 'String'>
   readonly created_by_id: Prisma.FieldRef<"Agenda", 'String'>
   readonly created_at: Prisma.FieldRef<"Agenda", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Agenda", 'DateTime'>
