@@ -13,7 +13,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useRouter, useSearchParams } from "next/navigation";
-import { resetUserPassword } from "@/service/auth.service";
+import { resetUserPassword } from "@/service/dashboard/auth.service";
 import { toast } from "sonner";
 
 export function AuthResetPasswordForm() {

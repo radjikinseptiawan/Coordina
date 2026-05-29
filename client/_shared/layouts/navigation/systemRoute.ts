@@ -3,30 +3,34 @@ import { Building, LetterText } from "lucide-react";
 
 export const systemRoute = [
   {
-    name: "Organisasi",
+    name: "Organization",
     icon: Building,
     children: [
       {
         name: "Agenda",
-        href: "organisasi/agenda",
+        href: "organizations/agenda",
+      },
+      {
+        name: "Audit Log",
+        href: "organizations/audit-log",
       },
     ],
   },
   {
-    name: "Administrasi",
+    name: "Administration",
     icon: LetterText,
     children: [
       {
-        name: "Surat Masuk",
-        href: "administrasi/surat-masuk",
+        name: "Incoming Letters",
+        href: "administration/incoming-letters",
       },
       {
-        name: "Surat Keluar",
-        href: "administrasi/surat-keluar",
+        name: "Outgoing Letters",
+        href: "administration/outgoing-letters",
       },
       {
-        name: "Daftar Anggota",
-        href: "administrasi/daftar-anggota",
+        name: "Members",
+        href: "administration/members",
       },
     ],
   },

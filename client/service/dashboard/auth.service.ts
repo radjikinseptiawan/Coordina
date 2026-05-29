@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   AuthBasicLoginPayload,
   AuthBasicRegisterPayload,
-} from "./dto/auth.dto";
+} from "../dto/auth.dto";
 
 const BASE_API = `${process.env.NEXT_PUBLIC_API_URL}/v1_beta/auth`;
 

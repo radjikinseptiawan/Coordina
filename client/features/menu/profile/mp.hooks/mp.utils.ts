@@ -1,4 +1,4 @@
-import { getProfile, patchProfile } from "@/service/profile.service";
+import { getProfile, patchProfile } from "@/service/dashboard/profile.service";
 import { UseFormReset, UseFormSetValue } from "react-hook-form";
 import { MenuProfileSchemaType } from "../mp.forms/mp.schema";
 import { Dispatch, RefObject, SetStateAction } from "react";

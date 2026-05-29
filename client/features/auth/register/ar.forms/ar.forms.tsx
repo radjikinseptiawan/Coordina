@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import axios from "axios";
-import { registerUser } from "@/service/auth.service";
+import { registerUser } from "@/service/dashboard/auth.service";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -105,7 +105,9 @@ export function AuthRegisterForms() {
             )}
           </div>
 
-          <Button className="w-60">Register</Button>
+          <Button type="submit" className="w-60">
+            Register
+          </Button>
           <Link className="text-sm" href={"/login"}>
             Already have an account? go to Login
           </Link>

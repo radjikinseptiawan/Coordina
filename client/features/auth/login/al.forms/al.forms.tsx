@@ -11,7 +11,7 @@ import {
   loginGoogleUser,
   loginGoogleUserPhone,
   loginUser,
-} from "@/service/auth.service";
+} from "@/service/dashboard/auth.service";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

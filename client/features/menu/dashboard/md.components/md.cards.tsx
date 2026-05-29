@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import {
   getOrganizations,
   getOrganizationsDetail,
-} from "@/service/menu.service";
+} from "@/service/dashboard/menu.service";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { BsPeople } from "react-icons/bs";
@@ -118,7 +118,7 @@ export function MenuDashboardCards() {
         )
       ) : (
         Array.from({ length: 10 }).map((_, i) => (
-          <Card key={i} className="w-80 my-4 md:w-80">
+          <Card key={i} className="w-full my-4 md:w-80">
             {/* Header */}
             <div className="flex">
               <Avatar className="rounded mx-4">

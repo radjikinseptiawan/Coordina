@@ -11,7 +11,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  redirect(`/${slug}/organisasi/agenda`);
+  redirect(`/${slug}/organizations/agenda`);
 
   return <></>;
 }

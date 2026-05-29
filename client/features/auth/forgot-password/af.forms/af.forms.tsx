@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { FaGoogle } from "react-icons/fa";
 import Image from "next/image";
-import { forgotUserPassword } from "@/service/auth.service";
+import { forgotUserPassword } from "@/service/dashboard/auth.service";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

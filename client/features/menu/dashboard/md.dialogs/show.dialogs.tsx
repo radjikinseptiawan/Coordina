@@ -12,9 +12,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Image from "next/image";
-import { getOrganizationsDetail } from "@/service/menu.service";
+import { getOrganizationsDetail } from "@/service/dashboard/menu.service";
 import { Button } from "@/components/ui/button";
-import { getProfile } from "@/service/profile.service";
+import { getProfile } from "@/service/dashboard/profile.service";
 import { getUserInformation } from "../md.hooks/md.utils";
 
 export default function MenuDashboardShowDialogs() {

@@ -1,6 +1,6 @@
 import { ProfileDataType } from "@/_shared/custom/@types/profile.type";
 import { convertDate } from "@/lib/utils";
-import { getProfile } from "@/service/profile.service";
+import { getProfile } from "@/service/dashboard/profile.service";
 import { useEffect, useState } from "react";
 
 export default function MenuProfileInfoComponents() {

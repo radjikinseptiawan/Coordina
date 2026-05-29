@@ -1,5 +1,6 @@
 import { decoderToken } from "@/_shared/custom/hooks/decoder";
 import SystemNavigation from "@/_shared/layouts/navigation/SystemNavigation";
+import TableProviders from "@/providers/tableProviders";
 import { ReactNode } from "react";
 
 export default async function SystemLayout({
@@ -8,5 +9,9 @@ export default async function SystemLayout({
   children: ReactNode;
 }) {
   await decoderToken();
-  return <SystemNavigation>{children}</SystemNavigation>;
+  return (
+    <SystemNavigation>
+      <TableProviders>{children}</TableProviders>
+    </SystemNavigation>
+  );
 }

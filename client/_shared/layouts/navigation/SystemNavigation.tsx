@@ -1,25 +1,13 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Building2,
-  LetterText,
-  LogOut,
-  Menu,
-  MenuIcon,
-  User,
-} from "lucide-react";
+import { Building2, LetterText, LogOut, Menu, User } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { DROPDOWN_VARIANTS, getRoute, getRouteSystem } from "./navigation";
 import { ReactNode, useEffect, useState } from "react";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import LogoutDialogs from "./logoutDialogs";
-import { getSpesificUser } from "@/service/users.service";
+import { getSpesificUser } from "@/service/dashboard/users.service";
 import { SpesificUsersType } from "@/_shared/custom/@types/user.type";
 import { Button } from "@/components/ui/button";
 import { SLIDERS_VARIANT, systemRoute } from "./systemRoute";
@@ -36,7 +24,6 @@ export default function SystemNavigation({
   const profileUsers = async () => {
     try {
       const data = await getSpesificUser();
-      console.log("dari topNavigationBar.tsx", data);
       setData(data);
     } catch (e) {
       console.error(e);
@@ -59,9 +46,10 @@ export default function SystemNavigation({
   useEffect(() => {
     profileUsers();
   }, []);
+
   return (
     <>
-      <div className="w-screen lg:w-full bg-white z-40 flex justify-between  fixed top-0 shadow px-3 py-1">
+      <div className="w-screen lg:w-full h-10 bg-white z-50 flex justify-between fixed top-0 shadow px-3 py-1">
         <Button
           onClick={() => setSliders(!sliders)}
           variant={"ghost"}
@@ -69,8 +57,8 @@ export default function SystemNavigation({
         >
           <Menu />
         </Button>
-        <div className="flex items-center gap-2 justify-items-end w-full  flex-row-reverse">
-          <Avatar onClick={() => setIsOpen(!isOpen)}>
+        <div className="flex items-center gap-2 justify-items-end w-full flex-row-reverse">
+          <Avatar className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
             <AvatarImage
               src={
                 data?.user_profile.image ||
@@ -78,7 +66,10 @@ export default function SystemNavigation({
               }
             />
           </Avatar>
-          <div className="text-end" onClick={() => setIsOpen(!isOpen)}>
+          <div
+            className="text-end cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <h1 className="text-[12px] text-black font-semibold">
               {data?.username}
             </h1>
@@ -86,11 +77,14 @@ export default function SystemNavigation({
           </div>
         </div>
       </div>
+
       <AnimatePresence>{isOpen && <MenuDropdown />}</AnimatePresence>
       <LogoutDialogs />
-      <div className="mt-10 w-full flex gap-5">
+
+      <div className="mt-10 w-full flex h-[calc(100vh-2.5rem)] overflow-hidden">
         <AnimatePresence>{sliders && <SlideBarNavigation />}</AnimatePresence>
-        <div>{children}</div>
+
+        <div className="flex-1 overflow-y-auto p-5 min-w-0">{children}</div>
       </div>
     </>
   );
@@ -100,32 +94,33 @@ const SlideBarNavigation = () => {
   const { slug } = useParams();
   const pathname = usePathname().split("/");
   const currentPath = `${pathname[2] + "/" + pathname[3]}`;
+
   return (
     <motion.div
       variants={SLIDERS_VARIANT}
       animate={"visible"}
       initial={"hidden"}
       exit={"exit"}
+      className="h-full z-40"
     >
-      <div className=" fixed md:relative  w-64 py-2 px-6 h-screen bg-white shadow flex flex-col gap-3">
+      <div className="w-64 py-4 px-6 h-full bg-white shadow flex flex-col gap-3 overflow-y-auto">
         {systemRoute.map((item, index) => {
           const Icon = item.icon;
           return (
             <div className="py-1" key={index}>
               <div className="flex items-center gap-2">
                 <Icon size={16} />
-                <h1 className="font-semibold">{item.name}</h1>
+                <h1 className="font-semibold text-sm">{item.name}</h1>
               </div>
               <div className="px-2 py-1">
-                {item.children.map((item, index) => (
+                {item.children.map((child, childIdx) => (
                   <Link
-                    key={index}
-                    className={`flex ${item.href === currentPath ? "bg-gray-400" : ""} 
-                    text-gray-500
-                    gap-2 items-center hover:cursor-pointer hover:bg-gray-300 p-1 rounded-md`}
-                    href={`/${slug}/${item.href}`}
+                    key={childIdx}
+                    className={`flex ${child.href === currentPath ? "bg-gray-200 font-medium text-black" : "text-gray-500"} 
+                    text-xs my-1 gap-2 items-center hover:cursor-pointer hover:bg-gray-100 p-2 rounded-md transition-colors`}
+                    href={`/${slug}/${child.href}`}
                   >
-                    {item.name}
+                    {child.name}
                   </Link>
                 ))}
               </div>
@@ -140,24 +135,28 @@ const SlideBarNavigation = () => {
 const MenuDropdown = () => {
   const pathname = usePathname();
   const { slug } = useParams();
-
   const route = getRouteSystem(slug || "", pathname);
+
   return (
     <motion.div
       variants={DROPDOWN_VARIANTS}
       initial={"hidden"}
       animate={"visible"}
       exit={"exit"}
-      className="flex right-0 fixed top-10"
+      className="flex right-3 fixed top-12 z-50" // Naikkan z-index biar di atas segalanya
     >
-      <div className="shadow bg-white flex flex-col gap-2 rounded-md p-2 w-72">
+      <div className="shadow-lg bg-white border flex flex-col gap-1 rounded-md p-2 w-64">
         {route.map((item, index) => {
           const Icon = item.icon;
           return (
             <Link
               key={index}
               href={item.ref}
-              className={`text-gray-500 flex items-center cursor-pointer hover:bg-gray-100 ${pathname == `/${item.ref}` ? "bg-gray-50" : "bg-white"} p-1 rounded-md gap-2`}
+              className={`text-gray-500 flex items-center cursor-pointer hover:bg-gray-100 ${
+                pathname == `/${item.ref}`
+                  ? "bg-slate-100 text-black"
+                  : "bg-white"
+              } p-2 rounded-md gap-2 text-sm`}
             >
               <Icon size={16} />
               {item.text}

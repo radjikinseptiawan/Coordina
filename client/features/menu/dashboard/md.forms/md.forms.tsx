@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
-import { createOrganizations } from "@/service/menu.service";
+import { createOrganizations } from "@/service/dashboard/menu.service";
 import { useOpenContext } from "../md.context";
 import { uploadFile } from "@/lib/uploads";
 import MenuDashboardDropDownComponent from "../md.components/md.dropdown";
@@ -141,7 +141,11 @@ export default function MenuDashboardFormAddDialog() {
             <Avatar>
               <AvatarImage src={preview}></AvatarImage>
             </Avatar>
-            <Input {...register("organization_icon")} type="file" />
+            <Input
+              accept="image/*"
+              {...register("organization_icon")}
+              type="file"
+            />
           </div>
           {errors.organization_icon && (
             <p className="text-sm text-red-500">

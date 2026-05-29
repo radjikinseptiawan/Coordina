@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getProfile, patchProfile } from "@/service/profile.service";
+import { getProfile, patchProfile } from "@/service/dashboard/profile.service";
 import { useEffect, useRef, useState } from "react";
 import { fieldInput, useMenuProfileForms } from "../mp.hooks/mp.hooks";
 import { Button } from "@/components/ui/button";

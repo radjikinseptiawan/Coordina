@@ -8,7 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { logoutUsers } from "@/service/users.service";
+import { logoutUsers } from "@/service/dashboard/users.service";
 import {
   redirect,
   usePathname,

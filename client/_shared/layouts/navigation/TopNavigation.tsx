@@ -7,7 +7,7 @@ import { DROPDOWN_VARIANTS, getRoute } from "./navigation";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LogoutDialogs from "./logoutDialogs";
-import { getSpesificUser } from "@/service/users.service";
+import { getSpesificUser } from "@/service/dashboard/users.service";
 import { SpesificUsersType } from "@/_shared/custom/@types/user.type";
 
 export default function TopNavigation({
