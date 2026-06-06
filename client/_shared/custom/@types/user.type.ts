@@ -19,3 +19,11 @@ export type MenuProfileInputProps = {
   register: UseFormRegister<MenuProfileSchemaType>;
   error?: any;
 };
+
+export type UserInvitationType = {
+  email: string;
+  username: string;
+  user_profile: {
+    image: string;
+  };
+};

@@ -1,6 +1,6 @@
 "use client";
 import { Variants } from "framer-motion";
-import { Home, LogOut, MenuIcon, Settings, User } from "lucide-react";
+import { Home, Inbox, LogOut, MenuIcon, Settings, User } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
 
 export const getRoute = (pathName: string) => {
@@ -14,6 +14,11 @@ export const getRoute = (pathName: string) => {
       ref: "profile",
       icon: User,
       text: "Profile",
+    },
+    {
+      ref: "inbox",
+      icon: Inbox,
+      text: "Inbox",
     },
     {
       ref: `${pathName}?logout=true`,
@@ -37,6 +42,11 @@ export const getRouteSystem = (
       ref: "/profile",
       icon: User,
       text: "Profile",
+    },
+    {
+      ref: "/inbox",
+      icon: Inbox,
+      text: "Inbox",
     },
     {
       ref: `${pathname}?logout=true`,

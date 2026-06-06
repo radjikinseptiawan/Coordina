@@ -4,18 +4,20 @@ export const MenuDashboardAddSchemaType = z.object({
   organization_name: z.string().min(1, "Organization name must been filled!"),
   organization_vision: z
     .string()
-    .min(1, "Organization Vision must been filled!"),
+    .min(1, "Organization Vision must been filled!")
+    .max(399, "Organization Vision cant be more 500 characters"),
   organization_mission: z
     .array(
       z.object({
         mission: z.string().min(1, "Mission cannot be empty"),
       }),
     )
-    .min(1, "At least one mission must been added!"),
+    .min(1, "At least one mission must been added!")
+    .max(400, "Organization Mission cant be more 300 characters"),
   organization_background: z
     .string()
     .min(1, "Organization Background must been filled!")
-    .max(300, "Organization Background cant be more 300 characters"),
+    .max(500, "Organization Background cant be more 500 characters"),
   short_name: z.string().min(1, "Short Organization name must been filled!"),
   area_operational: z.string().min(1, "Area operational must been filled!"),
   city_operational: z.string().min(1, "City Operational must been filled!"),

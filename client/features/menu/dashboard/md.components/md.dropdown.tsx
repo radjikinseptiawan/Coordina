@@ -33,7 +33,6 @@ export default function MenuDashboardDropDownComponent({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-h-[300px] overflow-y-auto">
         <DropdownMenuGroup>
-          {/* CASE 1: JIKA DROPDOWN PROVINSI (Mapping Array 1 Dimensi langsung) */}
           {placeHolder === "Select Province" &&
             hardData.map((item: any, index: number) => (
               <DropDownItem

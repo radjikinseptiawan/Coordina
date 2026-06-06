@@ -1,26 +1,40 @@
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Plus, RefreshCwIcon } from "lucide-react";
-import { OrganizationAgendaCards } from "../oa.components/oa.cards";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function OrganizationsAgendaControllers() {
   const router = useRouter();
+  const params = useParams();
+  const queryClient = useQueryClient();
+  const [isRefresh, setIsRefresh] = useState(false);
+
+  const handleRefresh = async () => {
+    if (!params.slug) return;
+
+    setIsRefresh(true);
+    await queryClient.invalidateQueries({
+      queryKey: ["agenda", params.slug],
+    });
+    setIsRefresh(false);
+  };
+
   return (
     <>
       <Button onClick={() => router.push(`?add="true"`)}>
         <Plus size={12} />
         Add Agenda
       </Button>
-      <OrganizationAgendaCards />
       <div className="w-full flex justify-end">
         <Button
+          disabled={isRefresh}
           variant={"outline"}
-          onClick={() => window.location.reload()}
+          onClick={handleRefresh}
           className={`my-2`}
         >
-          <RefreshCwIcon />
+          <RefreshCwIcon className={`${isRefresh ? "animate-spin" : ""}`} />
         </Button>
       </div>
     </>

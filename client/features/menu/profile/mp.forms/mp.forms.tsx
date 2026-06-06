@@ -40,6 +40,8 @@ export default function MenuProfileForms() {
         fullname: data.fullname,
         number_phone: data.number_phone,
         image: uploadImage,
+        email: data.email,
+        username: data.username,
       };
       const datas = await patchProfile(payload);
       console.log(datas);

@@ -27,7 +27,7 @@ export default function MenuProfileInfoComponents() {
       {/* Ini photo profile */}
       <div className="my-6 mx-8">
         <img
-          src={preview}
+          src={preview || process.env.NEXT_PUBLIC_DEFAULT_PROFILE}
           width={230}
           className="my-3 mx-4 rounded-full cursor-pointer object-cover aspect-square"
           alt="Avatar Profile"

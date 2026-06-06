@@ -8,6 +8,15 @@ import { ReactNode, useEffect } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { createAgenda } from "@/service/organizations/agenda.service";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 
 export default function OrganizationAgendaForms({
   children,
@@ -25,6 +34,7 @@ export default function OrganizationAgendaForms({
   const router = useRouter();
   const isOnline = watch("is_online");
   const location = watch("lokasi");
+  const priorityLevel = watch("priority_level");
   const embedUrl = location
     ? `https://www.google.com/maps?q=${encodeURIComponent(
         location,
@@ -46,8 +56,9 @@ export default function OrganizationAgendaForms({
   return (
     <form onSubmit={handleSubmit(submitForm)} className="w-full">
       <div className="flex flex-col md:flex-row md:gap-x-5 w-full justify-center gap-y-4 h-80 overflow-y-auto">
+        <div className="mt-110 md:mt-0"></div>
         <div className="flex flex-col gap-y-2">
-          <div className="mt-80 md:mt-0">
+          <div>
             <Label>Agenda Name</Label>
             <Input {...register("agenda_name")} />
             {errors.agenda_name && (
@@ -69,7 +80,7 @@ export default function OrganizationAgendaForms({
 
           <div>
             <Label>Note</Label>
-            <Textarea {...register("note")} className="resize-none" />
+            <Textarea {...register("note")} className="resize-none w-54 h-32" />
             {errors.note && (
               <p className="text-red-500 text-[12px]">{errors.note.message}</p>
             )}
@@ -93,6 +104,34 @@ export default function OrganizationAgendaForms({
                   </p>
                 )}
               </div>
+            </div>
+
+            <div>
+              <Label>Priority Level</Label>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant={"outline"} className="w-full">
+                    <ChevronDown />
+                    <p>{priorityLevel ? priorityLevel : "Priority Level"}</p>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="p-2 border rounded-md">
+                  <DropdownMenuGroup>
+                    {["LOW", "IMPORTANT", "URGENT"].map((item, idx) => (
+                      <DropdownMenuItem
+                        key={idx}
+                        onClick={() =>
+                          setValue("priority_level", item, {
+                            shouldValidate: true,
+                          })
+                        }
+                      >
+                        {item}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>

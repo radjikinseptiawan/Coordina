@@ -1,6 +1,13 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, Menu, MenuIcon, User } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  LogOut,
+  Menu,
+  MenuIcon,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { DROPDOWN_VARIANTS, getRoute } from "./navigation";
@@ -39,6 +46,12 @@ export default function TopNavigation({
         className="w-screen md:w-3xl lg:w-full bg-white z-40  fixed top-0 shadow px-12 py-1"
       >
         <div className="flex cursor-pointer items-center gap-2 justify-items-end w-full lg:w-full flex-row-reverse">
+          {isOpen ? (
+            <ChevronUp className="text-gray-400" />
+          ) : (
+            <ChevronDown className="text-gray-400" />
+          )}
+
           <Avatar>
             <AvatarImage
               src={

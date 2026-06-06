@@ -1,6 +1,14 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Building2, LetterText, LogOut, Menu, User } from "lucide-react";
+import {
+  Building2,
+  ChevronDown,
+  ChevronUp,
+  LetterText,
+  LogOut,
+  Menu,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { DROPDOWN_VARIANTS, getRoute, getRouteSystem } from "./navigation";
@@ -58,6 +66,11 @@ export default function SystemNavigation({
           <Menu />
         </Button>
         <div className="flex items-center gap-2 justify-items-end w-full flex-row-reverse">
+          {isOpen ? (
+            <ChevronUp className="text-gray-400" />
+          ) : (
+            <ChevronDown className="text-gray-400" />
+          )}
           <Avatar className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
             <AvatarImage
               src={
