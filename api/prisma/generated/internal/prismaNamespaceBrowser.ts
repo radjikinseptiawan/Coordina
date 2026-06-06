@@ -59,7 +59,9 @@ export const ModelName = {
   Comity: 'Comity',
   Comity_Vision: 'Comity_Vision',
   Comity_Mission: 'Comity_Mission',
-  Member_Profiles_Comities: 'Member_Profiles_Comities'
+  Member_Profiles_Comities: 'Member_Profiles_Comities',
+  Comity_Member_Request: 'Comity_Member_Request',
+  Comity_Role: 'Comity_Role'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -130,6 +132,7 @@ export const AgendaScalarFieldEnum = {
   room_pass: 'room_pass',
   note: 'note',
   lampiran: 'lampiran',
+  potential_level: 'potential_level',
   start_at: 'start_at',
   end_at: 'end_at',
   created_by_id: 'created_by_id',
@@ -144,7 +147,9 @@ export const AttendanceScalarFieldEnum = {
   id: 'id',
   agenda_id: 'agenda_id',
   user_id: 'user_id',
+  method: 'method',
   status: 'status',
+  proof_attendance: 'proof_attendance',
   checkin_at: 'checkin_at',
   created_at: 'created_at'
 } as const
@@ -197,13 +202,39 @@ export const Member_Profiles_ComitiesScalarFieldEnum = {
   member_id: 'member_id',
   comity_id: 'comity_id',
   account_id: 'account_id',
-  role: 'role',
+  role_id: 'role_id',
   position: 'position',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type Member_Profiles_ComitiesScalarFieldEnum = (typeof Member_Profiles_ComitiesScalarFieldEnum)[keyof typeof Member_Profiles_ComitiesScalarFieldEnum]
+
+
+export const Comity_Member_RequestScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  account_id: 'account_id',
+  type: 'type',
+  status: 'status',
+  requested_by: 'requested_by',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Comity_Member_RequestScalarFieldEnum = (typeof Comity_Member_RequestScalarFieldEnum)[keyof typeof Comity_Member_RequestScalarFieldEnum]
+
+
+export const Comity_RoleScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  name: 'name',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Comity_RoleScalarFieldEnum = (typeof Comity_RoleScalarFieldEnum)[keyof typeof Comity_RoleScalarFieldEnum]
 
 
 export const SortOrder = {

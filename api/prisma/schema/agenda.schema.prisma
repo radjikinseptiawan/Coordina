@@ -1,35 +1,38 @@
 model Agenda {
-  id                  String       @id @default(uuid())
+  id                  String        @id @default(uuid())
   comity_id           String
   agenda_name         String
   tanggal_agenda      DateTime
-  status_agenda       AgendaStatus @default(COMING_SOON)
-  is_online           isOnline     @default(offline)
+  status_agenda       AgendaStatus  @default(COMING_SOON)
+  is_online           isOnline      @default(offline)
   lokasi              String?
   lokasi_link         String?
   meetingLink         String?
   room_pass           String?
   note                String?
   lampiran            String?
+  potential_level     PotentiaLevel
   start_at            String
   end_at              String
   created_by_id       String
-  created_at          DateTime     @default(now())
-  updated_at          DateTime     @updatedAt
-  comity              Comity       @relation(fields: [comity_id], references: [id])
-  user_member_profile User_Profile @relation(fields: [created_by_id], references: [id])
+  created_at          DateTime      @default(now())
+  updated_at          DateTime      @updatedAt
+  comity              Comity        @relation(fields: [comity_id], references: [id])
+  user_member_profile User_Profile  @relation(fields: [created_by_id], references: [id])
   attendances         Attendance[]
 }
 
 model Attendance {
-  id         String                   @id @default(uuid())
-  agenda_id  String
-  user_id    String
-  status     AttendanceStatus         @default(ABSENT)
-  checkin_at DateTime?
-  created_at DateTime                 @default(now())
-  agenda     Agenda                   @relation(fields: [agenda_id], references: [id])
-  user       Member_Profiles_Comities @relation(fields: [user_id], references: [id])
+  id               String                   @id @default(uuid())
+  agenda_id        String
+  user_id          String
+  method           Method
+  status           AttendanceStatus         @default(ABSENT)
+  proof_attendance String
+  checkin_at       String?
+  created_at       DateTime                 @default(now())
+  agenda           Agenda                   @relation(fields: [agenda_id], references: [id])
+  user             Member_Profiles_Comities @relation(fields: [user_id], references: [id])
 
   @@unique([agenda_id, user_id])
 }
@@ -37,6 +40,12 @@ model Attendance {
 enum isOnline {
   offline
   online
+}
+
+enum Method {
+  QR
+  Photo
+  Location
 }
 
 enum AgendaStatus {
@@ -51,4 +60,10 @@ enum AttendanceStatus {
   ABSENT
   PERMISSION
   SICK
+}
+
+enum PotentiaLevel {
+  LOW
+  IMPORTANT
+  URGENT
 }

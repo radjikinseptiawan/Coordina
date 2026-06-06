@@ -29,7 +29,7 @@ export type Member_Profiles_ComitiesMinAggregateOutputType = {
   member_id: string | null
   comity_id: string | null
   account_id: string | null
-  role: string | null
+  role_id: string | null
   position: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -40,7 +40,7 @@ export type Member_Profiles_ComitiesMaxAggregateOutputType = {
   member_id: string | null
   comity_id: string | null
   account_id: string | null
-  role: string | null
+  role_id: string | null
   position: string | null
   created_at: Date | null
   updated_at: Date | null
@@ -51,7 +51,7 @@ export type Member_Profiles_ComitiesCountAggregateOutputType = {
   member_id: number
   comity_id: number
   account_id: number
-  role: number
+  role_id: number
   position: number
   created_at: number
   updated_at: number
@@ -64,7 +64,7 @@ export type Member_Profiles_ComitiesMinAggregateInputType = {
   member_id?: true
   comity_id?: true
   account_id?: true
-  role?: true
+  role_id?: true
   position?: true
   created_at?: true
   updated_at?: true
@@ -75,7 +75,7 @@ export type Member_Profiles_ComitiesMaxAggregateInputType = {
   member_id?: true
   comity_id?: true
   account_id?: true
-  role?: true
+  role_id?: true
   position?: true
   created_at?: true
   updated_at?: true
@@ -86,7 +86,7 @@ export type Member_Profiles_ComitiesCountAggregateInputType = {
   member_id?: true
   comity_id?: true
   account_id?: true
-  role?: true
+  role_id?: true
   position?: true
   created_at?: true
   updated_at?: true
@@ -170,7 +170,7 @@ export type Member_Profiles_ComitiesGroupByOutputType = {
   member_id: string
   comity_id: string
   account_id: string
-  role: string | null
+  role_id: string
   position: string | null
   created_at: Date
   updated_at: Date
@@ -202,7 +202,7 @@ export type Member_Profiles_ComitiesWhereInput = {
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
+  role_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   created_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
@@ -210,6 +210,7 @@ export type Member_Profiles_ComitiesWhereInput = {
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
   comity?: Prisma.XOR<Prisma.ComityScalarRelationFilter, Prisma.ComityWhereInput>
   member?: Prisma.XOR<Prisma.User_ProfileScalarRelationFilter, Prisma.User_ProfileWhereInput>
+  role?: Prisma.XOR<Prisma.Comity_RoleScalarRelationFilter, Prisma.Comity_RoleWhereInput>
 }
 
 export type Member_Profiles_ComitiesOrderByWithRelationInput = {
@@ -217,7 +218,7 @@ export type Member_Profiles_ComitiesOrderByWithRelationInput = {
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
-  role?: Prisma.SortOrderInput | Prisma.SortOrder
+  role_id?: Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -225,6 +226,7 @@ export type Member_Profiles_ComitiesOrderByWithRelationInput = {
   account?: Prisma.AccountsOrderByWithRelationInput
   comity?: Prisma.ComityOrderByWithRelationInput
   member?: Prisma.User_ProfileOrderByWithRelationInput
+  role?: Prisma.Comity_RoleOrderByWithRelationInput
 }
 
 export type Member_Profiles_ComitiesWhereUniqueInput = Prisma.AtLeast<{
@@ -236,7 +238,7 @@ export type Member_Profiles_ComitiesWhereUniqueInput = Prisma.AtLeast<{
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
+  role_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   created_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
@@ -244,6 +246,7 @@ export type Member_Profiles_ComitiesWhereUniqueInput = Prisma.AtLeast<{
   account?: Prisma.XOR<Prisma.AccountsScalarRelationFilter, Prisma.AccountsWhereInput>
   comity?: Prisma.XOR<Prisma.ComityScalarRelationFilter, Prisma.ComityWhereInput>
   member?: Prisma.XOR<Prisma.User_ProfileScalarRelationFilter, Prisma.User_ProfileWhereInput>
+  role?: Prisma.XOR<Prisma.Comity_RoleScalarRelationFilter, Prisma.Comity_RoleWhereInput>
 }, "id" | "member_id_comity_id">
 
 export type Member_Profiles_ComitiesOrderByWithAggregationInput = {
@@ -251,7 +254,7 @@ export type Member_Profiles_ComitiesOrderByWithAggregationInput = {
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
-  role?: Prisma.SortOrderInput | Prisma.SortOrder
+  role_id?: Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -268,7 +271,7 @@ export type Member_Profiles_ComitiesScalarWhereWithAggregatesInput = {
   member_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
-  role?: Prisma.StringNullableWithAggregatesFilter<"Member_Profiles_Comities"> | string | null
+  role_id?: Prisma.StringWithAggregatesFilter<"Member_Profiles_Comities"> | string
   position?: Prisma.StringNullableWithAggregatesFilter<"Member_Profiles_Comities"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Member_Profiles_Comities"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Member_Profiles_Comities"> | Date | string
@@ -276,7 +279,6 @@ export type Member_Profiles_ComitiesScalarWhereWithAggregatesInput = {
 
 export type Member_Profiles_ComitiesCreateInput = {
   id?: string
-  role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -284,6 +286,7 @@ export type Member_Profiles_ComitiesCreateInput = {
   account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
+  role: Prisma.Comity_RoleCreateNestedOneWithoutMembersInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateInput = {
@@ -291,7 +294,7 @@ export type Member_Profiles_ComitiesUncheckedCreateInput = {
   member_id: string
   comity_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -300,7 +303,6 @@ export type Member_Profiles_ComitiesUncheckedCreateInput = {
 
 export type Member_Profiles_ComitiesUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -308,6 +310,7 @@ export type Member_Profiles_ComitiesUpdateInput = {
   account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
+  role?: Prisma.Comity_RoleUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateInput = {
@@ -315,7 +318,7 @@ export type Member_Profiles_ComitiesUncheckedUpdateInput = {
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -327,7 +330,7 @@ export type Member_Profiles_ComitiesCreateManyInput = {
   member_id: string
   comity_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -335,7 +338,6 @@ export type Member_Profiles_ComitiesCreateManyInput = {
 
 export type Member_Profiles_ComitiesUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -346,7 +348,7 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyInput = {
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -377,7 +379,7 @@ export type Member_Profiles_ComitiesCountOrderByAggregateInput = {
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  role_id?: Prisma.SortOrder
   position?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -388,7 +390,7 @@ export type Member_Profiles_ComitiesMaxOrderByAggregateInput = {
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  role_id?: Prisma.SortOrder
   position?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -399,7 +401,7 @@ export type Member_Profiles_ComitiesMinOrderByAggregateInput = {
   member_id?: Prisma.SortOrder
   comity_id?: Prisma.SortOrder
   account_id?: Prisma.SortOrder
-  role?: Prisma.SortOrder
+  role_id?: Prisma.SortOrder
   position?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -545,22 +547,64 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityNestedInput 
   deleteMany?: Prisma.Member_Profiles_ComitiesScalarWhereInput | Prisma.Member_Profiles_ComitiesScalarWhereInput[]
 }
 
+export type Member_Profiles_ComitiesCreateNestedManyWithoutRoleInput = {
+  create?: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput> | Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput[] | Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput | Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput[]
+  createMany?: Prisma.Member_Profiles_ComitiesCreateManyRoleInputEnvelope
+  connect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+}
+
+export type Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutRoleInput = {
+  create?: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput> | Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput[] | Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput | Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput[]
+  createMany?: Prisma.Member_Profiles_ComitiesCreateManyRoleInputEnvelope
+  connect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+}
+
+export type Member_Profiles_ComitiesUpdateManyWithoutRoleNestedInput = {
+  create?: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput> | Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput[] | Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput | Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput[]
+  upsert?: Prisma.Member_Profiles_ComitiesUpsertWithWhereUniqueWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpsertWithWhereUniqueWithoutRoleInput[]
+  createMany?: Prisma.Member_Profiles_ComitiesCreateManyRoleInputEnvelope
+  set?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  disconnect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  delete?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  connect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  update?: Prisma.Member_Profiles_ComitiesUpdateWithWhereUniqueWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpdateWithWhereUniqueWithoutRoleInput[]
+  updateMany?: Prisma.Member_Profiles_ComitiesUpdateManyWithWhereWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpdateManyWithWhereWithoutRoleInput[]
+  deleteMany?: Prisma.Member_Profiles_ComitiesScalarWhereInput | Prisma.Member_Profiles_ComitiesScalarWhereInput[]
+}
+
+export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutRoleNestedInput = {
+  create?: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput> | Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput[] | Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput[]
+  connectOrCreate?: Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput | Prisma.Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput[]
+  upsert?: Prisma.Member_Profiles_ComitiesUpsertWithWhereUniqueWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpsertWithWhereUniqueWithoutRoleInput[]
+  createMany?: Prisma.Member_Profiles_ComitiesCreateManyRoleInputEnvelope
+  set?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  disconnect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  delete?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  connect?: Prisma.Member_Profiles_ComitiesWhereUniqueInput | Prisma.Member_Profiles_ComitiesWhereUniqueInput[]
+  update?: Prisma.Member_Profiles_ComitiesUpdateWithWhereUniqueWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpdateWithWhereUniqueWithoutRoleInput[]
+  updateMany?: Prisma.Member_Profiles_ComitiesUpdateManyWithWhereWithoutRoleInput | Prisma.Member_Profiles_ComitiesUpdateManyWithWhereWithoutRoleInput[]
+  deleteMany?: Prisma.Member_Profiles_ComitiesScalarWhereInput | Prisma.Member_Profiles_ComitiesScalarWhereInput[]
+}
+
 export type Member_Profiles_ComitiesCreateWithoutAccountInput = {
   id?: string
-  role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   agenda?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
+  role: Prisma.Comity_RoleCreateNestedOneWithoutMembersInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutAccountInput = {
   id?: string
   member_id: string
   comity_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -601,7 +645,7 @@ export type Member_Profiles_ComitiesScalarWhereInput = {
   member_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   comity_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   account_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
-  role?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
+  role_id?: Prisma.StringFilter<"Member_Profiles_Comities"> | string
   position?: Prisma.StringNullableFilter<"Member_Profiles_Comities"> | string | null
   created_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Member_Profiles_Comities"> | Date | string
@@ -609,20 +653,20 @@ export type Member_Profiles_ComitiesScalarWhereInput = {
 
 export type Member_Profiles_ComitiesCreateWithoutMemberInput = {
   id?: string
-  role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   agenda?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
+  role: Prisma.Comity_RoleCreateNestedOneWithoutMembersInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutMemberInput = {
   id?: string
   comity_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -657,13 +701,13 @@ export type Member_Profiles_ComitiesUpdateManyWithWhereWithoutMemberInput = {
 
 export type Member_Profiles_ComitiesCreateWithoutAgendaInput = {
   id?: string
-  role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
+  role: Prisma.Comity_RoleCreateNestedOneWithoutMembersInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutAgendaInput = {
@@ -671,7 +715,7 @@ export type Member_Profiles_ComitiesUncheckedCreateWithoutAgendaInput = {
   member_id: string
   comity_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -695,13 +739,13 @@ export type Member_Profiles_ComitiesUpdateToOneWithWhereWithoutAgendaInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutAgendaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
+  role?: Prisma.Comity_RoleUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutAgendaInput = {
@@ -709,7 +753,7 @@ export type Member_Profiles_ComitiesUncheckedUpdateWithoutAgendaInput = {
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -717,20 +761,20 @@ export type Member_Profiles_ComitiesUncheckedUpdateWithoutAgendaInput = {
 
 export type Member_Profiles_ComitiesCreateWithoutComityInput = {
   id?: string
-  role?: string | null
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
   agenda?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
   member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
+  role: Prisma.Comity_RoleCreateNestedOneWithoutMembersInput
 }
 
 export type Member_Profiles_ComitiesUncheckedCreateWithoutComityInput = {
   id?: string
   member_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -763,11 +807,59 @@ export type Member_Profiles_ComitiesUpdateManyWithWhereWithoutComityInput = {
   data: Prisma.XOR<Prisma.Member_Profiles_ComitiesUpdateManyMutationInput, Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityInput>
 }
 
+export type Member_Profiles_ComitiesCreateWithoutRoleInput = {
+  id?: string
+  position?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  agenda?: Prisma.AttendanceCreateNestedManyWithoutUserInput
+  account: Prisma.AccountsCreateNestedOneWithoutMember_profiles_comitiesInput
+  comity: Prisma.ComityCreateNestedOneWithoutMemberProfilesComitiesInput
+  member: Prisma.User_ProfileCreateNestedOneWithoutMember_profile_comityInput
+}
+
+export type Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput = {
+  id?: string
+  member_id: string
+  comity_id: string
+  account_id: string
+  position?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  agenda?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type Member_Profiles_ComitiesCreateOrConnectWithoutRoleInput = {
+  where: Prisma.Member_Profiles_ComitiesWhereUniqueInput
+  create: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput>
+}
+
+export type Member_Profiles_ComitiesCreateManyRoleInputEnvelope = {
+  data: Prisma.Member_Profiles_ComitiesCreateManyRoleInput | Prisma.Member_Profiles_ComitiesCreateManyRoleInput[]
+  skipDuplicates?: boolean
+}
+
+export type Member_Profiles_ComitiesUpsertWithWhereUniqueWithoutRoleInput = {
+  where: Prisma.Member_Profiles_ComitiesWhereUniqueInput
+  update: Prisma.XOR<Prisma.Member_Profiles_ComitiesUpdateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedUpdateWithoutRoleInput>
+  create: Prisma.XOR<Prisma.Member_Profiles_ComitiesCreateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedCreateWithoutRoleInput>
+}
+
+export type Member_Profiles_ComitiesUpdateWithWhereUniqueWithoutRoleInput = {
+  where: Prisma.Member_Profiles_ComitiesWhereUniqueInput
+  data: Prisma.XOR<Prisma.Member_Profiles_ComitiesUpdateWithoutRoleInput, Prisma.Member_Profiles_ComitiesUncheckedUpdateWithoutRoleInput>
+}
+
+export type Member_Profiles_ComitiesUpdateManyWithWhereWithoutRoleInput = {
+  where: Prisma.Member_Profiles_ComitiesScalarWhereInput
+  data: Prisma.XOR<Prisma.Member_Profiles_ComitiesUpdateManyMutationInput, Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutRoleInput>
+}
+
 export type Member_Profiles_ComitiesCreateManyAccountInput = {
   id?: string
   member_id: string
   comity_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -775,20 +867,20 @@ export type Member_Profiles_ComitiesCreateManyAccountInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agenda?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
+  role?: Prisma.Comity_RoleUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -799,7 +891,7 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -809,7 +901,7 @@ export type Member_Profiles_ComitiesCreateManyMemberInput = {
   id?: string
   comity_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -817,20 +909,20 @@ export type Member_Profiles_ComitiesCreateManyMemberInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agenda?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
+  role?: Prisma.Comity_RoleUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -841,7 +933,7 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutMemberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   comity_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -851,7 +943,7 @@ export type Member_Profiles_ComitiesCreateManyComityInput = {
   id?: string
   member_id: string
   account_id: string
-  role?: string | null
+  role_id: string
   position?: string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -859,20 +951,20 @@ export type Member_Profiles_ComitiesCreateManyComityInput = {
 
 export type Member_Profiles_ComitiesUpdateWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agenda?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
   member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
+  role?: Prisma.Comity_RoleUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type Member_Profiles_ComitiesUncheckedUpdateWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -883,7 +975,49 @@ export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutComityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   member_id?: Prisma.StringFieldUpdateOperationsInput | string
   account_id?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role_id?: Prisma.StringFieldUpdateOperationsInput | string
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type Member_Profiles_ComitiesCreateManyRoleInput = {
+  id?: string
+  member_id: string
+  comity_id: string
+  account_id: string
+  position?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type Member_Profiles_ComitiesUpdateWithoutRoleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agenda?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
+  account?: Prisma.AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput
+  comity?: Prisma.ComityUpdateOneRequiredWithoutMemberProfilesComitiesNestedInput
+  member?: Prisma.User_ProfileUpdateOneRequiredWithoutMember_profile_comityNestedInput
+}
+
+export type Member_Profiles_ComitiesUncheckedUpdateWithoutRoleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  member_id?: Prisma.StringFieldUpdateOperationsInput | string
+  comity_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_id?: Prisma.StringFieldUpdateOperationsInput | string
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agenda?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type Member_Profiles_ComitiesUncheckedUpdateManyWithoutRoleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  member_id?: Prisma.StringFieldUpdateOperationsInput | string
+  comity_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -925,7 +1059,7 @@ export type Member_Profiles_ComitiesSelect<ExtArgs extends runtime.Types.Extensi
   member_id?: boolean
   comity_id?: boolean
   account_id?: boolean
-  role?: boolean
+  role_id?: boolean
   position?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -933,6 +1067,7 @@ export type Member_Profiles_ComitiesSelect<ExtArgs extends runtime.Types.Extensi
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.Member_Profiles_ComitiesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["member_Profiles_Comities"]>
 
@@ -941,13 +1076,14 @@ export type Member_Profiles_ComitiesSelectCreateManyAndReturn<ExtArgs extends ru
   member_id?: boolean
   comity_id?: boolean
   account_id?: boolean
-  role?: boolean
+  role_id?: boolean
   position?: boolean
   created_at?: boolean
   updated_at?: boolean
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["member_Profiles_Comities"]>
 
 export type Member_Profiles_ComitiesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -955,13 +1091,14 @@ export type Member_Profiles_ComitiesSelectUpdateManyAndReturn<ExtArgs extends ru
   member_id?: boolean
   comity_id?: boolean
   account_id?: boolean
-  role?: boolean
+  role_id?: boolean
   position?: boolean
   created_at?: boolean
   updated_at?: boolean
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["member_Profiles_Comities"]>
 
 export type Member_Profiles_ComitiesSelectScalar = {
@@ -969,29 +1106,32 @@ export type Member_Profiles_ComitiesSelectScalar = {
   member_id?: boolean
   comity_id?: boolean
   account_id?: boolean
-  role?: boolean
+  role_id?: boolean
   position?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type Member_Profiles_ComitiesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "member_id" | "comity_id" | "account_id" | "role" | "position" | "created_at" | "updated_at", ExtArgs["result"]["member_Profiles_Comities"]>
+export type Member_Profiles_ComitiesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "member_id" | "comity_id" | "account_id" | "role_id" | "position" | "created_at" | "updated_at", ExtArgs["result"]["member_Profiles_Comities"]>
 export type Member_Profiles_ComitiesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agenda?: boolean | Prisma.Member_Profiles_Comities$agendaArgs<ExtArgs>
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.Member_Profiles_ComitiesCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type Member_Profiles_ComitiesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
 }
 export type Member_Profiles_ComitiesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   account?: boolean | Prisma.AccountsDefaultArgs<ExtArgs>
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   member?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
+  role?: boolean | Prisma.Comity_RoleDefaultArgs<ExtArgs>
 }
 
 export type $Member_Profiles_ComitiesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1001,13 +1141,14 @@ export type $Member_Profiles_ComitiesPayload<ExtArgs extends runtime.Types.Exten
     account: Prisma.$AccountsPayload<ExtArgs>
     comity: Prisma.$ComityPayload<ExtArgs>
     member: Prisma.$User_ProfilePayload<ExtArgs>
+    role: Prisma.$Comity_RolePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     member_id: string
     comity_id: string
     account_id: string
-    role: string | null
+    role_id: string
     position: string | null
     created_at: Date
     updated_at: Date
@@ -1409,6 +1550,7 @@ export interface Prisma__Member_Profiles_ComitiesClient<T, Null = never, ExtArgs
   account<T extends Prisma.AccountsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AccountsDefaultArgs<ExtArgs>>): Prisma.Prisma__AccountsClient<runtime.Types.Result.GetResult<Prisma.$AccountsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   comity<T extends Prisma.ComityDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComityDefaultArgs<ExtArgs>>): Prisma.Prisma__ComityClient<runtime.Types.Result.GetResult<Prisma.$ComityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   member<T extends Prisma.User_ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User_ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__User_ProfileClient<runtime.Types.Result.GetResult<Prisma.$User_ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  role<T extends Prisma.Comity_RoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Comity_RoleDefaultArgs<ExtArgs>>): Prisma.Prisma__Comity_RoleClient<runtime.Types.Result.GetResult<Prisma.$Comity_RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1442,7 +1584,7 @@ export interface Member_Profiles_ComitiesFieldRefs {
   readonly member_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly comity_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly account_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
-  readonly role: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
+  readonly role_id: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly position: Prisma.FieldRef<"Member_Profiles_Comities", 'String'>
   readonly created_at: Prisma.FieldRef<"Member_Profiles_Comities", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Member_Profiles_Comities", 'DateTime'>

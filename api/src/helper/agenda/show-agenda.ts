@@ -1,13 +1,37 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-export async function ShowAgenda(tcx: PrismaService, comityUrl) {
+export async function ShowAgenda(
+  tcx: PrismaService,
+  comityUrl,
+  page: number = 1,
+  limit: number = 10,
+  user: any,
+) {
   try {
-    const comity = await tcx.comity.findFirst({
-      where: {
-        urlLink: comityUrl,
-      },
-    });
+    const [person, comity] = await Promise.all([
+      await tcx.member_Profiles_Comities.findMany({
+        where: {
+          account_id: user.userId,
+        },
+      }),
+      await tcx.comity.findFirst({
+        where: {
+          urlLink: comityUrl,
+        },
+      }),
+    ]);
+
+    const users = person.map((item) => item.comity_id);
+    if (!users.includes(comity?.id as string)) {
+      throw new HttpException(
+        {
+          message: 'You are not a member of this organization',
+          comity,
+        },
+        HttpStatus.FORBIDDEN,
+      );
+    }
 
     if (!comity) {
       throw new HttpException(
@@ -19,19 +43,38 @@ export async function ShowAgenda(tcx: PrismaService, comityUrl) {
       );
     }
 
-    const agenda = await tcx.agenda.findMany({
-      orderBy: {
-        tanggal_agenda: 'desc',
-      },
-      where: {
-        comity_id: comity.id,
-      },
-    });
+    const skip = (page - 1) * limit;
+
+    const [agenda, totalItems] = await Promise.all([
+      tcx.agenda.findMany({
+        orderBy: {
+          tanggal_agenda: 'desc',
+        },
+        where: {
+          comity_id: comity.id,
+        },
+        skip: skip,
+        take: limit,
+      }),
+      tcx.agenda.count({
+        where: {
+          comity_id: comity.id,
+        },
+      }),
+    ]);
+
+    const totalPages = Math.ceil(totalItems / limit);
 
     return new HttpException(
       {
         message: 'Success get data',
         data: agenda,
+        meta: {
+          totalItems,
+          totalPages,
+          currentPage: page,
+          limit,
+        },
       },
       HttpStatus.OK,
     );
@@ -40,6 +83,7 @@ export async function ShowAgenda(tcx: PrismaService, comityUrl) {
       {
         message: 'Error!',
         error: e.message,
+        detail: e,
       },
       HttpStatus.INTERNAL_SERVER_ERROR,
     );

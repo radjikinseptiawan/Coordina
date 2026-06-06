@@ -392,7 +392,9 @@ export const ModelName = {
   Comity: 'Comity',
   Comity_Vision: 'Comity_Vision',
   Comity_Mission: 'Comity_Mission',
-  Member_Profiles_Comities: 'Member_Profiles_Comities'
+  Member_Profiles_Comities: 'Member_Profiles_Comities',
+  Comity_Member_Request: 'Comity_Member_Request',
+  Comity_Role: 'Comity_Role'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "accounts" | "accounts_Otp" | "user_Profile" | "agenda" | "attendance" | "comity" | "comity_Vision" | "comity_Mission" | "member_Profiles_Comities"
+    modelProps: "accounts" | "accounts_Otp" | "user_Profile" | "agenda" | "attendance" | "comity" | "comity_Vision" | "comity_Mission" | "member_Profiles_Comities" | "comity_Member_Request" | "comity_Role"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1078,6 +1080,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Comity_Member_Request: {
+      payload: Prisma.$Comity_Member_RequestPayload<ExtArgs>
+      fields: Prisma.Comity_Member_RequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.Comity_Member_RequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.Comity_Member_RequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        findFirst: {
+          args: Prisma.Comity_Member_RequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.Comity_Member_RequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        findMany: {
+          args: Prisma.Comity_Member_RequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>[]
+        }
+        create: {
+          args: Prisma.Comity_Member_RequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        createMany: {
+          args: Prisma.Comity_Member_RequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.Comity_Member_RequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>[]
+        }
+        delete: {
+          args: Prisma.Comity_Member_RequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        update: {
+          args: Prisma.Comity_Member_RequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.Comity_Member_RequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.Comity_Member_RequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.Comity_Member_RequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.Comity_Member_RequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_Member_RequestPayload>
+        }
+        aggregate: {
+          args: Prisma.Comity_Member_RequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateComity_Member_Request>
+        }
+        groupBy: {
+          args: Prisma.Comity_Member_RequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Comity_Member_RequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.Comity_Member_RequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Comity_Member_RequestCountAggregateOutputType> | number
+        }
+      }
+    }
+    Comity_Role: {
+      payload: Prisma.$Comity_RolePayload<ExtArgs>
+      fields: Prisma.Comity_RoleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.Comity_RoleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.Comity_RoleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        findFirst: {
+          args: Prisma.Comity_RoleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.Comity_RoleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        findMany: {
+          args: Prisma.Comity_RoleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>[]
+        }
+        create: {
+          args: Prisma.Comity_RoleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        createMany: {
+          args: Prisma.Comity_RoleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.Comity_RoleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>[]
+        }
+        delete: {
+          args: Prisma.Comity_RoleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        update: {
+          args: Prisma.Comity_RoleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        deleteMany: {
+          args: Prisma.Comity_RoleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.Comity_RoleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.Comity_RoleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>[]
+        }
+        upsert: {
+          args: Prisma.Comity_RoleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$Comity_RolePayload>
+        }
+        aggregate: {
+          args: Prisma.Comity_RoleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateComity_Role>
+        }
+        groupBy: {
+          args: Prisma.Comity_RoleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Comity_RoleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.Comity_RoleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Comity_RoleCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1169,6 +1319,7 @@ export const AgendaScalarFieldEnum = {
   room_pass: 'room_pass',
   note: 'note',
   lampiran: 'lampiran',
+  potential_level: 'potential_level',
   start_at: 'start_at',
   end_at: 'end_at',
   created_by_id: 'created_by_id',
@@ -1183,7 +1334,9 @@ export const AttendanceScalarFieldEnum = {
   id: 'id',
   agenda_id: 'agenda_id',
   user_id: 'user_id',
+  method: 'method',
   status: 'status',
+  proof_attendance: 'proof_attendance',
   checkin_at: 'checkin_at',
   created_at: 'created_at'
 } as const
@@ -1236,13 +1389,39 @@ export const Member_Profiles_ComitiesScalarFieldEnum = {
   member_id: 'member_id',
   comity_id: 'comity_id',
   account_id: 'account_id',
-  role: 'role',
+  role_id: 'role_id',
   position: 'position',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type Member_Profiles_ComitiesScalarFieldEnum = (typeof Member_Profiles_ComitiesScalarFieldEnum)[keyof typeof Member_Profiles_ComitiesScalarFieldEnum]
+
+
+export const Comity_Member_RequestScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  account_id: 'account_id',
+  type: 'type',
+  status: 'status',
+  requested_by: 'requested_by',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Comity_Member_RequestScalarFieldEnum = (typeof Comity_Member_RequestScalarFieldEnum)[keyof typeof Comity_Member_RequestScalarFieldEnum]
+
+
+export const Comity_RoleScalarFieldEnum = {
+  id: 'id',
+  comity_id: 'comity_id',
+  name: 'name',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Comity_RoleScalarFieldEnum = (typeof Comity_RoleScalarFieldEnum)[keyof typeof Comity_RoleScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1353,6 +1532,34 @@ export type ListEnumisOnlineFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 
 
 /**
+ * Reference to a field of type 'PotentiaLevel'
+ */
+export type EnumPotentiaLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PotentiaLevel'>
+    
+
+
+/**
+ * Reference to a field of type 'PotentiaLevel[]'
+ */
+export type ListEnumPotentiaLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PotentiaLevel[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Method'
+ */
+export type EnumMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Method'>
+    
+
+
+/**
+ * Reference to a field of type 'Method[]'
+ */
+export type ListEnumMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Method[]'>
+    
+
+
+/**
  * Reference to a field of type 'AttendanceStatus'
  */
 export type EnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus'>
@@ -1363,6 +1570,20 @@ export type EnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'AttendanceStatus[]'
  */
 export type ListEnumAttendanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AttendanceStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ComityReqStatus'
+ */
+export type EnumComityReqStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ComityReqStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ComityReqStatus[]'
+ */
+export type ListEnumComityReqStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ComityReqStatus[]'>
     
 
 
@@ -1498,6 +1719,8 @@ export type GlobalOmitConfig = {
   comity_Vision?: Prisma.Comity_VisionOmit
   comity_Mission?: Prisma.Comity_MissionOmit
   member_Profiles_Comities?: Prisma.Member_Profiles_ComitiesOmit
+  comity_Member_Request?: Prisma.Comity_Member_RequestOmit
+  comity_Role?: Prisma.Comity_RoleOmit
 }
 
 /* Types for Logging */

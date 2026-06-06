@@ -17,6 +17,15 @@ export const isOnline = {
 export type isOnline = (typeof isOnline)[keyof typeof isOnline]
 
 
+export const Method = {
+  QR: 'QR',
+  Photo: 'Photo',
+  Location: 'Location'
+} as const
+
+export type Method = (typeof Method)[keyof typeof Method]
+
+
 export const AgendaStatus = {
   COMING_SOON: 'COMING_SOON',
   ON_GOING: 'ON_GOING',
@@ -35,3 +44,21 @@ export const AttendanceStatus = {
 } as const
 
 export type AttendanceStatus = (typeof AttendanceStatus)[keyof typeof AttendanceStatus]
+
+
+export const PotentiaLevel = {
+  LOW: 'LOW',
+  IMPORTANT: 'IMPORTANT',
+  URGENT: 'URGENT'
+} as const
+
+export type PotentiaLevel = (typeof PotentiaLevel)[keyof typeof PotentiaLevel]
+
+
+export const ComityReqStatus = {
+  Accepted: 'Accepted',
+  Rejected: 'Rejected',
+  Pending: 'Pending'
+} as const
+
+export type ComityReqStatus = (typeof ComityReqStatus)[keyof typeof ComityReqStatus]

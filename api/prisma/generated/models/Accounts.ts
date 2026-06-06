@@ -198,6 +198,7 @@ export type AccountsWhereInput = {
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   refresh_token?: Prisma.StringNullableFilter<"Accounts"> | string | null
+  request?: Prisma.Comity_Member_RequestListRelationFilter
   user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }
@@ -210,6 +211,7 @@ export type AccountsOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   refresh_token?: Prisma.SortOrderInput | Prisma.SortOrder
+  request?: Prisma.Comity_Member_RequestOrderByRelationAggregateInput
   user_profile?: Prisma.User_ProfileOrderByWithRelationInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesOrderByRelationAggregateInput
 }
@@ -225,6 +227,7 @@ export type AccountsWhereUniqueInput = Prisma.AtLeast<{
   username?: Prisma.StringFilter<"Accounts"> | string
   created_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Accounts"> | Date | string
+  request?: Prisma.Comity_Member_RequestListRelationFilter
   user_profile?: Prisma.XOR<Prisma.User_ProfileNullableScalarRelationFilter, Prisma.User_ProfileWhereInput> | null
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesListRelationFilter
 }, "id" | "email" | "refresh_token">
@@ -263,6 +266,7 @@ export type AccountsCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestCreateNestedManyWithoutAccountInput
   user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
@@ -275,6 +279,7 @@ export type AccountsUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestUncheckedCreateNestedManyWithoutAccountInput
   user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
@@ -287,6 +292,7 @@ export type AccountsUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUpdateManyWithoutAccountNestedInput
   user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
@@ -299,6 +305,7 @@ export type AccountsUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUncheckedUpdateManyWithoutAccountNestedInput
   user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
@@ -408,6 +415,20 @@ export type AccountsUpdateOneRequiredWithoutMember_profiles_comitiesNestedInput 
   update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutMember_profiles_comitiesInput, Prisma.AccountsUpdateWithoutMember_profiles_comitiesInput>, Prisma.AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput>
 }
 
+export type AccountsCreateNestedOneWithoutRequestInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutRequestInput, Prisma.AccountsUncheckedCreateWithoutRequestInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutRequestInput
+  connect?: Prisma.AccountsWhereUniqueInput
+}
+
+export type AccountsUpdateOneRequiredWithoutRequestNestedInput = {
+  create?: Prisma.XOR<Prisma.AccountsCreateWithoutRequestInput, Prisma.AccountsUncheckedCreateWithoutRequestInput>
+  connectOrCreate?: Prisma.AccountsCreateOrConnectWithoutRequestInput
+  upsert?: Prisma.AccountsUpsertWithoutRequestInput
+  connect?: Prisma.AccountsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AccountsUpdateToOneWithWhereWithoutRequestInput, Prisma.AccountsUpdateWithoutRequestInput>, Prisma.AccountsUncheckedUpdateWithoutRequestInput>
+}
+
 export type AccountsCreateWithoutUser_profileInput = {
   id?: string
   email: string
@@ -416,6 +437,7 @@ export type AccountsCreateWithoutUser_profileInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestCreateNestedManyWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
 }
 
@@ -427,6 +449,7 @@ export type AccountsUncheckedCreateWithoutUser_profileInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestUncheckedCreateNestedManyWithoutAccountInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
 }
 
@@ -454,6 +477,7 @@ export type AccountsUpdateWithoutUser_profileInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUpdateManyWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
 }
 
@@ -465,6 +489,7 @@ export type AccountsUncheckedUpdateWithoutUser_profileInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUncheckedUpdateManyWithoutAccountNestedInput
   member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
 
@@ -476,6 +501,7 @@ export type AccountsCreateWithoutMember_profiles_comitiesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestCreateNestedManyWithoutAccountInput
   user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
 }
 
@@ -487,6 +513,7 @@ export type AccountsUncheckedCreateWithoutMember_profiles_comitiesInput = {
   created_at?: Date | string
   updated_at?: Date | string
   refresh_token?: string | null
+  request?: Prisma.Comity_Member_RequestUncheckedCreateNestedManyWithoutAccountInput
   user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
 }
 
@@ -514,6 +541,7 @@ export type AccountsUpdateWithoutMember_profiles_comitiesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUpdateManyWithoutAccountNestedInput
   user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
 }
 
@@ -525,7 +553,72 @@ export type AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  request?: Prisma.Comity_Member_RequestUncheckedUpdateManyWithoutAccountNestedInput
   user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
+}
+
+export type AccountsCreateWithoutRequestInput = {
+  id?: string
+  email: string
+  password: string
+  username: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  refresh_token?: string | null
+  user_profile?: Prisma.User_ProfileCreateNestedOneWithoutAccountInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesCreateNestedManyWithoutAccountInput
+}
+
+export type AccountsUncheckedCreateWithoutRequestInput = {
+  id?: string
+  email: string
+  password: string
+  username: string
+  created_at?: Date | string
+  updated_at?: Date | string
+  refresh_token?: string | null
+  user_profile?: Prisma.User_ProfileUncheckedCreateNestedOneWithoutAccountInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedCreateNestedManyWithoutAccountInput
+}
+
+export type AccountsCreateOrConnectWithoutRequestInput = {
+  where: Prisma.AccountsWhereUniqueInput
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutRequestInput, Prisma.AccountsUncheckedCreateWithoutRequestInput>
+}
+
+export type AccountsUpsertWithoutRequestInput = {
+  update: Prisma.XOR<Prisma.AccountsUpdateWithoutRequestInput, Prisma.AccountsUncheckedUpdateWithoutRequestInput>
+  create: Prisma.XOR<Prisma.AccountsCreateWithoutRequestInput, Prisma.AccountsUncheckedCreateWithoutRequestInput>
+  where?: Prisma.AccountsWhereInput
+}
+
+export type AccountsUpdateToOneWithWhereWithoutRequestInput = {
+  where?: Prisma.AccountsWhereInput
+  data: Prisma.XOR<Prisma.AccountsUpdateWithoutRequestInput, Prisma.AccountsUncheckedUpdateWithoutRequestInput>
+}
+
+export type AccountsUpdateWithoutRequestInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUpdateOneWithoutAccountNestedInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUpdateManyWithoutAccountNestedInput
+}
+
+export type AccountsUncheckedUpdateWithoutRequestInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refresh_token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_profile?: Prisma.User_ProfileUncheckedUpdateOneWithoutAccountNestedInput
+  member_profiles_comities?: Prisma.Member_Profiles_ComitiesUncheckedUpdateManyWithoutAccountNestedInput
 }
 
 
@@ -534,10 +627,12 @@ export type AccountsUncheckedUpdateWithoutMember_profiles_comitiesInput = {
  */
 
 export type AccountsCountOutputType = {
+  request: number
   member_profiles_comities: number
 }
 
 export type AccountsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  request?: boolean | AccountsCountOutputTypeCountRequestArgs
   member_profiles_comities?: boolean | AccountsCountOutputTypeCountMember_profiles_comitiesArgs
 }
 
@@ -549,6 +644,13 @@ export type AccountsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
    * Select specific fields to fetch from the AccountsCountOutputType
    */
   select?: Prisma.AccountsCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * AccountsCountOutputType without action
+ */
+export type AccountsCountOutputTypeCountRequestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.Comity_Member_RequestWhereInput
 }
 
 /**
@@ -567,6 +669,7 @@ export type AccountsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   created_at?: boolean
   updated_at?: boolean
   refresh_token?: boolean
+  request?: boolean | Prisma.Accounts$requestArgs<ExtArgs>
   user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
   member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
   _count?: boolean | Prisma.AccountsCountOutputTypeDefaultArgs<ExtArgs>
@@ -604,6 +707,7 @@ export type AccountsSelectScalar = {
 
 export type AccountsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "username" | "created_at" | "updated_at" | "refresh_token", ExtArgs["result"]["accounts"]>
 export type AccountsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  request?: boolean | Prisma.Accounts$requestArgs<ExtArgs>
   user_profile?: boolean | Prisma.Accounts$user_profileArgs<ExtArgs>
   member_profiles_comities?: boolean | Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>
   _count?: boolean | Prisma.AccountsCountOutputTypeDefaultArgs<ExtArgs>
@@ -614,6 +718,7 @@ export type AccountsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $AccountsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Accounts"
   objects: {
+    request: Prisma.$Comity_Member_RequestPayload<ExtArgs>[]
     user_profile: Prisma.$User_ProfilePayload<ExtArgs> | null
     member_profiles_comities: Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>[]
   }
@@ -1019,6 +1124,7 @@ readonly fields: AccountsFieldRefs;
  */
 export interface Prisma__AccountsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  request<T extends Prisma.Accounts$requestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$requestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Comity_Member_RequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user_profile<T extends Prisma.Accounts$user_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$user_profileArgs<ExtArgs>>): Prisma.Prisma__User_ProfileClient<runtime.Types.Result.GetResult<Prisma.$User_ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   member_profiles_comities<T extends Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Accounts$member_profiles_comitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Member_Profiles_ComitiesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1447,6 +1553,30 @@ export type AccountsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many Accounts to delete.
    */
   limit?: number
+}
+
+/**
+ * Accounts.request
+ */
+export type Accounts$requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comity_Member_Request
+   */
+  select?: Prisma.Comity_Member_RequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comity_Member_Request
+   */
+  omit?: Prisma.Comity_Member_RequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.Comity_Member_RequestInclude<ExtArgs> | null
+  where?: Prisma.Comity_Member_RequestWhereInput
+  orderBy?: Prisma.Comity_Member_RequestOrderByWithRelationInput | Prisma.Comity_Member_RequestOrderByWithRelationInput[]
+  cursor?: Prisma.Comity_Member_RequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Comity_Member_RequestScalarFieldEnum | Prisma.Comity_Member_RequestScalarFieldEnum[]
 }
 
 /**

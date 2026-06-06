@@ -15,14 +15,26 @@ export async function editProfileHelper(
       updated_at: new Date(),
     };
 
-    const data = await prisma.user_Profile.update({
-      where: {
-        account_id: id,
-      },
-      data: updatedData,
-    });
+    const [profile, account] = await Promise.all([
+      await prisma.user_Profile.update({
+        where: {
+          account_id: id,
+        },
+        data: updatedData,
+      }),
+      await prisma.accounts.update({
+        where: {
+          id: id,
+        },
+        data: {
+          username: body.username,
+          email: body.email,
+          updated_at: new Date(),
+        },
+      }),
+    ]);
 
-    if (!data) {
+    if (!profile) {
       return new HttpException(
         {
           message: 'Profile not found',
@@ -32,24 +44,12 @@ export async function editProfileHelper(
       );
     }
 
-    if (body.email || body.username) {
-      const updateAccounts = await prisma.accounts.update({
-        where: {
-          id: id,
-        },
-        data: {
-          username: body.username,
-          email: body.email,
-          updated_at: new Date(),
-        },
-      });
-    }
-
     return new HttpException(
       {
         message: 'Profile Updated',
         status: HttpStatus.OK,
-        data,
+        profile,
+        update: account,
       },
       HttpStatus.OK,
     );

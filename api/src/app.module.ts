@@ -8,6 +8,7 @@ import { ProfileModule } from './apps/profile/profile.module';
 import { ComityModule } from './apps/comity/comity.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { WhatsappModule } from './apps/whatsapp/whatsapp.module';
+import { MembersModule } from './apps/members/members.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { WhatsappModule } from './apps/whatsapp/whatsapp.module';
     ProfileModule,
     ComityModule,
     MulterModule,
+    MembersModule,
     WhatsappModule,
   ],
   controllers: [AppController],

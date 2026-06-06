@@ -9,13 +9,16 @@ export async function createAgendaHelper(
   createdById: string,
 ) {
   try {
-    console.log(body);
-    console.log('Buatan', createdById);
-    const comity = await tcx.comity.findFirst({
-      where: {
-        urlLink: ComityId,
-      },
-    });
+    const [comity, user] = await Promise.all([
+      await tcx.comity.findFirst({
+        where: { urlLink: ComityId },
+      }),
+      await tcx.user_Profile.findFirst({
+        where: {
+          account_id: createdById,
+        },
+      }),
+    ]);
 
     if (!comity) {
       throw new HttpException(
@@ -27,40 +30,55 @@ export async function createAgendaHelper(
       );
     }
 
-    const userProfile = await tcx.user_Profile.findFirst({
-      where: {
-        account_id: createdById,
-      },
-    });
-
-    if (!userProfile) {
+    if (!user) {
       throw new HttpException(
         {
           message: 'Failed to get userProfile',
-          userProfile,
+          user,
         },
         HttpStatus.BAD_REQUEST,
       );
     }
 
-    const agenda = await tcx.agenda.create({
-      data: {
-        agenda_name: body.agenda_name,
-        tanggal_agenda: new Date(body.tanggal_agenda),
-        is_online: body.is_online,
-        lokasi: body.lokasi,
-        lokasi_link: body.link_lokasi,
-        start_at: body.start_at,
-        end_at: body.end_at,
-        room_pass: body.password,
-        status_agenda: body.status_agenda,
-        note: body.note,
-        lampiran: body.lampiran,
-        meetingLink: body.meetingLink,
-        created_by_id: userProfile.id,
-        comity_id: comity.id,
-      },
-    });
+    const [agenda, members] = await Promise.all([
+      await tcx.agenda.create({
+        data: {
+          agenda_name: body.agenda_name,
+          tanggal_agenda: new Date(body.tanggal_agenda),
+          is_online: body.is_online,
+          lokasi: body.lokasi,
+          lokasi_link: body.link_lokasi,
+          start_at: body.start_at,
+          end_at: body.end_at,
+          room_pass: body.password,
+          status_agenda: body.status_agenda,
+          note: body.note,
+          potential_level: body.priority_level,
+          lampiran: body.lampiran,
+          meetingLink: body.meetingLink,
+          created_by_id: user.id,
+          comity_id: comity.id,
+        },
+      }),
+      await tcx.member_Profiles_Comities.findFirst({
+        where: {
+          account_id: user.account_id,
+          comity_id: comity.id,
+        },
+        include: {
+          comity: true,
+        },
+      }),
+    ]);
+
+    if (agenda.comity_id !== members?.comity_id) {
+      throw new HttpException(
+        {
+          message: 'Something wrong!',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
 
     if (!agenda) {
       throw new HttpException(
@@ -71,29 +89,6 @@ export async function createAgendaHelper(
         },
         HttpStatus.AMBIGUOUS,
       );
-    }
-
-    const members = await tcx.member_Profiles_Comities.findMany({
-      where: {
-        account_id: userProfile.account_id,
-        comity_id: comity.id,
-      },
-    });
-
-    console.log(members);
-
-    if (members.length > 0) {
-      const attendance = members.map((member) => ({
-        agenda_id: agenda.id,
-        status: body.status,
-        checkin_at: body.checkin_at,
-        user_id: member.id,
-      }));
-
-      await tcx.attendance.createMany({
-        data: attendance,
-        skipDuplicates: true,
-      });
     }
 
     return new HttpException(

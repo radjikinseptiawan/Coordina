@@ -84,3 +84,13 @@ export type Comity_Mission = Prisma.Comity_MissionModel
  * 
  */
 export type Member_Profiles_Comities = Prisma.Member_Profiles_ComitiesModel
+/**
+ * Model Comity_Member_Request
+ * 
+ */
+export type Comity_Member_Request = Prisma.Comity_Member_RequestModel
+/**
+ * Model Comity_Role
+ * 
+ */
+export type Comity_Role = Prisma.Comity_RoleModel

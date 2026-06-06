@@ -12,15 +12,22 @@ export enum AttendanceStatus {
   SICK = 'SICK',
 }
 
+export enum PotentialLevel {
+  LOW = 'LOW',
+  IMPORTANT = 'IMPORTANT',
+  URGENT = 'URGENT',
+}
+
 export interface AgendaPayload {
   agenda_name: string;
   tanggal_agenda: string;
   status_agenda: AgendaStatus | 'COMING_SOON';
   is_online: 'online' | 'offline';
   note: string;
+  priority_level: PotentialLevel;
   link_lokasi: string;
   password: string;
-  lampiran: string;
+  lampiran?: string;
   lokasi?: string;
   meetingLink?: string;
   start_at: string;

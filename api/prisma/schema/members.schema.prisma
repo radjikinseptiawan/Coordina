@@ -1,0 +1,33 @@
+model Comity_Member_Request {
+  id           String          @id @default(uuid())
+  comity_id    String
+  account_id   String
+  type         String
+  status       ComityReqStatus @default(Pending)
+  requested_by String
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+  account      Accounts        @relation(fields: [account_id], references: [id])
+  comity       Comity          @relation(fields: [comity_id], references: [id])
+
+  @@map("comity_member_request")
+}
+
+model Comity_Role {
+  id          String                     @id @default(uuid())
+  comity_id   String
+  name        String
+  description String?
+  created_at  DateTime                   @default(now())
+  updated_at  DateTime                   @updatedAt
+  comity      Comity                     @relation(fields: [comity_id], references: [id])
+  members     Member_Profiles_Comities[]
+
+  @@unique([comity_id, name])
+}
+
+enum ComityReqStatus {
+  Accepted
+  Rejected
+  Pending
+}
