@@ -4,7 +4,7 @@ export type AgendaType = "online" | "offline";
 export type Agenda = {
   id: string;
   agenda_name: string;
-  potential_level: string;
+  priority_level: string;
   tanggal_agenda: string;
   status_agenda: AgendaStatus;
   is_online: AgendaType;
@@ -29,7 +29,7 @@ export type User = {
 export type DetailAgenda = {
   id: string;
   agenda_name: string;
-  potential_level: string;
+  priority_level: string;
   tanggal_agenda: string;
   status_agenda: AgendaStatus;
   is_online: AgendaType;

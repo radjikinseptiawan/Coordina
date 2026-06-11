@@ -15,25 +15,19 @@ import {
   useMemoComity,
   useOpenContext,
 } from "../md.context";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ComityData } from "@/_shared/custom/@types/comity.type";
 import { convertDate } from "@/lib/utils";
+import MenuDashboardShowDialogs from "../md.dialogs/show.dialogs";
+import { Eye } from "lucide-react";
 
-export interface MenuDasboardCardsTypes {
-  comity: {
-    comity_name: string;
-    comity_short_name: string;
-    comity_background: string;
-    created_at: string;
-    comity_icon: string;
-    urlLink: string;
-  };
+export interface ComityRelevant {
+  comity: ComityData;
 }
 
 export function MenuDashboardCards() {
-  const [data, setData] = useState<MenuDasboardCardsTypes[]>([]);
+  const [data, setData] = useState<ComityRelevant[]>([]);
   const { isLoading, setIsLoading } = useLoadingContext();
-  const { comityLoad, setComityLoad } = useMemoComity();
   const router = useRouter();
   const fetchOrganizations = async () => {
     setIsLoading(true);
@@ -46,23 +40,34 @@ export function MenuDashboardCards() {
       console.error(e);
     }
   };
+
+  const mapper = useMemo(() => {
+    if (!data) return;
+    const enteredComity = data.map((item) => {
+      return {
+        comity_name: item.comity.comity_name,
+        comity_background: item.comity.comity_background,
+        comity_city_of_operational: item.comity.comity_city_of_operational,
+        comity_icon: item.comity.comity_icon,
+        comity_created_date: item.comity.comity_created_date,
+        comity_short_name: item.comity.comity_short_name,
+        urlLink: item.comity.urlLink,
+        visions: item.comity.visions,
+        missions: item.comity.missions,
+      };
+    });
+    return enteredComity;
+  }, [data]);
+
   useEffect(() => {
     fetchOrganizations();
   }, []);
-
-  const organizations = useMemo(() => {
-    if (!data) return;
-    return data;
-  }, [data]);
-
-  console.log(data);
   return (
     <>
-      {organizations && isLoading === false ? (
-        organizations.length > 0 ? (
-          organizations.map((item, index) => (
+      {mapper && isLoading === false ? (
+        data.length > 0 ? (
+          data.map((item, index) => (
             <Card key={index} className="w-full my-4 md:w-80">
-              {/* Header */}
               <div className="flex">
                 <Avatar className="rounded mx-4">
                   <AvatarImage
@@ -77,7 +82,8 @@ export function MenuDashboardCards() {
                     {item.comity.comity_short_name}
                   </h3>
                   <p className="text-gray-400">
-                    Created at: {convertDate(new Date(item.comity.created_at))}
+                    Created at:{" "}
+                    {convertDate(new Date(item.comity.comity_created_date))}
                   </p>
                 </div>
               </div>
@@ -94,16 +100,12 @@ export function MenuDashboardCards() {
                 </p>
 
                 <Button
-                  onClick={async () => {
-                    const data = await getOrganizationsDetail(
-                      item.comity.urlLink,
-                    );
-                    console.log(data);
+                  onClick={() => {
                     router.push(`?show=true&comity=${item.comity.urlLink}`);
-                    setComityLoad(data);
                   }}
                   className="w-32 cursor-pointer"
                 >
+                  <Eye />
                   Show
                 </Button>
               </div>
@@ -139,9 +141,7 @@ export function MenuDashboardCards() {
                 ...
               </div>
 
-              <Button className="w-32 cursor-pointer" disabled>
-                Show
-              </Button>
+              <Button className="w-32 cursor-pointer" disabled></Button>
             </div>
           </Card>
         ))

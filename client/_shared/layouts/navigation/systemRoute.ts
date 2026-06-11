@@ -1,5 +1,5 @@
 import { Variants } from "framer-motion";
-import { Building, LetterText } from "lucide-react";
+import { Building, LetterText, Settings } from "lucide-react";
 
 export const systemRoute = [
   {
@@ -21,16 +21,26 @@ export const systemRoute = [
     icon: LetterText,
     children: [
       {
-        name: "Incoming Letters",
-        href: "administration/incoming-letters",
-      },
-      {
-        name: "Outgoing Letters",
-        href: "administration/outgoing-letters",
-      },
-      {
         name: "Members",
         href: "administration/members",
+      },
+      {
+        name: "Attendance Recapitulation",
+        href: "administration/attendance-recapitulation",
+      },
+    ],
+  },
+  {
+    name: "Settings",
+    icon: Settings,
+    children: [
+      {
+        name: "Role Based Access Control",
+        href: "settings/role",
+      },
+      {
+        name: "Setting Organizations",
+        href: "settings/organizations",
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { Agenda } from "@/_shared/custom/@types/agenda.type";
 import { decoderToken } from "@/_shared/custom/hooks/decoder";
 import axios from "axios";
 import { Console } from "console";
@@ -11,6 +12,7 @@ export const createAgenda = async (body: any, slug: string) => {
       ...body,
       lampiran: null,
     };
+    console.log(body);
     const response = await axios.post(
       `${BASE_API}/${slug}/comity/agenda/create`,
       payload,
@@ -57,5 +59,32 @@ export const getAgenda = async (slug: string, page: number = 1) => {
       data: [],
       meta: { totalItems: 0, totalPages: 1, currentPage: 1 },
     };
+  }
+};
+
+export const editAgenda = async (data: Agenda, slug: string, id: string) => {
+  try {
+    const res = await axios.patch(
+      `${BASE_API}/${slug}/comity/agenda/${id}/update-agenda`,
+      data,
+      { withCredentials: true },
+    );
+
+    return res;
+  } catch (err: any) {
+    toast.error(`${err.message}`);
+  }
+};
+
+export const deleteAgenda = async (slug: string, id: string) => {
+  try {
+    const res = await axios.delete(
+      `${BASE_API}/${slug}/comity/agenda/${id}/delete`,
+      { withCredentials: true },
+    );
+    return res;
+  } catch (err: any) {
+    console.error(err);
+    toast.error(`${err.message}`);
   }
 };

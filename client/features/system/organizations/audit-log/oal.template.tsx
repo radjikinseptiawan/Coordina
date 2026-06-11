@@ -1,12 +1,14 @@
 import Containers from "@/_shared/layouts/components/containers";
+import AuditLogPage from "./al.controllers/al.controllers";
+import { Button } from "@/components/ui/button";
 
 export default function AuditLogOrganizationTemplate() {
   return (
     <Containers
       title="Audit Log"
-      description="Log activity of your organizations"
+      description="Monitor all activities and changes inside your organization."
     >
-      <h1></h1>
+      <AuditLogPage />
     </Containers>
   );
 }

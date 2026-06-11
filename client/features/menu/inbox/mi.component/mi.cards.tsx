@@ -27,7 +27,7 @@ export default function CardsInvitations({ data }: { data: any }) {
             <Button variant={"secondary"} onClick={() => acceptInvite(item.id)}>
               <Check />
             </Button>
-            <Button variant={"outline"}>
+            <Button variant={"destructive"}>
               <X />
             </Button>
           </div>

@@ -4,10 +4,18 @@ import { UseOrganizationAgendaForms } from "../oa.hooks/oa.hooks";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { OrganizationAgendaSchemaType } from "./oa.schema";
-import { ReactNode, useEffect } from "react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { ReactNode, useEffect, useMemo } from "react";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import axios from "axios";
-import { createAgenda } from "@/service/organizations/agenda.service";
+import {
+  createAgenda,
+  editAgenda,
+} from "@/service/organizations/agenda.service";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,46 +25,90 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { Agenda } from "@/_shared/custom/@types/agenda.type";
 
 export default function OrganizationAgendaForms({
   children,
+  initialData,
 }: {
   children: ReactNode;
+  initialData?: Agenda;
 }) {
   const {
     formState: { errors },
     register,
     handleSubmit,
     watch,
+    reset,
     setValue,
   } = UseOrganizationAgendaForms();
-  const slug = usePathname();
+  const formMode = useSearchParams().get("mode");
+  const slug = useParams();
+  const id = useSearchParams().get("id");
   const router = useRouter();
   const isOnline = watch("is_online");
   const location = watch("lokasi");
   const priorityLevel = watch("priority_level");
-  const embedUrl = location
-    ? `https://www.google.com/maps?q=${encodeURIComponent(
-        location,
-      )}&output=embed`
-    : "";
+  const statusAgenda = watch("status_agenda");
 
-  const mapLink = `https://www.google.com/maps/search/${location?.replaceAll(" ", "+")}/`;
+  const embedUrl = useMemo(() => {
+    return location
+      ? `https://maps.google.com/maps?q=${encodeURIComponent(location)}&output=embed`
+      : "";
+  }, [location]);
+
+  const mapLink = useMemo(() => {
+    return location
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
+      : "";
+  }, [location]);
+
   useEffect(() => {
-    setValue("link_lokasi", mapLink);
-  }, [mapLink]);
+    if (mapLink) {
+      setValue("link_lokasi", mapLink);
+    }
+  }, [mapLink, setValue]);
+
+  useEffect(() => {
+    if (formMode === "edit" && initialData) {
+      const formatData = { ...initialData };
+
+      if (formatData.tanggal_agenda) {
+        formatData.tanggal_agenda = formatData.tanggal_agenda.split("T")[0];
+      }
+
+      reset(formatData);
+    }
+  }, [formMode, initialData, reset]);
 
   const submitForm = async (data: any) => {
-    const slugs = slug.split("/");
-    console.log("dari form ui", data);
-    const response = await createAgenda(data, slugs[1]);
-    console.log("hasil response:", response);
-    router.push("agenda");
+    console.log(slug);
+    if (formMode == "create") {
+      const response = await createAgenda(data, slug.slug as string);
+      console.log("hasil response:", response);
+      router.push("agenda");
+    }
+
+    if (formMode == "edit") {
+      console.log(id, slug, data);
+      const response = await editAgenda(
+        data,
+        slug.slug as string,
+        id as string,
+      );
+
+      console.log("hasil response, edit", response);
+      router.push("agenda");
+    }
+  };
+
+  const onErrorSubmit = (errors: any) => {
+    console.error(errors);
   };
   return (
-    <form onSubmit={handleSubmit(submitForm)} className="w-full">
+    <form onSubmit={handleSubmit(submitForm, onErrorSubmit)} className="w-full">
       <div className="flex flex-col md:flex-row md:gap-x-5 w-full justify-center gap-y-4 h-80 overflow-y-auto">
-        <div className="mt-110 md:mt-0"></div>
+        <div className="mt-120 md:mt-0"></div>
         <div className="flex flex-col gap-y-2">
           <div>
             <Label>Agenda Name</Label>
@@ -140,9 +192,6 @@ export default function OrganizationAgendaForms({
           <div>
             <Label>Lampiran</Label>
             <Input type="file" {...register("lampiran")} />
-            {/* {errors.lampiran && ( */}
-            {/* <p className="text-red-500 text-sm">{errors.la}</p> */}
-            {/* )} */}
             <div className="flex gap-2">
               <Label>Type : </Label>
               <div className="flex items-center gap-2">
@@ -230,6 +279,38 @@ export default function OrganizationAgendaForms({
                   )}
                 </div>
               )}
+
+              <div>
+                <Label>Status Agenda</Label>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button className="w-full" variant={"outline"}>
+                      <ChevronDown />
+                      <p>{statusAgenda ? statusAgenda : "Priority Level"}</p>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuGroup>
+                      {["COMING_SOON", "ON_GOING", "SUCCESS", "FAILED"].map(
+                        (item, index) => {
+                          return (
+                            <DropdownMenuItem
+                              key={index}
+                              onClick={() =>
+                                setValue("status_agenda", item, {
+                                  shouldValidate: true,
+                                })
+                              }
+                            >
+                              {item}
+                            </DropdownMenuItem>
+                          );
+                        },
+                      )}
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
         </div>

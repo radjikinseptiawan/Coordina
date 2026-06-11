@@ -10,11 +10,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import OrganizationAgendaForms from "../oa.forms/oa.forms";
 
 export default function OrganizationAddDialogs() {
-  const showUrl = useSearchParams().get("add");
+  const showUrl = useSearchParams().get("mode");
   const router = useRouter();
   return (
     <Dialog
-      open={showUrl == `"true"` ? true : false}
+      open={showUrl == `create` ? true : false}
       onOpenChange={() => router.push("agenda")}
     >
       <DialogContent className="w-80 md:w-xl">
@@ -25,9 +25,13 @@ export default function OrganizationAddDialogs() {
         <div>
           <OrganizationAgendaForms>
             <div className="flex gap-2 justify-end">
-              <DialogClose onClick={() => router.push("agenda")}>
+              <Button
+                type="button"
+                onClick={() => router.push("agenda")}
+                variant={"destructive"}
+              >
                 Cancel
-              </DialogClose>
+              </Button>
               <Button>Submit</Button>
             </div>
           </OrganizationAgendaForms>

@@ -15,6 +15,7 @@ export const OrganizationAgendaSchemaType = z
     is_online: z.enum(["online", "offline"], {
       error: "agenda type must been filled!",
     }),
+    status_agenda: z.string().min(1, "Status must been filled!"),
     priority_level: z.string().min(1, "Priority Level must been filled!"),
     meetingLink: z.string().optional(),
     password: z.string().optional(),

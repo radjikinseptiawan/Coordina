@@ -23,7 +23,7 @@ export function OrganizationsAgendaControllers() {
 
   return (
     <>
-      <Button onClick={() => router.push(`?add="true"`)}>
+      <Button onClick={() => router.push(`?mode=create`)}>
         <Plus size={12} />
         Add Agenda
       </Button>

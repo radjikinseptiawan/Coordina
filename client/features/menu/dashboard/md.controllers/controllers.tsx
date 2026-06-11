@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import MenuDashboardAddDialogs from "../md.dialogs/add.dialogs";
 import { useOpenContext } from "../md.context";
+import { useRouter } from "next/navigation";
 
 export function MenuDashboardControllers() {
   const { setIsOpen } = useOpenContext();
+  const router = useRouter();
   return (
     <div className="flex px-8 justify-between w-full  md:w-full py-1 border-b-2 flex-col md:flex-row">
       <div>
@@ -15,7 +17,9 @@ export function MenuDashboardControllers() {
         </p>
       </div>
       <div className="flex gap-2 justify-end">
-        <Button variant={"outline"}>Cari Organisasi</Button>
+        <Button onClick={() => router.push("?mode=search")} variant={"outline"}>
+          Cari Organisasi
+        </Button>
         <Button onClick={() => setIsOpen(true)}>Create Organization</Button>
       </div>
 

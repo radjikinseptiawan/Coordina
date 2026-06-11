@@ -6,11 +6,24 @@ import {
   IsLoadingContextProvider,
   IsOpenContextProvider,
   MemoComityProvider,
-  useOpenContext,
 } from "./md.context";
+import MenuDashboardSearchDialogs from "./md.dialogs/search.dialogs";
 import MenuDashboardShowDialogs from "./md.dialogs/show.dialogs";
+import { ComityData } from "@/_shared/custom/@types/comity.type";
+import { getComitiesAll, getDataFind } from "@/service/dashboard/menu.service";
+import { useRouter } from "next/navigation";
+import { fetchData, getUserInformation } from "./md.hooks/md.utils";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 export default function MenuDashboardTemplate() {
+  const [data, setData] = useState<ComityData[]>([]);
+
+  useEffect(() => {
+    fetchData({ setData });
+  }, []);
+
   return (
     <IsOpenContextProvider>
       <IsLoadingContextProvider>
@@ -21,7 +34,10 @@ export default function MenuDashboardTemplate() {
               <MenuDashboardCards />
             </div>
           </div>
-          <MenuDashboardShowDialogs />
+          <MenuDashboardSearchDialogs />
+          <MenuDashboardShowDialogs
+            initialData={data}
+          ></MenuDashboardShowDialogs>
         </MemoComityProvider>
       </IsLoadingContextProvider>
     </IsOpenContextProvider>

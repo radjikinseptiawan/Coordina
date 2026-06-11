@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useQueryClient } from "@tanstack/react-query";
-import { RefreshCwIcon, Send } from "lucide-react";
+import { Mail, RefreshCwIcon, Send } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -24,10 +24,19 @@ export default function AdmMemberControllers() {
   console.log(params);
   return (
     <div>
-      <Button onClick={() => router.push("?invite=true")}>
-        <Send />
-        Invite
-      </Button>
+      <div className="gap-2 flex">
+        <Button onClick={() => router.push("?invite=true")}>
+          <Send />
+          Invite
+        </Button>
+        <Button
+          onClick={() => router.push("members/request-join")}
+          variant={"secondary"}
+        >
+          <Mail />
+          View Pending
+        </Button>
+      </div>
 
       <div className="w-full flex justify-end">
         <Button

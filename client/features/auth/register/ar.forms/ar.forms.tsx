@@ -10,8 +10,10 @@ import axios from "axios";
 import { registerUser } from "@/service/dashboard/auth.service";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function AuthRegisterForms() {
+  const [loading, setIsLoading] = useState(false);
   const route = useRouter();
   const {
     register,
@@ -21,12 +23,14 @@ export function AuthRegisterForms() {
 
   const submitForm = async (data: any) => {
     try {
+      setIsLoading(true);
       const result = await registerUser(data);
       if (!result) {
       }
       toast.success(
         "Successfully to registered account!, redirect to login...",
       );
+      setIsLoading(false);
       route.push("/login");
     } catch (e: any) {
       console.error(e);
@@ -105,8 +109,8 @@ export function AuthRegisterForms() {
             )}
           </div>
 
-          <Button type="submit" className="w-60">
-            Register
+          <Button disabled={loading} type="submit" className="w-60">
+            {loading ? "loading..." : "Register"}
           </Button>
           <Link className="text-sm" href={"/login"}>
             Already have an account? go to Login

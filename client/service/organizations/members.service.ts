@@ -81,3 +81,47 @@ export const acceptInvite = async (id: string) => {
     console.error(err);
   }
 };
+
+export const joinComity = async (id: string) => {
+  try {
+    const res = await axios.post(
+      `${BASE_API}/dashboard/application/${id}`,
+      {},
+      { withCredentials: true },
+    );
+  } catch (err: any) {
+    console.error(err);
+    toast.error(`${err.message}`);
+  }
+};
+
+export const receiveJoinComity = async (id: string) => {
+  try {
+    const res = await axios.get(
+      `${BASE_API}/${id}/comity/anggota/application`,
+      { withCredentials: true },
+    );
+    const data = res.data.data;
+    return data;
+  } catch (err: any) {
+    console.error(err);
+    toast.error(`${err.message}`);
+  }
+};
+
+export const acceptComityApplication = async (slug: string, id: string) => {
+  try {
+    const response = await axios.patch(
+      `${BASE_API}/${slug}/comity/anggota/application/${id}`,
+      {},
+      { withCredentials: true },
+    );
+
+    const data = await response.data;
+    console.log(data);
+    await receiveJoinComity(slug);
+  } catch (e: any) {
+    console.error(e);
+    toast.error(`${e.message}`);
+  }
+};
