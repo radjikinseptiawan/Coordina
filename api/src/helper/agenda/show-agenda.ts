@@ -52,6 +52,7 @@ export async function ShowAgenda(
         },
         where: {
           comity_id: comity.id,
+          is_deleted: false,
         },
         skip: skip,
         take: limit,

@@ -5,7 +5,20 @@ export async function getInviteUser(tcx: PrismaService, search: string) {
   try {
     const data = await tcx.accounts.findMany({
       where: {
-        OR: [{ username: search }, { email: search }],
+        OR: [{ username: {
+          contains: search,
+          mode:"insensitive"
+        } }, { email: {
+          contains: search,
+          mode:"insensitive"
+        } }],
+        user_profile : {
+          OR : [{fullname: {
+            contains: search,
+            mode: "insensitive"
+          }}]
+        }
+        
       },
       include: {
         user_profile: true,

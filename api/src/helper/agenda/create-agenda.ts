@@ -46,6 +46,7 @@ export async function createAgendaHelper(
           agenda_name: body.agenda_name,
           tanggal_agenda: new Date(body.tanggal_agenda),
           is_online: body.is_online,
+          is_deleted: false,
           lokasi: body.lokasi,
           lokasi_link: body.link_lokasi,
           start_at: body.start_at,
@@ -53,7 +54,7 @@ export async function createAgendaHelper(
           room_pass: body.password,
           status_agenda: body.status_agenda,
           note: body.note,
-          potential_level: body.priority_level,
+          priority_level: body.priority_level,
           lampiran: body.lampiran,
           meetingLink: body.meetingLink,
           created_by_id: user.id,
@@ -71,15 +72,6 @@ export async function createAgendaHelper(
       }),
     ]);
 
-    if (agenda.comity_id !== members?.comity_id) {
-      throw new HttpException(
-        {
-          message: 'Something wrong!',
-        },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-
     if (!agenda) {
       throw new HttpException(
         {
@@ -90,6 +82,32 @@ export async function createAgendaHelper(
         HttpStatus.AMBIGUOUS,
       );
     }
+
+    if (agenda.comity_id !== members?.comity_id) {
+      throw new HttpException(
+        {
+          message: 'Something wrong!',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    const member = await tcx.member_Profiles_Comities.findMany({
+      where: {
+        comity_id: comity.id,
+      },
+    });
+
+    await tcx.attendance.createMany({
+      data: member.map((item) => ({
+        user_id: item.id,
+        agenda_id: agenda.id,
+        status: 'ABSENT',
+        method: 'Photo',
+        proof_attendance: 'waiting..',
+        checkin_at: 'waiting..',
+      })),
+    });
 
     return new HttpException(
       {

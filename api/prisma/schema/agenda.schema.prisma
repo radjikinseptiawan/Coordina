@@ -11,10 +11,11 @@ model Agenda {
   room_pass           String?
   note                String?
   lampiran            String?
-  potential_level     PotentiaLevel
+  priority_level      PotentiaLevel
   start_at            String
   end_at              String
   created_by_id       String
+  is_deleted          Boolean       @default(false)
   created_at          DateTime      @default(now())
   updated_at          DateTime      @updatedAt
   comity              Comity        @relation(fields: [comity_id], references: [id])

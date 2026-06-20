@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   Req,
@@ -35,6 +36,18 @@ export class MembersControllers {
   @UseGuards(JwtAuthGuard)
   async findUsers(@Query('q') search: string, @Req() req) {
     return await this.memberService.getInviteUsers(search);
+  }
+
+  @Get('application')
+  @UseGuards(JwtAuthGuard)
+  async requestJoin(@Param() params) {
+    return await this.memberService.showJoinComity(params);
+  }
+
+  @Patch('application/:id')
+  @UseGuards(JwtAuthGuard)
+  async acceptJoin(@Param() param, @Req() req) {
+    return await this.memberService.acceptApplication(param);
   }
 
   @Post('search/:q')

@@ -10,6 +10,50 @@ import { editVisionHelper } from 'src/helper/comity/editVision.comity';
 export class ComityService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async searchComity(name:string){
+    const comity = await this.prisma.comity.findMany({
+      where:{
+        comity_name: {
+          contains: name,
+          mode:"insensitive"
+        }
+      }
+    })
+    
+    if(!comity){
+      throw new HttpException({
+        message: "Comity still not yet"
+      },HttpStatus.NOT_FOUND)
+    }
+    
+
+    return {
+      message: "Success get comity",
+      data: comity
+    }
+  }
+
+  async getAllComity(){
+    const data = await this.prisma.comity.findMany({
+      include:{
+        missions:true,
+        visions:true
+      }
+    })
+
+
+    if(!data){
+      throw new HttpException({
+        message: "Still not yet comity!"
+      },HttpStatus.NOT_FOUND)
+    }
+
+    return {
+      message: "Success get comity",
+      data
+    }
+  }
+
   async getComity(url: string) {
     return await GetComityHelper(this.prisma, url);
   }

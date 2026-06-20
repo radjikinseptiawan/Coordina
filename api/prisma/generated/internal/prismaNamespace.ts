@@ -1319,10 +1319,11 @@ export const AgendaScalarFieldEnum = {
   room_pass: 'room_pass',
   note: 'note',
   lampiran: 'lampiran',
-  potential_level: 'potential_level',
+  priority_level: 'priority_level',
   start_at: 'start_at',
   end_at: 'end_at',
   created_by_id: 'created_by_id',
+  is_deleted: 'is_deleted',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const

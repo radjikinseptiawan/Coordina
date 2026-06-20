@@ -37,10 +37,11 @@ export type AgendaMinAggregateOutputType = {
   room_pass: string | null
   note: string | null
   lampiran: string | null
-  potential_level: $Enums.PotentiaLevel | null
+  priority_level: $Enums.PotentiaLevel | null
   start_at: string | null
   end_at: string | null
   created_by_id: string | null
+  is_deleted: boolean | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -58,10 +59,11 @@ export type AgendaMaxAggregateOutputType = {
   room_pass: string | null
   note: string | null
   lampiran: string | null
-  potential_level: $Enums.PotentiaLevel | null
+  priority_level: $Enums.PotentiaLevel | null
   start_at: string | null
   end_at: string | null
   created_by_id: string | null
+  is_deleted: boolean | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -79,10 +81,11 @@ export type AgendaCountAggregateOutputType = {
   room_pass: number
   note: number
   lampiran: number
-  potential_level: number
+  priority_level: number
   start_at: number
   end_at: number
   created_by_id: number
+  is_deleted: number
   created_at: number
   updated_at: number
   _all: number
@@ -102,10 +105,11 @@ export type AgendaMinAggregateInputType = {
   room_pass?: true
   note?: true
   lampiran?: true
-  potential_level?: true
+  priority_level?: true
   start_at?: true
   end_at?: true
   created_by_id?: true
+  is_deleted?: true
   created_at?: true
   updated_at?: true
 }
@@ -123,10 +127,11 @@ export type AgendaMaxAggregateInputType = {
   room_pass?: true
   note?: true
   lampiran?: true
-  potential_level?: true
+  priority_level?: true
   start_at?: true
   end_at?: true
   created_by_id?: true
+  is_deleted?: true
   created_at?: true
   updated_at?: true
 }
@@ -144,10 +149,11 @@ export type AgendaCountAggregateInputType = {
   room_pass?: true
   note?: true
   lampiran?: true
-  potential_level?: true
+  priority_level?: true
   start_at?: true
   end_at?: true
   created_by_id?: true
+  is_deleted?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -238,10 +244,11 @@ export type AgendaGroupByOutputType = {
   room_pass: string | null
   note: string | null
   lampiran: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted: boolean
   created_at: Date
   updated_at: Date
   _count: AgendaCountAggregateOutputType | null
@@ -280,10 +287,11 @@ export type AgendaWhereInput = {
   room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
   start_at?: Prisma.StringFilter<"Agenda"> | string
   end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
+  is_deleted?: Prisma.BoolFilter<"Agenda"> | boolean
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   comity?: Prisma.XOR<Prisma.ComityScalarRelationFilter, Prisma.ComityWhereInput>
@@ -304,10 +312,11 @@ export type AgendaOrderByWithRelationInput = {
   room_pass?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   lampiran?: Prisma.SortOrderInput | Prisma.SortOrder
-  potential_level?: Prisma.SortOrder
+  priority_level?: Prisma.SortOrder
   start_at?: Prisma.SortOrder
   end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   comity?: Prisma.ComityOrderByWithRelationInput
@@ -331,10 +340,11 @@ export type AgendaWhereUniqueInput = Prisma.AtLeast<{
   room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
   start_at?: Prisma.StringFilter<"Agenda"> | string
   end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
+  is_deleted?: Prisma.BoolFilter<"Agenda"> | boolean
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   comity?: Prisma.XOR<Prisma.ComityScalarRelationFilter, Prisma.ComityWhereInput>
@@ -355,10 +365,11 @@ export type AgendaOrderByWithAggregationInput = {
   room_pass?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   lampiran?: Prisma.SortOrderInput | Prisma.SortOrder
-  potential_level?: Prisma.SortOrder
+  priority_level?: Prisma.SortOrder
   start_at?: Prisma.SortOrder
   end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.AgendaCountOrderByAggregateInput
@@ -382,10 +393,11 @@ export type AgendaScalarWhereWithAggregatesInput = {
   room_pass?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableWithAggregatesFilter<"Agenda"> | string | null
-  potential_level?: Prisma.EnumPotentiaLevelWithAggregatesFilter<"Agenda"> | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelWithAggregatesFilter<"Agenda"> | $Enums.PotentiaLevel
   start_at?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
   end_at?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
   created_by_id?: Prisma.StringWithAggregatesFilter<"Agenda"> | string
+  is_deleted?: Prisma.BoolWithAggregatesFilter<"Agenda"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Agenda"> | Date | string
 }
@@ -402,9 +414,10 @@ export type AgendaCreateInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -425,10 +438,11 @@ export type AgendaUncheckedCreateInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutAgendaInput
@@ -446,9 +460,10 @@ export type AgendaUpdateInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -469,10 +484,11 @@ export type AgendaUncheckedUpdateInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutAgendaNestedInput
@@ -491,10 +507,11 @@ export type AgendaCreateManyInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -511,9 +528,10 @@ export type AgendaUpdateManyMutationInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -531,10 +549,11 @@ export type AgendaUncheckedUpdateManyInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -562,10 +581,11 @@ export type AgendaCountOrderByAggregateInput = {
   room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
-  potential_level?: Prisma.SortOrder
+  priority_level?: Prisma.SortOrder
   start_at?: Prisma.SortOrder
   end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -583,10 +603,11 @@ export type AgendaMaxOrderByAggregateInput = {
   room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
-  potential_level?: Prisma.SortOrder
+  priority_level?: Prisma.SortOrder
   start_at?: Prisma.SortOrder
   end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -604,10 +625,11 @@ export type AgendaMinOrderByAggregateInput = {
   room_pass?: Prisma.SortOrder
   note?: Prisma.SortOrder
   lampiran?: Prisma.SortOrder
-  potential_level?: Prisma.SortOrder
+  priority_level?: Prisma.SortOrder
   start_at?: Prisma.SortOrder
   end_at?: Prisma.SortOrder
   created_by_id?: Prisma.SortOrder
+  is_deleted?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -739,9 +761,10 @@ export type AgendaCreateWithoutUser_member_profileInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -761,9 +784,10 @@ export type AgendaUncheckedCreateWithoutUser_member_profileInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutAgendaInput
@@ -811,10 +835,11 @@ export type AgendaScalarWhereInput = {
   room_pass?: Prisma.StringNullableFilter<"Agenda"> | string | null
   note?: Prisma.StringNullableFilter<"Agenda"> | string | null
   lampiran?: Prisma.StringNullableFilter<"Agenda"> | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFilter<"Agenda"> | $Enums.PotentiaLevel
   start_at?: Prisma.StringFilter<"Agenda"> | string
   end_at?: Prisma.StringFilter<"Agenda"> | string
   created_by_id?: Prisma.StringFilter<"Agenda"> | string
+  is_deleted?: Prisma.BoolFilter<"Agenda"> | boolean
   created_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Agenda"> | Date | string
 }
@@ -831,9 +856,10 @@ export type AgendaCreateWithoutAttendancesInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   comity: Prisma.ComityCreateNestedOneWithoutAgendaInput
@@ -853,10 +879,11 @@ export type AgendaUncheckedCreateWithoutAttendancesInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -889,9 +916,10 @@ export type AgendaUpdateWithoutAttendancesInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -911,10 +939,11 @@ export type AgendaUncheckedUpdateWithoutAttendancesInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -931,9 +960,10 @@ export type AgendaCreateWithoutComityInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   user_member_profile: Prisma.User_ProfileCreateNestedOneWithoutAgendaInput
@@ -952,10 +982,11 @@ export type AgendaUncheckedCreateWithoutComityInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutAgendaInput
@@ -1000,9 +1031,10 @@ export type AgendaCreateManyUser_member_profileInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1019,9 +1051,10 @@ export type AgendaUpdateWithoutUser_member_profileInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comity?: Prisma.ComityUpdateOneRequiredWithoutAgendaNestedInput
@@ -1041,9 +1074,10 @@ export type AgendaUncheckedUpdateWithoutUser_member_profileInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutAgendaNestedInput
@@ -1062,9 +1096,10 @@ export type AgendaUncheckedUpdateManyWithoutUser_member_profileInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1081,10 +1116,11 @@ export type AgendaCreateManyComityInput = {
   room_pass?: string | null
   note?: string | null
   lampiran?: string | null
-  potential_level: $Enums.PotentiaLevel
+  priority_level: $Enums.PotentiaLevel
   start_at: string
   end_at: string
   created_by_id: string
+  is_deleted?: boolean
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -1101,9 +1137,10 @@ export type AgendaUpdateWithoutComityInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user_member_profile?: Prisma.User_ProfileUpdateOneRequiredWithoutAgendaNestedInput
@@ -1122,10 +1159,11 @@ export type AgendaUncheckedUpdateWithoutComityInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutAgendaNestedInput
@@ -1143,10 +1181,11 @@ export type AgendaUncheckedUpdateManyWithoutComityInput = {
   room_pass?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lampiran?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  potential_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
+  priority_level?: Prisma.EnumPotentiaLevelFieldUpdateOperationsInput | $Enums.PotentiaLevel
   start_at?: Prisma.StringFieldUpdateOperationsInput | string
   end_at?: Prisma.StringFieldUpdateOperationsInput | string
   created_by_id?: Prisma.StringFieldUpdateOperationsInput | string
+  is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1195,10 +1234,11 @@ export type AgendaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   room_pass?: boolean
   note?: boolean
   lampiran?: boolean
-  potential_level?: boolean
+  priority_level?: boolean
   start_at?: boolean
   end_at?: boolean
   created_by_id?: boolean
+  is_deleted?: boolean
   created_at?: boolean
   updated_at?: boolean
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
@@ -1220,10 +1260,11 @@ export type AgendaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   room_pass?: boolean
   note?: boolean
   lampiran?: boolean
-  potential_level?: boolean
+  priority_level?: boolean
   start_at?: boolean
   end_at?: boolean
   created_by_id?: boolean
+  is_deleted?: boolean
   created_at?: boolean
   updated_at?: boolean
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
@@ -1243,10 +1284,11 @@ export type AgendaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   room_pass?: boolean
   note?: boolean
   lampiran?: boolean
-  potential_level?: boolean
+  priority_level?: boolean
   start_at?: boolean
   end_at?: boolean
   created_by_id?: boolean
+  is_deleted?: boolean
   created_at?: boolean
   updated_at?: boolean
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
@@ -1266,15 +1308,16 @@ export type AgendaSelectScalar = {
   room_pass?: boolean
   note?: boolean
   lampiran?: boolean
-  potential_level?: boolean
+  priority_level?: boolean
   start_at?: boolean
   end_at?: boolean
   created_by_id?: boolean
+  is_deleted?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type AgendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_id" | "agenda_name" | "tanggal_agenda" | "status_agenda" | "is_online" | "lokasi" | "lokasi_link" | "meetingLink" | "room_pass" | "note" | "lampiran" | "potential_level" | "start_at" | "end_at" | "created_by_id" | "created_at" | "updated_at", ExtArgs["result"]["agenda"]>
+export type AgendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "comity_id" | "agenda_name" | "tanggal_agenda" | "status_agenda" | "is_online" | "lokasi" | "lokasi_link" | "meetingLink" | "room_pass" | "note" | "lampiran" | "priority_level" | "start_at" | "end_at" | "created_by_id" | "is_deleted" | "created_at" | "updated_at", ExtArgs["result"]["agenda"]>
 export type AgendaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comity?: boolean | Prisma.ComityDefaultArgs<ExtArgs>
   user_member_profile?: boolean | Prisma.User_ProfileDefaultArgs<ExtArgs>
@@ -1310,10 +1353,11 @@ export type $AgendaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     room_pass: string | null
     note: string | null
     lampiran: string | null
-    potential_level: $Enums.PotentiaLevel
+    priority_level: $Enums.PotentiaLevel
     start_at: string
     end_at: string
     created_by_id: string
+    is_deleted: boolean
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["agenda"]>
@@ -1754,10 +1798,11 @@ export interface AgendaFieldRefs {
   readonly room_pass: Prisma.FieldRef<"Agenda", 'String'>
   readonly note: Prisma.FieldRef<"Agenda", 'String'>
   readonly lampiran: Prisma.FieldRef<"Agenda", 'String'>
-  readonly potential_level: Prisma.FieldRef<"Agenda", 'PotentiaLevel'>
+  readonly priority_level: Prisma.FieldRef<"Agenda", 'PotentiaLevel'>
   readonly start_at: Prisma.FieldRef<"Agenda", 'String'>
   readonly end_at: Prisma.FieldRef<"Agenda", 'String'>
   readonly created_by_id: Prisma.FieldRef<"Agenda", 'String'>
+  readonly is_deleted: Prisma.FieldRef<"Agenda", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"Agenda", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Agenda", 'DateTime'>
 }
