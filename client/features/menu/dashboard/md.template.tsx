@@ -23,7 +23,6 @@ export default function MenuDashboardTemplate() {
   useEffect(() => {
     fetchData({ setData });
   }, []);
-
   return (
     <IsOpenContextProvider>
       <IsLoadingContextProvider>

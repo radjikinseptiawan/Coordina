@@ -4,6 +4,19 @@ import { toast } from "sonner";
 
 export const BASE_API = `${process.env.NEXT_PUBLIC_API_URL}/v1_beta`;
 
+export const getAllAttendance = async (slug: string) => {
+  try {
+    const response = await axios.get(
+      `${BASE_API}/${slug}/comity/agenda/get-all-attendance`,
+    );
+    const result = response.data;
+    return result;
+  } catch (err: any) {
+    toast.error(err.message);
+    console.error(err);
+  }
+};
+
 export const createAbsence = async ({
   slug,
   id,

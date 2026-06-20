@@ -13,6 +13,7 @@ export function UseOrganizationAgendaForms() {
       start_at: "",
       end_at: "",
       lokasi: "",
+      priority_level: "",
       link_lokasi: "",
       meetingLink: "",
       password: "",

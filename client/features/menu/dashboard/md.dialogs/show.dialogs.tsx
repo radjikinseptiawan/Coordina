@@ -108,7 +108,7 @@ export default function MenuDashboardShowDialogs({
 
               <CardContent>
                 <p className="leading-relaxed text-sm">
-                  {comity?.visions.map((item) => item.vision)}
+                  {comity?.visions as undefined}
                 </p>
               </CardContent>
             </Card>

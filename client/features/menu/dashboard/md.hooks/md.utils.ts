@@ -16,10 +16,16 @@ export const fetchData = async ({
   setData: Dispatch<SetStateAction<ComityData[]>>;
 }): Promise<ComityData[] | any> => {
   const allComities = await getComitiesAll();
-  const getMyOrganizations = await getOrganizations();
+  const getMyOrganizations  = await getOrganizations();
+  
   const myJoinedIds = new Set(
     getMyOrganizations.map((item: any) => item.comity.id),
   );
+
+  if(!getMyOrganizations){
+    return []
+  } 
+
   const finalData = allComities.map((item: any) => ({
     comity_name: item.comity_name,
     comity_background: item.comity_background,
@@ -29,11 +35,12 @@ export const fetchData = async ({
     comity_area_of_operational: item.comity_area_of_operational,
     comity_short_name: item.comity_short_name,
     urlLink: item.urlLink,
-    visions: item.visions,
+    visions: item.visions[0].vision,
     missions: item.missions,
     is_joined: myJoinedIds.has(item.id),
   }));
   setData(finalData);
+  console.log(finalData)
   return finalData;
 };
 
@@ -75,7 +82,7 @@ export const getUserInformation = async ({
     }
 
     toast.success(`Success validating resources!, redirecting to system`);
-    router.push(`${slugs}/organizations`);
+    router.push(`${slugs}/organizations/agenda`);
   } catch (e) {
     console.error(e);
   }

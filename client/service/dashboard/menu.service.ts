@@ -22,7 +22,8 @@ export const getDataFind = async (name: string) => {
       `${BASE_API}/dashboard/search?name=${name}`,
       { withCredentials: true },
     );
-    const result = response.data.response.data;
+    console.log(response.data)
+    const result = response.data.data;
     return result;
   } catch (err: any) {
     console.error(err);
@@ -100,7 +101,7 @@ export const getOrganizations = async () => {
   const response = await axios.get(`${BASE_API}/dashboard/comities`, {
     withCredentials: true,
   });
-  const organizations = response.data.response.comities;
+  const organizations = response.data.response.comities || [];
   return organizations;
 };
 

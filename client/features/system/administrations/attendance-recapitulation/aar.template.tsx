@@ -5,6 +5,7 @@ import { AttendanceListTable } from "./aar.components/aar.table";
 import { AttendanceCrossTable } from "./aar.components/aar.all-table";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import TableRecapAdministrations from "./table/table";
 
 export default function AttendanceRecapAdmTemplate() {
   const router = useRouter();
@@ -20,8 +21,7 @@ export default function AttendanceRecapAdmTemplate() {
       }
     >
       <div className="flex flex-col gap-y-3">
-        <AttendanceRecapAdmControllers />
-        {part == "all" ? <AttendanceCrossTable /> : <AttendanceListTable />}
+        <TableRecapAdministrations />
       </div>
     </Containers>
   );

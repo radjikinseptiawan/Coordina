@@ -175,6 +175,7 @@ export default function OrganizationAgendaForms({
                         onClick={() =>
                           setValue("priority_level", item, {
                             shouldValidate: true,
+                            shouldDirty: true,
                           })
                         }
                       >
@@ -286,7 +287,7 @@ export default function OrganizationAgendaForms({
                   <DropdownMenuTrigger asChild>
                     <Button className="w-full" variant={"outline"}>
                       <ChevronDown />
-                      <p>{statusAgenda ? statusAgenda : "Priority Level"}</p>
+                      <p>{statusAgenda ? statusAgenda : "Status Agenda"}</p>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>

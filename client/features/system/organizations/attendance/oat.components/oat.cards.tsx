@@ -34,6 +34,7 @@ export default function AttendanceOrgCards() {
   const [index, setIndex] = useState(0);
   const [isCameraActive, setIsCameraActive] = useState(false);
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
+  const [editable, setEditable] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const slugs = usePathname();
   const slug = slugs.split("/")[1];
@@ -84,6 +85,15 @@ export default function AttendanceOrgCards() {
         ...result,
         result: resultData,
       } as DetailAgenda);
+
+      if (
+        resultData.proof_attendance == "waiting" ||
+        resultData.status == "ABSENT"
+      ) {
+        setEditable(false);
+      } else {
+        setEditable(true);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -106,10 +116,10 @@ export default function AttendanceOrgCards() {
 
         <div className="flex flex-col justify-center items-center md:justify-between md:flex-row-reverse">
           <div className="flex flex-col items-center">
-            {data?.result ? (
+            {data?.result.status !== "ABSENT" ? (
               <div className="bg-gray-300 my-2 rounded-md w-60 h-72 overflow-hidden flex flex-col items-center justify-center relative">
                 <img
-                  src={data.result.proof_attendance}
+                  src={data?.result.proof_attendance}
                   alt="Bukti Absen"
                   className="w-full h-full object-cover"
                 />
@@ -198,7 +208,7 @@ export default function AttendanceOrgCards() {
 
           <BoxLeftComponent data={data as DetailAgenda}>
             <Button
-              disabled={data?.result ? true : false}
+              disabled={editable}
               onClick={() => {
                 setIndex((prevIndex) => (prevIndex + 1) % permission.length);
               }}
@@ -208,12 +218,8 @@ export default function AttendanceOrgCards() {
           </BoxLeftComponent>
         </div>
 
-        <Button
-          disabled={!capturedPhoto || !!data?.result}
-          onClick={submitAttendance}
-          className="mt-4"
-        >
-          {data?.result ? "Already absence" : "Submit"}
+        <Button disabled={editable} onClick={submitAttendance} className="mt-4">
+          {data?.result.status !== "ABSENT" ? "Already absence" : "Submit"}
         </Button>
       </CardContent>
     </Card>
