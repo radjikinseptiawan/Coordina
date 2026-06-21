@@ -44,4 +44,92 @@ export class MembersServices {
   async receiveInviteUser(user) {
     return ShowComiyRequest(this.prisma, user);
   }
+
+  async getAllRoleMember(params) {
+    try {
+      const members = await this.prisma.comity_Role.findMany({
+        where: {
+          comity: {
+            urlLink: params,
+          },
+        },
+      });
+
+      if (!members) {
+        throw new HttpException(
+          {
+            message: 'Failed to found members',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
+      return {
+        message: 'Success to find data',
+        data: members,
+      };
+    } catch (err) {
+      throw new HttpException(
+        {
+          message: 'Something error!',
+          error: err,
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+  }
+
+  async updateRoleMembers(params, body) {
+    console.log(params, body);
+    try {
+      const [members, roles] = await Promise.all([
+        this.prisma.member_Profiles_Comities.findFirst({
+          where: {
+            member_id: body.id,
+          },
+          include: {
+            role: true,
+          },
+        }),
+        this.prisma.comity_Role.findFirst({
+          where: {
+            name: body.role,
+          },
+        }),
+      ]);
+
+      if (!members) {
+        throw new HttpException(
+          {
+            message: 'Members not found!',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
+      const updateRole = await this.prisma.member_Profiles_Comities.update({
+        where: {
+          id: members?.id,
+        },
+        data: {
+          role_id: roles?.id,
+        },
+      });
+
+      return {
+        message: 'Success fetch data',
+        oldData: members,
+        updateData: updateRole,
+      };
+    } catch (error: any) {
+      console.error(error);
+      throw new HttpException(
+        {
+          message: 'Something error!',
+          error: error,
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 }

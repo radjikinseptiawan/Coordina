@@ -10,7 +10,7 @@ export async function sendInviteUser(tcx: PrismaService, search, user) {
     }),
     tcx.accounts.findFirst({
       where: {
-        OR: [{ email: search.q }, { username: search.q }],
+        OR: [{ username: search.q }, { email: search.q }],
       },
     }),
   ]);

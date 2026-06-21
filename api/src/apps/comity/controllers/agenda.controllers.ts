@@ -59,9 +59,8 @@ export class AgendaControllers {
   }
 
   @Get('get-all-attendance')
-  // @UseGuards(JwtAuthGuard)
-  async getAllAttendance(@Param() param, @Req() req) {
-    // const user = await req.user;
+  @UseGuards(JwtAuthGuard)
+  async getAllAttendance(@Param() param) {
     return this.AgendaService.getAllAgenda(param);
   }
 
@@ -88,11 +87,13 @@ export class AgendaControllers {
     return this.AgendaService.absenceAgenda(body, payload, user.userId);
   }
   @Patch(':id/update-agenda')
+  @UseGuards(JwtAuthGuard)
   async updateAgenda(@Param() params, @Body() body) {
     return this.AgendaService.updateAgenda(params, body);
   }
 
   @Delete(':id/delete')
+  @UseGuards(JwtAuthGuard)
   async deleteAgenda(@Param() params) {
     return this.AgendaService.deleteAgenda(params);
   }

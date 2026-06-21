@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
@@ -30,6 +31,18 @@ export class MembersControllers {
       limit,
       person.userId,
     );
+  }
+
+  @Get('role')
+  @UseGuards(JwtAuthGuard)
+  async getAllRole(@Param() param) {
+    return await this.memberService.getAllRoleMember(param.organisasi);
+  }
+
+  @Patch('role')
+  @UseGuards(JwtAuthGuard)
+  async updateRole(@Param() param, @Body() body) {
+    return await this.memberService.updateRoleMembers(param.organisasi, body);
   }
 
   @Get('search')
