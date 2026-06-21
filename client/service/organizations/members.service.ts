@@ -125,3 +125,36 @@ export const acceptComityApplication = async (slug: string, id: string) => {
     toast.error(`${e.message}`);
   }
 };
+
+export const getAllRole = async (slug: string) => {
+  try {
+    const response = await axios.get(
+      `${BASE_API}/${slug}/comity/anggota/role`,
+      { withCredentials: true },
+    );
+    const data = response.data;
+    return data;
+  } catch (error: any) {
+    console.error(error);
+    toast.error(`${error.message}`);
+  }
+};
+
+export const updateRoles = async (slug: string, body: any) => {
+  try {
+    console.log(body);
+
+    const response = await axios.patch(
+      `${BASE_API}/${slug}/comity/anggota/role`,
+      body,
+      {
+        withCredentials: true,
+      },
+    );
+    const data = response.data;
+    return data;
+  } catch (error: any) {
+    console.error(error);
+    toast.error(`${error.message}`);
+  }
+};

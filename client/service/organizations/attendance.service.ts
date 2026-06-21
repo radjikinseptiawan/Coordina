@@ -8,6 +8,7 @@ export const getAllAttendance = async (slug: string) => {
   try {
     const response = await axios.get(
       `${BASE_API}/${slug}/comity/agenda/get-all-attendance`,
+      { withCredentials: true },
     );
     const result = response.data;
     return result;

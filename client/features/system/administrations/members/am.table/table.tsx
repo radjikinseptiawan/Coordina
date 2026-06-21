@@ -3,11 +3,14 @@ import { DataTable } from "@/_shared/layouts/components/dataTable";
 import { columns } from "./column";
 import { useQuery } from "@tanstack/react-query";
 import { membersList } from "@/service/organizations/members.service";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { EditDialogsMember } from "../am.dialogs/edit.dialogs";
+import { ShowDialogsMember } from "../am.dialogs/show.dialogs";
 
 export default function DataTableAdmMembers() {
   const slugs = useParams();
+  const params = useSearchParams().get("show");
   const [page, setPage] = useState<number | string>(0);
   const { data: tableData = [], isLoading } = useQuery({
     queryFn: () => membersList(slugs.slug as string),
@@ -29,6 +32,8 @@ export default function DataTableAdmMembers() {
         data={totalData}
         columns={columns}
       />
+      <ShowDialogsMember params={params as string} initialValue={tableData} />
+      <EditDialogsMember initialValue={tableData} />
     </>
   );
 }

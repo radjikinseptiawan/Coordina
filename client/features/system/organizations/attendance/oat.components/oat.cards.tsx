@@ -10,6 +10,7 @@ import { convertDate } from "@/lib/utils";
 import { agendaSpesific } from "@/service/organizations/agenda.service";
 import { Download, Camera, RefreshCw } from "lucide-react";
 import {
+  notFound,
   redirect,
   usePathname,
   useRouter,
@@ -36,6 +37,9 @@ export default function AttendanceOrgCards() {
   const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
   const [editable, setEditable] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [is404, setIs404] = useState<boolean>(false);
+
   const slugs = usePathname();
   const slug = slugs.split("/")[1];
   const params = useSearchParams().get("agenda");
@@ -74,12 +78,19 @@ export default function AttendanceOrgCards() {
 
   const getDataDetail = async () => {
     try {
+      setIsLoading(true); // Mulai loading
       if (!params || !slug) return;
+
       const hitResponse = await agendaSpesific(slug, params);
       const result = hitResponse.response.agenda;
 
       const hitResponse2 = await historyAbsence(slug, params as string);
       const resultData = await hitResponse2.response.attendance;
+
+      if (!resultData || resultData.status === null) {
+        setIs404(true);
+        return;
+      }
 
       setData({
         ...result,
@@ -96,6 +107,8 @@ export default function AttendanceOrgCards() {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -103,23 +116,37 @@ export default function AttendanceOrgCards() {
     getDataDetail();
   }, []);
 
-  console.log(data);
+  if (is404) {
+    notFound();
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-48">
+        <p className="text-gray-500 animate-pulse">
+          Loading attendance data...
+        </p>
+      </div>
+    );
+  }
+
+  if (!data || !data.result) return null;
 
   return (
     <Card>
       <CardContent className="p-4">
-        <CardTitle>{data?.agenda_name}</CardTitle>
+        <CardTitle>{data.agenda_name}</CardTitle>
         <CardDescription>
-          Created By : {data?.user_member_profile?.fullname}
+          Created By : {data.user_member_profile?.fullname}
         </CardDescription>
         <hr className="my-2" />
 
         <div className="flex flex-col justify-center items-center md:justify-between md:flex-row-reverse">
           <div className="flex flex-col items-center">
-            {data?.result.status !== "ABSENT" ? (
+            {data.result.status !== "ABSENT" ? (
               <div className="bg-gray-300 my-2 rounded-md w-60 h-72 overflow-hidden flex flex-col items-center justify-center relative">
                 <img
-                  src={data?.result.proof_attendance}
+                  src={data.result.proof_attendance}
                   alt="Bukti Absen"
                   className="w-full h-full object-cover"
                 />
@@ -219,7 +246,7 @@ export default function AttendanceOrgCards() {
         </div>
 
         <Button disabled={editable} onClick={submitAttendance} className="mt-4">
-          {data?.result.status !== "ABSENT" ? "Already absence" : "Submit"}
+          {data.result.status !== "ABSENT" ? "Already absence" : "Submit"}
         </Button>
       </CardContent>
     </Card>

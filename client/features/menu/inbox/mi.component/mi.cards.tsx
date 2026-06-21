@@ -24,7 +24,13 @@ export default function CardsInvitations({ data }: { data: any }) {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant={"secondary"} onClick={() => acceptInvite(item.id)}>
+            <Button
+              variant={"secondary"}
+              onClick={() => {
+                window.location.reload();
+                acceptInvite(item.id);
+              }}
+            >
               <Check />
             </Button>
             <Button variant={"destructive"}>

@@ -31,9 +31,10 @@ export function CardsAdmRequest({ data }: { data: any }) {
               <div>
                 <Button
                   variant={"secondary"}
-                  onClick={() =>
-                    acceptComityApplication(slugs.slug as string, item.id)
-                  }
+                  onClick={() => {
+                    window.location.reload();
+                    acceptComityApplication(slugs.slug as string, item.id);
+                  }}
                 >
                   <Check />
                 </Button>

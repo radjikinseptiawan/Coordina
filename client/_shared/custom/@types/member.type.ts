@@ -1,7 +1,13 @@
 export type Member = {
-  role: string;
+  id: string;
+  role: {
+    id: string;
+    name: string;
+  };
   created_at: string;
   member: {
+    id: string;
+    created_at: string;
     fullname: string;
     image: string;
     number_phone: string;

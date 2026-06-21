@@ -2,6 +2,7 @@ import { Member } from "@/_shared/custom/@types/member.type";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
+import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<Member>[] = [
   {
@@ -38,7 +39,12 @@ export const columns: ColumnDef<Member>[] = [
   {
     header: "Detail",
     cell: ({ row }) => {
-      return <Button>Detail</Button>;
+      const router = useRouter();
+      return (
+        <Button onClick={() => router.push(`?show=${row.original.member.id}`)}>
+          Detail
+        </Button>
+      );
     },
   },
 ];

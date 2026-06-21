@@ -14,14 +14,18 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import AttendanceRecapAdmControllers from "../aar.controllers/aar.controllers";
 import { getAllAttendance } from "@/service/organizations/attendance.service";
-import { Attendance } from "@/_shared/custom/@types/attendance.type";
+import { AttendanceData } from "@/_shared/custom/@types/attendance.type";
+import { convertDate } from "@/lib/utils";
+import * as XLSX from "xlsx";
+import { presentColors } from "../aar.hooks/aar.utils";
 
 export default function TableRecapAdministrations() {
   const params = useParams().slug;
   const [members, setMembers] = useState<Member[]>([]);
   const [agenda, setAgenda] = useState<Agenda[]>([]);
   const [merged, setMergedData] = useState<any>();
-  const [attendance, setAttendance] = useState<Attendance[]>([]);
+  const [attendance, setAttendance] = useState<AttendanceData[]>([]);
+  const [percentage, setPercentage] = useState<any>(null);
   const membersFetch = async () => {
     const data = await membersList(params as string);
     const result = data.data;
@@ -38,8 +42,10 @@ export default function TableRecapAdministrations() {
 
   const attendanceFetch = async () => {
     const data = await getAllAttendance(params as string);
-    const result = data.attendance;
-    setAttendance(result);
+    const result: any = data;
+    setAttendance(result.attendance);
+
+    setPercentage(result.percentage);
     return result;
   };
 
@@ -48,8 +54,8 @@ export default function TableRecapAdministrations() {
     const agenda = await agendaFetch();
     const attendance = await attendanceFetch();
     const payload = {
+      attendance,
       members: members,
-      attendance: attendance,
       agendas: agenda,
     };
 
@@ -61,9 +67,47 @@ export default function TableRecapAdministrations() {
     jsonEditor();
   }, []);
 
+  const exportToExcel = () => {
+    if (!merged) return null;
+
+    const excelData = merged.members.map((user: any) => {
+      const rowData: any = {
+        Members: user.member.fullname,
+      };
+
+      merged.agendas.forEach((ag: any) => {
+        const record = attendance.find((item) => {
+          return (
+            item.user.member_id == user.member.id && item.agenda.id == ag.id
+          );
+        });
+        rowData[ag.agenda_name] = record ? record.status : "-";
+      });
+
+      const userPercent =
+        percentage && percentage[user.member_id]
+          ? `${percentage[user.member_id].percentage}`
+          : "0%";
+      rowData["Perncetage %"] = userPercent;
+      return rowData;
+    });
+
+    const workSheet = XLSX.utils.json_to_sheet(excelData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      workbook,
+      workSheet,
+      `Recapitulation_Attendance`,
+    );
+    XLSX.writeFile(workbook, `Recap_Attendance_${params}.xlsx`);
+  };
+
   return (
     <>
-      <AttendanceRecapAdmControllers initialValue={merged} />
+      <AttendanceRecapAdmControllers
+        click={exportToExcel}
+        initialValue={merged}
+      />
       <div className="shadow w-full overflow-x-auto px-2 py-1 rounded-md">
         <Table className="min-w-max">
           <TableHeader>
@@ -73,7 +117,10 @@ export default function TableRecapAdministrations() {
               </TableHead>
               {merged &&
                 merged.agendas.map((item: any, index: number) => (
-                  <TableHead key={index}>{item.agenda_name}</TableHead>
+                  <TableHead key={index} className="text-center">
+                    <p className="font-semibold">{item.agenda_name}</p>
+                    <p>{convertDate(item.tanggal_agenda)}</p>
+                  </TableHead>
                 ))}
               <TableHead className="sticky shadow right-0 bg-white text-center font-semibold">
                 Percentage %
@@ -89,6 +136,7 @@ export default function TableRecapAdministrations() {
                       {user.member.fullname}
                     </TableCell>
                     {agenda.map((ag, index) => {
+                      if (!attendance) return null;
                       const record = attendance.find((item) => {
                         return (
                           item.user.member_id == user.member.id &&
@@ -97,16 +145,14 @@ export default function TableRecapAdministrations() {
                       });
                       return (
                         <TableCell key={index}>
-                          <span
-                            className={`${record?.status == "ABSENT" ? "text-red-500" : ""}`}
-                          >
-                            {record && record.status}
-                          </span>
+                          {presentColors(record)}
                         </TableCell>
                       );
                     })}
                     <TableCell className="sticky shadow right-0 bg-white">
-                      58%
+                      {percentage && percentage[user.member_id]
+                        ? `${percentage[user.member_id].percentage}%`
+                        : "0%"}
                     </TableCell>
                   </TableRow>
                 );
