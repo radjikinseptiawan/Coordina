@@ -10,10 +10,6 @@ export const systemRoute = [
         name: "Agenda",
         href: "organizations/agenda",
       },
-      {
-        name: "Audit Log",
-        href: "organizations/audit-log",
-      },
     ],
   },
   {
@@ -37,10 +33,6 @@ export const systemRoute = [
       {
         name: "Role Based Access Control",
         href: "settings/role",
-      },
-      {
-        name: "Setting Organizations",
-        href: "settings/organizations",
       },
     ],
   },

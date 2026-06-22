@@ -113,10 +113,6 @@ export function EditDialogsMember({
             <Save />
             Save
           </Button>
-          <Button variant={"secondary"}>
-            <Trash />
-            Kick Member
-          </Button>
         </div>
       </DialogContent>
     </Dialog>
