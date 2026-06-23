@@ -1,15 +1,22 @@
 import z from "zod";
 
-const permissionActionSchema = z.object({
-  create: z.boolean().default(false),
-  read: z.boolean().default(false),
-  update: z.boolean().default(false),
-  delete: z.boolean().default(false),
-});
+const permissionsValue = z.enum([
+  "CREATE_AGENDA",
+  "UPDATE_AGENDA",
+  "DELETE_AGENDA",
+  "SUBMIT_ATTENDANCE",
+  "MANAGE_JOIN_REQUEST",
+  "INVITE_USER",
+  "UPDATE_MEMBER_ROLE",
+  "CREATE_ROLE",
+  "UPDATE_ROLE",
+  "DELETE_ROLE",
+]);
 
 export const FormRoleBasedAccessSchema = z.object({
   roleName: z.string().min(1, "Role Name must been filled!"),
-  permissions: z.record(z.string(), permissionActionSchema),
+  description: z.string().min(1, "Description of role must been filled!"),
+  permissions: z.array(permissionsValue).default([]),
 });
 
 export type FormRoleBasedAccessSchema = z.infer<

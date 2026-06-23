@@ -33,7 +33,7 @@ export default function SettingsRoleSystemTemplate() {
 
   useEffect(() => {
     getRole();
-  });
+  }, []);
 
   if (!roles) return null;
   return (

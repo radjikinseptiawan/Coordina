@@ -29,7 +29,7 @@ export default function CardSystemRoleComponents({
             <div className="flex justify-end">
               <Button
                 variant={"outline"}
-                onClick={() => router.push("?action=edit")}
+                onClick={() => router.push(`?action=edit&id=${item.id}`)}
               >
                 <Edit2 />
                 Edit

@@ -7,7 +7,8 @@ export const useSystemRoleForm = () => {
     resolver: zodResolver(FormRoleBasedAccessSchema),
     defaultValues: {
       roleName: "",
-      permissions: {},
+      description: "",
+      permissions: [],
     },
   });
 };

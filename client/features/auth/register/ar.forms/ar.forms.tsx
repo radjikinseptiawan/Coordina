@@ -37,6 +37,8 @@ export function AuthRegisterForms() {
       toast.error(
         `${JSON.stringify(e.response?.data.detail.meta.driverAdapterError.cause.originalMessage) || "Registration Failed!"}`,
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 

@@ -32,7 +32,6 @@ export default function AttendanceRecapAdmControllers({
 }) {
   if (!initialValue) return null;
 
-  console.log(initialValue);
   return (
     <div className="flex flex-col items-center md:flex-row justify-between">
       <div>

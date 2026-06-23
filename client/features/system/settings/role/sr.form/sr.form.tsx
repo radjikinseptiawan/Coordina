@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { UserPlus, XCircle } from "lucide-react";
+import { Trash, UserPlus, XCircle } from "lucide-react";
 import { useSystemRoleForm } from "../sr.hooks/sr.hooks";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "next/navigation";
-import React from "react"; // Impor React untuk Fragment
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect } from "react"; // Impor React untuk Fragment
 import {
   Table,
   TableBody,
@@ -13,9 +13,21 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { toast } from "sonner";
+import axios from "axios";
+import { formValue } from "../sr.hooks/sr.utils";
+import {
+  createRole,
+  deleteRole,
+  readRole,
+  updateRole,
+} from "@/service/settings/roles.service";
 
 export function SettingsRoleForm() {
   const router = useRouter();
+  const params = useParams().slug as string;
+  const action = useSearchParams().get("action");
+  const idRole = useSearchParams().get("id") as string;
   const {
     formState: { errors },
     register,
@@ -23,14 +35,50 @@ export function SettingsRoleForm() {
     reset,
   } = useSystemRoleForm();
 
-  // Handler saat form disubmit
-  const onSubmit = (data: any) => {
-    console.log("Payload yang dikirim ke NestJS:", data);
-    // Jalankan logika mutasi/post API di sini
+  const editRole = async () => {
+    if (action != "edit") return null;
+    try {
+      const initialValue = await readRole(params);
+      if (!initialValue) return null;
+
+      const selectedData = initialValue.data.data.find(
+        (item: any) => item.id == idRole,
+      );
+
+      const mappedPermission = selectedData.permission.map(
+        (perm: any) => perm.permission.name || perm.permission_id || [],
+      );
+      const dataSpec = {
+        roleName: selectedData.name,
+        description: selectedData.description,
+        permissions: mappedPermission,
+      };
+
+      reset(dataSpec);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
+  const onSubmit = async (data: any) => {
+    console.log("Payload yang dikirim ke NestJS:", data);
+
+    if (action == "add") {
+      createRole(data, params);
+    } else if (action == "edit" && idRole) {
+      updateRole(data, params, idRole);
+    }
+  };
+
+  useEffect(() => {
+    editRole();
+  }, [action]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-4 h-96 overflow-y-auto"
+    >
       <div>
         <Label htmlFor="roleName" className="mb-1 block">
           Role Name
@@ -47,6 +95,23 @@ export function SettingsRoleForm() {
         )}
       </div>
 
+      <div>
+        <Label htmlFor="roleName" className="mb-1 block">
+          Description
+        </Label>
+        <textarea
+          id="roleName"
+          {...register("description")}
+          placeholder="Type your think..."
+          className="w-full h-32 resize-none overflow-y-auto border rounded-md px-2 py-1"
+        />
+        {errors.description && (
+          <span className="text-xs text-red-500">
+            {errors.description.message as string}
+          </span>
+        )}
+      </div>
+
       <div className="overflow-x-auto max-h-[350px] border border-gray-200 rounded-lg shadow-sm">
         <Table>
           <TableHeader>
@@ -56,68 +121,18 @@ export function SettingsRoleForm() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Is can write agenda</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can update agenda</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can delete agenda</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can submit attendance</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>
-                Is can accept or reject user request to join
-              </TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can invite user to join organizations</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can update member role</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can write new role</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can update role</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Is can delete role</TableCell>
-              <TableCell>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
+            {formValue.map((item, index) => (
+              <TableRow key={index}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>
+                  <input
+                    type="checkbox"
+                    value={item.value}
+                    {...register("permissions")}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>
@@ -136,6 +151,15 @@ export function SettingsRoleForm() {
           <UserPlus className="w-4 h-4 mr-1" />
           Add
         </Button>
+        {action == "edit" && (
+          <Button
+            onClick={() => deleteRole(params, idRole)}
+            type="button"
+            variant={"secondary"}
+          >
+            <Trash />
+          </Button>
+        )}
       </div>
     </form>
   );
