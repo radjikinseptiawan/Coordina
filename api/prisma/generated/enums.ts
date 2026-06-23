@@ -62,3 +62,19 @@ export const ComityReqStatus = {
 } as const
 
 export type ComityReqStatus = (typeof ComityReqStatus)[keyof typeof ComityReqStatus]
+
+
+export const Permission_Value = {
+  CREATE_AGENDA: 'CREATE_AGENDA',
+  UPDATE_AGENDA: 'UPDATE_AGENDA',
+  DELETE_AGENDA: 'DELETE_AGENDA',
+  SUBMIT_ATTENDANCE: 'SUBMIT_ATTENDANCE',
+  MANAGE_JOIN_REQUEST: 'MANAGE_JOIN_REQUEST',
+  INVITE_USER: 'INVITE_USER',
+  UPDATE_MEMBER_ROLE: 'UPDATE_MEMBER_ROLE',
+  CREATE_ROLE: 'CREATE_ROLE',
+  UPDATE_ROLE: 'UPDATE_ROLE',
+  DELETE_ROLE: 'DELETE_ROLE'
+} as const
+
+export type Permission_Value = (typeof Permission_Value)[keyof typeof Permission_Value]

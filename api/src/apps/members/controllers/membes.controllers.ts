@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -68,5 +69,10 @@ export class MembersControllers {
   async sendInvitationUser(@Param() params, @Req() req) {
     const user = await req.user;
     return await this.memberService.sendInviteUsers(params, user?.userId);
+  }
+
+  @Delete('permission/:id')
+  async deleteRole(@Param() param) {
+    return await this.memberService.deleteRoleMembers(param);
   }
 }

@@ -61,7 +61,9 @@ export const ModelName = {
   Comity_Mission: 'Comity_Mission',
   Member_Profiles_Comities: 'Member_Profiles_Comities',
   Comity_Member_Request: 'Comity_Member_Request',
-  Comity_Role: 'Comity_Role'
+  Comity_Role: 'Comity_Role',
+  Permission: 'Permission',
+  Role_Permission: 'Role_Permission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -231,11 +233,29 @@ export const Comity_RoleScalarFieldEnum = {
   comity_id: 'comity_id',
   name: 'name',
   description: 'description',
+  is_deleted: 'is_deleted',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type Comity_RoleScalarFieldEnum = (typeof Comity_RoleScalarFieldEnum)[keyof typeof Comity_RoleScalarFieldEnum]
+
+
+export const PermissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
+
+
+export const Role_PermissionScalarFieldEnum = {
+  role_id: 'role_id',
+  permission_id: 'permission_id'
+} as const
+
+export type Role_PermissionScalarFieldEnum = (typeof Role_PermissionScalarFieldEnum)[keyof typeof Role_PermissionScalarFieldEnum]
 
 
 export const SortOrder = {

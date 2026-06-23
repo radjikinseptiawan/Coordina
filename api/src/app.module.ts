@@ -9,6 +9,7 @@ import { ComityModule } from './apps/comity/comity.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { WhatsappModule } from './apps/whatsapp/whatsapp.module';
 import { MembersModule } from './apps/members/members.module';
+import { SettingsModule } from './apps/settings/settings.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { MembersModule } from './apps/members/members.module';
     }),
     ProfileModule,
     ComityModule,
+    SettingsModule,
     MulterModule,
     MembersModule,
     WhatsappModule,

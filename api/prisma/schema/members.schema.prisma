@@ -18,16 +18,52 @@ model Comity_Role {
   comity_id   String
   name        String
   description String?
+  is_deleted  Boolean                    @default(false)
   created_at  DateTime                   @default(now())
   updated_at  DateTime                   @updatedAt
   comity      Comity                     @relation(fields: [comity_id], references: [id])
   members     Member_Profiles_Comities[]
+  permission  Role_Permission[]
 
   @@unique([comity_id, name])
+}
+
+model Permission {
+  id          String            @id @default(uuid())
+  name        Permission_Value
+  description String?
+  roles       Role_Permission[]
+
+  @@map("permissions")
+}
+
+model Role_Permission {
+  role_id       String
+  permission_id String
+  permission    Permission  @relation(fields: [permission_id], references: [id])
+  role          Comity_Role @relation(fields: [role_id], references: [id])
+
+  @@id([role_id, permission_id])
+  @@map("role_permissions")
 }
 
 enum ComityReqStatus {
   Accepted
   Rejected
   Pending
+}
+
+enum Permission_Value {
+  CREATE_AGENDA
+  UPDATE_AGENDA
+  DELETE_AGENDA
+  SUBMIT_ATTENDANCE
+  MANAGE_JOIN_REQUEST
+  INVITE_USER
+  UPDATE_MEMBER_ROLE
+  CREATE_ROLE
+  UPDATE_ROLE
+  DELETE_ROLE
+
+  @@map("permissions_values")
 }

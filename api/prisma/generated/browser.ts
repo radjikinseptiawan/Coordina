@@ -72,3 +72,13 @@ export type Comity_Member_Request = Prisma.Comity_Member_RequestModel
  * 
  */
 export type Comity_Role = Prisma.Comity_RoleModel
+/**
+ * Model Permission
+ * 
+ */
+export type Permission = Prisma.PermissionModel
+/**
+ * Model Role_Permission
+ * 
+ */
+export type Role_Permission = Prisma.Role_PermissionModel

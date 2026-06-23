@@ -2,11 +2,13 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { AcceptApplication } from 'src/helper/members/accept.application.user';
 import AcceptInviteUser from 'src/helper/members/accept.invite.user';
 import ComityCreateJoinRequest from 'src/helper/members/comity.join.request.user';
+import { getAllMemberUserHelper } from 'src/helper/members/get.all.member.user';
 import { getInviteUser } from 'src/helper/members/get.invite.user';
 import { getMembesHelper } from 'src/helper/members/get.members';
 import { sendInviteUser } from 'src/helper/members/send.invite.user';
 import { ShowJoinComity } from 'src/helper/members/show.join.comity.user';
 import { ShowComiyRequest } from 'src/helper/members/show.request.user';
+import { updateMemberRoleHelper } from 'src/helper/members/update.member.role.helper';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -46,87 +48,45 @@ export class MembersServices {
   }
 
   async getAllRoleMember(params) {
-    try {
-      const members = await this.prisma.comity_Role.findMany({
-        where: {
-          comity: {
-            urlLink: params,
-          },
-        },
-      });
-
-      if (!members) {
-        throw new HttpException(
-          {
-            message: 'Failed to found members',
-          },
-          HttpStatus.NOT_FOUND,
-        );
-      }
-
-      return {
-        message: 'Success to find data',
-        data: members,
-      };
-    } catch (err) {
-      throw new HttpException(
-        {
-          message: 'Something error!',
-          error: err,
-        },
-        HttpStatus.NOT_FOUND,
-      );
-    }
+    return getAllMemberUserHelper(this.prisma, params);
   }
 
   async updateRoleMembers(params, body) {
-    console.log(params, body);
-    try {
-      const [members, roles] = await Promise.all([
-        this.prisma.member_Profiles_Comities.findFirst({
-          where: {
-            member_id: body.id,
-          },
-          include: {
-            role: true,
-          },
-        }),
-        this.prisma.comity_Role.findFirst({
-          where: {
-            name: body.role,
-          },
-        }),
-      ]);
+    return updateMemberRoleHelper(this.prisma, body);
+  }
 
-      if (!members) {
+  async deleteRoleMembers(params) {
+    try {
+      const role = await this.prisma.comity_Role.update({
+        where: {
+          id: params.id,
+          comity: {
+            urlLink: params.organisasi,
+          },
+        },
+        data: {
+          is_deleted: true,
+        },
+      });
+
+      if (!role) {
         throw new HttpException(
           {
-            message: 'Members not found!',
+            message: 'Failed!, user not found',
           },
           HttpStatus.NOT_FOUND,
         );
       }
 
-      const updateRole = await this.prisma.member_Profiles_Comities.update({
-        where: {
-          id: members?.id,
-        },
-        data: {
-          role_id: roles?.id,
-        },
-      });
-
       return {
-        message: 'Success fetch data',
-        oldData: members,
-        updateData: updateRole,
+        message: 'Success get data',
+        role,
       };
     } catch (error: any) {
-      console.error(error);
       throw new HttpException(
         {
-          message: 'Something error!',
-          error: error,
+          message: 'Failed!, Internal Server Error!',
+          error,
         },
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
