@@ -3,7 +3,7 @@ import { CookieOptions } from 'express';
 const BASE_COOKIE_CONFIG: CookieOptions = {
   httpOnly: true,
   secure: true,
-  sameSite: 'lax',
+  sameSite: 'none',
 };
 
 const ACCESS_TOKEN_EXPIRES = 15 * 60 * 1000;
