@@ -5,16 +5,17 @@ import cookieParser from 'cookie-parser';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.set('trust proxy', 1);
   app.use((req, res, next) => {
     res.setHeader('Cross-Origin-Opener-Policy', 'unsafe-none');
-    next()
-  })
-  app.use(cookieParser())
+    next();
+  });
+  app.use(cookieParser());
   app.enableCors({
     credentials: true,
-    origin: process.env.WEB_URL as string
-  })
+    origin: process.env.WEB_URL as string,
+  });
 
   await app.listen(process.env.PORT ?? 3001);
 }
