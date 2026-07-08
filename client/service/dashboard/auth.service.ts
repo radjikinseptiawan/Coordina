@@ -5,11 +5,10 @@ import {
 } from "../dto/auth.dto";
 
 const BASE_API = `${process.env.NEXT_PUBLIC_API_URL}/v1_beta/auth`;
+axios.defaults.withCredentials = true;
 
 export const loginUser = async (body: AuthBasicLoginPayload) => {
-  const response = await axios.post(`${BASE_API}/login`, body, {
-    withCredentials: true,
-  });
+  const response = await axios.post(`${BASE_API}/login`, body);
   return response.data;
 };
 
@@ -22,7 +21,7 @@ export const loginGoogleUser = async (): Promise<void> => {
     );
 
     const eventListener = (event: MessageEvent) => {
-      if (event.origin !== "http://localhost:3001") return;
+      if (event.origin !== process.env.NEXT_PUBLIC_API_URL) return;
       const data = event.data;
 
       if (data && data.status === "ok") {
