@@ -4,6 +4,7 @@ const BASE_COOKIE_CONFIG: CookieOptions = {
   httpOnly: true,
   secure: true,
   sameSite: 'none',
+  path: '/',
 };
 
 const ACCESS_TOKEN_EXPIRES = 15 * 60 * 1000;
