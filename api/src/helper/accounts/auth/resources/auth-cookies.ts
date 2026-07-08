@@ -3,6 +3,7 @@ import { CookieOptions } from 'express';
 const BASE_COOKIE_CONFIG: CookieOptions = {
   httpOnly: true,
   secure: true,
+  domain: '.himatif.blog',
   sameSite: 'none',
   path: '/',
 };
