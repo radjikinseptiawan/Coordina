@@ -38,6 +38,7 @@ export default function MenuDashboardFormAddDialog() {
 
   const onSubmit = async (data: any) => {
     let uploadedIconUrl = "";
+    console.log(data);
     if (data.organization_icon && data.organization_icon.length > 0) {
       const file = data.organization_icon[0];
 
